@@ -24,7 +24,7 @@ function ChangePassword() {
     }
     else
     {
-        setMessage('Please enter the password to be changed.')
+        setMessage('Please enter the password to be change.')
     }
   };
   return (
