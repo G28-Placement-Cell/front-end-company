@@ -1,18 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './CSS_files/index.css';
 import App from './App';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter as Router,Route} from 'react-router-dom';
-
+import theme from './Pages/ChangePassword/theme.js';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <App />
+    </ThemeProvider>
+    {/* <Router>
       <Route path="/">
         <App />
       </Route>
-    </Router>
+    </Router> */}
   </React.StrictMode>
 );
 

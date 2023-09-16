@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
-import daiictlogo from './daiictlogo.png';
-import './App.css';
+import daiictlogo from '../images/daiictlogo.png';
+import '../CSS_files/App.css';
 
 export default function Navbar() {
   return (
@@ -9,10 +9,9 @@ export default function Navbar() {
         <div class = "navbar" id="navlinks">
             <i class="fa fa-times" onClick={hidemenu} id="close"></i>
               <ul class="ul">
-                <li><Link to='/'>Home</Link></li>
-                <li><Link to="/profile">Profile</Link></li>
+                <li><Link to='/companyprofile'>Company Profile</Link></li>
+                <li><Link to="/jobprofile">Job Profile</Link></li>
                 <li><Link to="/announcement">Announcement</Link></li>
-                <li><Link to="/result">Results</Link></li>
                 <li><Link to="/changepassword">Change Password</Link></li>
                 <li><Link to="/aboutus">About Us</Link></li>
                 <li><Link to="/logout">Log Out</Link></li>

@@ -2,7 +2,7 @@
   text-align: center;
 } */
 .c1{
-    background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7) ),url('companybanner.jpg') ;
+    background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7) ),url('../images/companybanner.jpg') ;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -16,7 +16,9 @@
 .Missing p, .PostPage p {
   margin-bottom: 1rem;
 }
-
+p{
+  text-align: center;
+}
 .navbar ul{
   display: flex;
   flex-wrap: wrap;
@@ -113,4 +115,18 @@
   #close{
       margin-left: 150px;
   }
+}
+#bt1{
+  margin-right: 10px;
+}
+#button1{
+  color: white;
+  text-decoration: none;
+}
+#button2{
+  color: white;
+  text-decoration: none;
+}
+.header{
+  color: #2B2442;
 }

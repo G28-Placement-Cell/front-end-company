@@ -1,29 +1,31 @@
-import './App.css';
-import Navbar from './Navbar';
-import {Route,Switch} from 'react-router-dom';
-import Profile from './Profile.js';
-import Announcement from './Announcement.js';
-import Results from './Results.js';
-import ChangePassword from './ChangePassword.js';
-import AboutUs from './AboutUs.js';
-import Missing from './Missing.js';
+import './CSS_files/App.css';
+import Navbar from './Pages/Navbar';
+import {Route,Switch,HashRouter as Router} from 'react-router-dom';
+import JobProfile from './Pages/JobProfile.js';
+import Announcement from './Pages/Announcement.js';
+import ChangePassword from './Pages/ChangePassword/ChangePassword.js';
+import AboutUs from './Pages/AboutUs.js';
+import Missing from './Pages/Missing.js';
+import ContactUs from './Pages/ContactUs.js';
+import CompanyProfile from './Pages/CompanyProfile.js';
 
 function App() {
   
   return (
     <div className="main">
+      <Router>
       <Switch>
         <Route exact path='/'>
-          <Navbar />
+          <Navbar/>
         </Route>
-        <Route exact path='/profile'>
-          <Profile/>
+        <Route exact path='/companyprofile'>
+          <CompanyProfile/>
+        </Route>
+        <Route exact path='/jobprofile'>
+          <JobProfile/>
         </Route>
         <Route exact path='/announcement'>
           <Announcement/>
-        </Route>
-        <Route exact path='/result'>
-          <Results/>
         </Route>
         <Route exact path='/changepassword'>
           <ChangePassword/>
@@ -34,10 +36,14 @@ function App() {
         <Route exact path='/logout'>
           <Navbar/>
         </Route>
+        <Route exact path='/contactus'>
+          <ContactUs />
+        </Route>
         <Route path="*">
           <Missing />
         </Route>
       </Switch>
+      </Router>
 
     </div>
   );
