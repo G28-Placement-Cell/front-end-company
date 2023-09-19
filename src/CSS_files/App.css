@@ -1,16 +1,7 @@
 /* .main {
   text-align: center;
 } */
-.c1{
-    background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7) ),url('../images/companybanner.jpg') ;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* height: 100vh;
-    background-repeat: no-repeat; */
-    height: 100vh;
-    width: 100%;
-}
+
 
 .Missing h2, .PostPage h2, 
 .Missing p, .PostPage p {

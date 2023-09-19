@@ -12,8 +12,6 @@ function ChangePassword() {
     {
         if (newPassword === confirmPassword) {
             if (newPassword !== '' && confirmPassword !== '') {
-              // Passwords match, you can add your backend logic here to change the password
-              // For this example, we'll simulate a success message
               setMessage('Password changed successfully.');
             } else {
               setMessage('Please enter the new password.');

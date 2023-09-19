@@ -1,9 +1,8 @@
 import React from 'react'
-
-export default function Profile() {
+export default function MainJP() {
   return (
     <div>
-      jobprofile
+      mainJP
     </div>
   )
 }
