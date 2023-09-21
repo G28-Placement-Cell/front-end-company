@@ -12,7 +12,7 @@ function Footer() {
                 py: 2,
                 backgroundColor: '#212330', // Background color for the footer
                 color: '#fff', // Text color for the footer
-                position: 'absolute',
+                position: 'fixed',
                 bottom: 0,
                 width: '100%',
             }}
@@ -21,7 +21,7 @@ function Footer() {
                 <Typography variant="body2" align="center">
                     &copy; {new Date().getFullYear()} Placement-Cell. All rights reserved.
                 </Typography>
-                <Typography variant="body2" align="center" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Typography variant="body2" align="center" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     {/* GitHub icon and link */}
                     <Link
                         href="https://github.com/shashank-u03/IT314_G28_Software_Engineering"
