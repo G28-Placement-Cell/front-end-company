@@ -12,7 +12,7 @@ function Header() {
 
   const showSidebar = () => setSidebar(!sidebar);
   return (
-    <AppBar position="static" style={{ backgroundColor: "#2B2442" }}>
+    <AppBar position="sticky" style={{ backgroundColor: "#2B2442" }}>
       <Toolbar>
         <Link to='#' className='menu-bars' style={{ marginLeft: 0 }}>
           <FaIcons.FaBars onClick={showSidebar} style={{color:'white', alignSelf:'center', justifySelf:'center', marginBottom:6, marginTop: 16}} />
@@ -20,7 +20,7 @@ function Header() {
         <>
           <IconContext.Provider value={{ color: '#fff' }}>
 
-            <nav className={sidebar ? 'nav-menu active' : 'nav-menu'} style={{}}>
+            <nav className={sidebar ? 'nav-menu active' : 'nav-menu'} style={{zIndex:500}}>
               <ul className='nav-menu-items' onClick={showSidebar}>
                 <li className='navbar-toggle'>
                   <Link to='#' className='menu-bars'>

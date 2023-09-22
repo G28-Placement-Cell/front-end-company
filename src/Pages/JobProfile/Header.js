@@ -2,11 +2,10 @@ import React from 'react';
 import { AppBar, Toolbar, Typography} from '@mui/material';
 import '../../CSS_files/App.css';
 import {Link} from 'react-router-dom';
-
 function Header() {
   return (
     <div className="header">
-        <AppBar position="static">
+        <AppBar position='"sticky'>
             <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 Placement Cell
