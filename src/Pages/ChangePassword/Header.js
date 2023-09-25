@@ -20,7 +20,7 @@ function Header() {
         <>
           <IconContext.Provider value={{ color: '#fff' }}>
 
-            <nav className={sidebar ? 'nav-menu active' : 'nav-menu'} style={{}}>
+            <nav className={sidebar ? 'nav-menu active' : 'nav-menu'} style={{zIndex:500}}>
               <ul className='nav-menu-items' onClick={showSidebar}>
                 <li className='navbar-toggle'>
                   <Link to='#' className='menu-bars'>
