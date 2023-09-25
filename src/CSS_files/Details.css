@@ -1,0 +1,85 @@
+/* Details.css */
+
+/* Center the content both horizontally and vertically */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+  }
+  
+  /* Style the box */
+  .box {
+    background-color: rgb(107, 204, 236);;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 0.5s ease; /* Add a fade-in animation */
+  transition: transform 0.2s ease; /* Add a fade-in animation */
+  }
+  .box:hover {
+    transform: scale(1.05); /* Increase the size slightly on hover */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Change the box shadow on hover */
+  }
+  .box h1{
+    font-family: cursive;
+    font-size: 1.5rem;
+  }
+  /* Define the fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .buttons {
+    margin-top: 20px;
+  }
+  
+  .edit-button {
+    background-color: #2B2442;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-button:hover {
+    background-color: #005a9c;
+    transition : 0.5s;
+    transform: scale(1.2);
+  }
+  
+  .delete-button {
+    background-color: #2B2442;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding-left: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-button:hover {
+    background-color: #005a9c;
+    transition : 0.5s;
+    transform: scale(1.2);
+  }
+  @media(max-width : 450px)
+  {
+   
+    .box h1{
+        font-size: 1.1rem;
+    }
+  }
+  

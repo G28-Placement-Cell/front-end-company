@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../../CSS_files/MainCP.css'; 
-
+import Footer from '../JobProfile/Footer.js';
 function ChangePassword() {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -26,6 +26,7 @@ function ChangePassword() {
     }
   };
   return (
+    <>
     <div className="maincp">
         <div className="change-password-container">
       <h2>Change Password</h2>
@@ -51,12 +52,14 @@ function ChangePassword() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button onClick={handleChangePassword}>Change Password</button>
+        <button onClick={handleChangePassword} id="btn5">Change Password</button>
         {message && <p className="message">{message}</p>}
       </div>
     </div>
     </div>
+    <Footer />
     
+    </>
   );
 }
 

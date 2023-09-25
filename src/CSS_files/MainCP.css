@@ -11,6 +11,8 @@
     display: flex;
     flex-direction: column;
     margin-top: 80px;
+    
+box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
   }
   
   h2 {
@@ -33,16 +35,19 @@
     border-radius: 5px;
   }
   
-  button {
+  #btn5 {
     margin-top: 15px;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #2B2442;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
-  
+  #btn5:hover{
+    background-color: #007bff;
+  }
+
   .message {
     margin-top: 15px;
     text-align: center;

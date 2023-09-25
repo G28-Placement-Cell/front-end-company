@@ -1,0 +1,57 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  } */
+  
+  .mainjp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    background-color: #f0f0f0;
+  }
+  
+  .mainjp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7) ),url('https://media.istockphoto.com/id/1282301093/photo/on-a-meeting-chief-industrial-engineer-reports-to-a-group-of-specialists-managers-uses.jpg?s=1024x1024&w=is&k=20&c=PxQ8FO93Whk0sj1WSvr_0PYTkbg9DodWX29518XSkCc=');
+    background-size: cover;
+    ; /* Apply a slight blur to the background */
+    z-index: -1;
+  }
+  
+  
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .mainjpbtn {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #2B2442; /* Button background color */
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    width: 400px;
+    transition: background-color 0.5s ease;
+  }
+  @media(max-width: 425px)
+  {
+    .mainjpbtn{
+      width: 350px;
+    }
+  }
+  .mainjpbtn:hover {
+    transition : 0.5s;
+    transform: scale(1.2);
+    background-color: #005a9c; /* Button hover background color */
+  }
+  

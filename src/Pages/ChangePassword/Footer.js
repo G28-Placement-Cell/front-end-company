@@ -2,7 +2,6 @@ import React from 'react'
 import { Typography, Link, Box } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
-
 function Footer() {
     return (
         <Box
@@ -12,7 +11,7 @@ function Footer() {
                 py: 2,
                 backgroundColor: '#212330', // Background color for the footer
                 color: '#fff', // Text color for the footer
-                position: 'absolute',
+                position: 'relative',
                 bottom: 0,
                 width: '100%',
             }}
