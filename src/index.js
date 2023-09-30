@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './CSS_files/index.css';
+// import './CSS_files/index.css';
 import App from './App';
 import { BrowserRouter as Router,Route} from "react-router-dom";
 import { CssBaseline, ThemeProvider } from '@mui/material';

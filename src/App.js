@@ -1,4 +1,4 @@
-import './CSS_files/App.css';
+// import './CSS_files/App.css';
 // import Navbar from './Pages/Navbar';
 import {Route,Switch,HashRouter as Router,useHistory} from 'react-router-dom';
 import {useState,useEffect} from 'react';
