@@ -16,7 +16,8 @@ import SeePost from './Pages/JobProfile/Seepost.js';
 import NewPost from './Pages/JobProfile/Newpost.js';
 import EditPost from './Pages/JobProfile/Editpost.js';
 import Details from './Pages/JobProfile/Details.js';
-import FooterJ from './Pages/JobProfile/Footer'
+import FooterJ from './Pages/JobProfile/Footer';
+import { Errored } from './Pages/Errored.js';
 function App() {
   const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState('');
@@ -109,6 +110,9 @@ function App() {
       <Router>
         <Header />
       <Switch>
+      <Route exact path='/error'>
+          <Errored/>
+        </Route>
         <Route exact path='/'>
           {/* <Navbar/> */}
           <FooterJ />
