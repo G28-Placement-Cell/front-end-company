@@ -110,9 +110,7 @@ function App() {
       <Router>
         <Header />
       <Switch>
-      <Route exact path='/error'>
-          <Errored/>
-        </Route>
+     
         <Route exact path='/'>
           {/* <Navbar/> */}
           <FooterJ />
@@ -167,7 +165,7 @@ function App() {
           editRegclose={editRegclose} seteditRegclose={seteditRegclose}/>
         </Route>
         <Route path="*">
-          <Missing />
+        <Errored/>
         </Route>
       </Switch>
       {/* <Footer /> */}
