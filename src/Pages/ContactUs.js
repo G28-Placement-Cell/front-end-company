@@ -40,7 +40,7 @@ const headingStyle = {
   textAlign: "center",
   fontSize: "40px",
   fontWeight: "bold",
-  margin: "10px",
+  margin: "20px",
 };
 
 const ContactUs = () => {
@@ -132,21 +132,27 @@ const ContactUs = () => {
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: "center",
+    marginLeft:"20px",
+    maxWidth:"100%"
   };
   return (
     <>
+      <div style={{overflow:"hidden"}}>
+
+    
       <div style={{ pageStyle }}>
         <Typography
           variant="h3"
-          style={{ fontWeight: "bold", textAlign: "center" }}
+          style={{ marginTop:"10px",fontWeight: "bold", textAlign: "center" }}
         >
           Contact Us
         </Typography>
         <div >
           <Grid
             container
-            spacing={2}
-            style={{}}
+            spacing={5}
+            style={{marginTop:"10px",marginLeft:"50px",maxWidth:"100%"}}
+            
           >
             {contactInfo.map((contact, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
@@ -174,6 +180,7 @@ const ContactUs = () => {
                           verticalAlign: "middle",
                           marginRight: "8px",
                           fontSize: "1.2em",
+                          
                         }}
                       >
                         <FaPhone />
@@ -198,7 +205,7 @@ const ContactUs = () => {
           </Grid>
         </div >
       </div >
-
+    </div>
     </>
   );
 };

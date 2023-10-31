@@ -18,6 +18,7 @@ import EditPost from './Pages/JobProfile/Editpost.js';
 import Details from './Pages/JobProfile/Details.js';
 import FooterJ from './Pages/JobProfile/Footer';
 import { Errored } from './Pages/Errored.js';
+import {CompanyLogin} from "./Pages/CompanyLogin.js"
 function App() {
   const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState('');
@@ -113,7 +114,11 @@ function App() {
      
         <Route exact path='/'>
           {/* <Navbar/> */}
+          
           <FooterJ />
+        </Route>
+        <Route exact path='/login'>
+          <CompanyLogin></CompanyLogin>
         </Route>
         <Route exact path='/companyprofile'>
           <CompanyProfile/>
