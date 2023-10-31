@@ -2,7 +2,7 @@ import { apislice } from "./apislice";
 
 const company_url = 'api/company';
 
-export const studentApislice = apislice.injectEndpoints({
+export const companyApislice = apislice.injectEndpoints({
     endpoints: (builder) => ({
         login: builder.mutation({
             query: (data) => ({
@@ -41,4 +41,6 @@ export const studentApislice = apislice.injectEndpoints({
     })
 })
 
-export const { useLoginMutation, useLogoutMutation, useRegisterMutation, useGetdataMutation } = studentApislice;
+
+
+export const { useLoginMutation, useLogoutMutation, useRegisterMutation, useGetdataMutation } = companyApislice;

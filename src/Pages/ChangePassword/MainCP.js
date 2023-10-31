@@ -27,7 +27,7 @@ function ChangePassword() {
   };
   return (
     <>
-    <div className="maincp">
+    <div style={{minHeight:'74vh'}} className="maincp">
         <div className="change-password-container">
       <h2>Change Password</h2>
       <div className="password-form">
@@ -57,7 +57,7 @@ function ChangePassword() {
       </div>
     </div>
     </div>
-    <Footer />
+    {/* <Footer /> */}
     
     </>
   );

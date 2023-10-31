@@ -5,7 +5,7 @@ import Footer from './Footer.js';
 export default function MainJP() {
   return (
     <>
-    <div>
+    <div style={{minHeight:'85vh'}}>
       <div className="mainjp">
       <div className="background-image" />
         <div className="options">
@@ -14,7 +14,7 @@ export default function MainJP() {
         </div>
       </div>
     </div>
-    <Footer />
+    {/* <Footer /> */}
     </>
     
     

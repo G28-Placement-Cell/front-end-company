@@ -20,6 +20,7 @@ import FooterJ from './Pages/JobProfile/Footer';
 import { Errored } from './Pages/Errored.js';
 import { CompanyLogin } from "./Pages/CompanyLogin.js";
 import { CompanyRegister } from "./Pages/CompanyRegister.js"
+import Footer from './Pages/JobProfile/Footer';
 function App() {
   const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState('');
@@ -110,17 +111,16 @@ function App() {
       <Router>
         <Header />
         <Switch>
-
           <Route exact path='/'>
-            {/* <Navbar/> */}
-
-            <FooterJ />
+            {/* <Navbar /> */}
+            {/* <FooterJ /> */}
+            <CompanyProfile />
           </Route>
           <Route exact path='/login'>
-            <CompanyLogin></CompanyLogin>
+            <CompanyLogin />
           </Route>
           <Route exact path='/register'>
-            <CompanyRegister></CompanyRegister>
+            <CompanyRegister />
           </Route>
           <Route exact path='/companyprofile'>
             <CompanyProfile />
@@ -138,7 +138,7 @@ function App() {
             <AboutUs />
           </Route>
           <Route exact path='/logout'>
-            {/* <Navbar/> */}
+            {/* <Navbar /> */}
           </Route>
           <Route exact path='/contactus'>
             <ContactUs />
@@ -147,39 +147,58 @@ function App() {
             <SeePost posts={searchResults} isLoading={isLoading} />
           </Route>
           <Route exact path='/newpost'>
-            <NewPost handleSubmit={handleSubmit}
-              editName={editName} seteditName={seteditName}
-              editBody={editBody} setEditBody={setEditBody}
-              editType={editType} seteditType={seteditType}
-              editCPI={editCPI} seteditCPI={seteditCPI}
-              editLink={editLink} seteditLink={seteditLink}
-              editOpenfor={editOpenfor} seteditOpenfor={seteditOpenfor}
-              editRegopen={editRegopen} seteditRegopen={seteditRegopen}
-              editRegclose={editRegclose} seteditRegclose={seteditRegclose}
+            <NewPost
+              handleSubmit={handleSubmit}
+              editName={editName}
+              seteditName={seteditName}
+              editBody={editBody}
+              setEditBody={setEditBody}
+              editType={editType}
+              seteditType={seteditType}
+              editCPI={editCPI}
+              seteditCPI={seteditCPI}
+              editLink={editLink}
+              seteditLink={seteditLink}
+              editOpenfor={editOpenfor}
+              seteditOpenfor={seteditOpenfor}
+              editRegopen={editRegopen}
+              seteditRegopen={seteditRegopen}
+              editRegclose={editRegclose}
+              seteditRegclose={seteditRegclose}
             />
           </Route>
           <Route exact path='/moredetails/:id'>
             <Details posts={posts} />
           </Route>
           <Route exact path='/editpost/:id'>
-            <EditPost posts={posts} handleEdit={handleEdit}
-              editName={editName} seteditName={seteditName}
-              editBody={editBody} setEditBody={setEditBody}
-              editType={editType} seteditType={seteditType}
-              editCPI={editCPI} seteditCPI={seteditCPI}
-              editOpenfor={editOpenfor} seteditOpenfor={seteditOpenfor}
-              editRegopen={editRegopen} seteditRegopen={seteditRegopen}
-              editRegclose={editRegclose} seteditRegclose={seteditRegclose} />
+            <EditPost
+              posts={posts}
+              handleEdit={handleEdit}
+              editName={editName}
+              seteditName={seteditName}
+              editBody={editBody}
+              setEditBody={setEditBody}
+              editType={editType}
+              seteditType={seteditType}
+              editCPI={editCPI}
+              seteditCPI={seteditCPI}
+              editOpenfor={editOpenfor}
+              seteditOpenfor={seteditOpenfor}
+              editRegopen={editRegopen}
+              seteditRegopen={seteditRegopen}
+              editRegclose={editRegclose}
+              seteditRegclose={seteditRegclose}
+            />
           </Route>
           <Route path="*">
             <Errored />
           </Route>
         </Switch>
-        {/* <Footer /> */}
+        <FooterC />
       </Router>
-
     </div>
   );
+
 }
 
 export default App;
