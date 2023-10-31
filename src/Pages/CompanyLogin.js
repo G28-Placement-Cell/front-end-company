@@ -7,8 +7,9 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AppBar from '@mui/material/AppBar/AppBar';
 import Toolbar from '@mui/material/Toolbar/Toolbar';
+import Footer from './JobProfile/Footer';
 
-export const CompanyLogin=()=> {
+export const CompanyLogin = () => {
 
     const heading = {
         textAlign: 'center',
@@ -85,6 +86,7 @@ export const CompanyLogin=()=> {
                     </div>
                 </Grid>
             </Grid>
+            <Footer />
         </>
     );
 }

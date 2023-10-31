@@ -10,11 +10,12 @@ import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import { useState } from "react";
+import Footer from "./JobProfile/Footer";
 
 
 
 
-export const CompanyRegister=() =>{
+export const CompanyRegister = () => {
     const [email, setEmail] = React.useState('');
     const [domain, setDomain] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -187,6 +188,7 @@ export const CompanyRegister=() =>{
 
                 </form>
             </div>
+            <Footer />
         </>
     )
 }
