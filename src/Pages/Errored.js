@@ -4,10 +4,10 @@ import { Button } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 
 export const Errored = () => {
-    const navigate = useHistory()
+    const history = useHistory()
 
     const navigateProf = () => {
-        navigate.push('/companyprofile');
+        history.push('/companyprofile');
     }
 
     return (

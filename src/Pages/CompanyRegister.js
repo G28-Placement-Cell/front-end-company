@@ -1,27 +1,38 @@
 import React from "react";
-import { Container, Grid, Avatar, TextField, Button, Typography } from "@mui/material";
-import TextareaAutosize from '@mui/base/TextareaAutosize';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import MenuItem from '@mui/material/MenuItem';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
+import { Container, Grid, Avatar, TextField, Button, Typography, CssBaseline } from "@mui/material";
+import { styled, alpha } from '@mui/material/styles';
 import { useState } from "react";
-import Footer from "./JobProfile/Footer";
+import { useRegisterMutation } from "../slices/company/companyApislice";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { setCredentials } from "../slices/company/authslice";
 
+const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+});
 
 
 
 export const CompanyRegister = () => {
+    const [companyname, setCompanyname] = React.useState('');
+    const [hrname, setHrname] = React.useState('');
+    const [contact, setContact] = React.useState('');
+    const [address, setAddress] = React.useState('');
     const [email, setEmail] = React.useState('');
-    const [domain, setDomain] = React.useState('');
+    const [website, setWebsite] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [altpassword, setAltpassword] = React.useState('');
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
+
     const verify = (e) => {
         e.preventDefault();
         if (password !== altpassword) {
@@ -37,14 +48,45 @@ export const CompanyRegister = () => {
             alert("Submitted for verification");
         }
     }
+
+    const [register, { isLoading }] = useRegisterMutation();
+    // const navigate = useNavigate();
+    const history = useHistory();
+    const dispatch = useDispatch();
+
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        if (password !== altpassword) {
+            alert("Passwords do not match");
+            setError(true);
+        } else {
+            setError(false);
+            setSubmitted(true);
+        }
+        if (!error && submitted) {
+            try {
+                const res = await register({ companyname, hrname, contact, address, email, website, password, altpassword }).unwrap();
+                dispatch(setCredentials({ ...res }));
+                history.push("/company/login");
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        else {
+            alert("Registration failed. Please try again.");
+        }
+    }
     return (
-        <>
-            <Typography variant="h4" sx={{ fontWeight: "bold", mt: 3, textAlign: "center" }}>
+        // <>
+        // <CssBaseline />
+        <div style={{backgroundColor:'#e4eaf5'}}>
+            {console.log("CompanyRegister.js")}
+            <Typography variant="h4" sx={{pt:3, fontWeight: "bold", textAlign: "center" }}>
                 Company Registration
             </Typography>
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
 
-                <form id="com_reg" onSubmit={verify}>
+                <form id="com_reg" onSubmit={submitHandler} enctype="multipart/form-data" method="post">
 
                     <Container sx={{ mb: 10, display: "flex", flexDirection: 'column ', justifyContent: "center", alignItems: "center", }} >
                         <Grid item container md={8} sx={{ justifyContent: "center", mb: 0 }}>
@@ -52,33 +94,38 @@ export const CompanyRegister = () => {
                             <div style={{ padding: "2rem 0 5rem" }}>
                                 <Grid container spacing={2}>
                                     <TextField
+                                        sx={{ mt: 2 }}
                                         label="Company Name"
                                         id="comp-name"
                                         name="comp-name"
                                         type="text"
-                                        variant="outlined"
+                                        // variant="outlined"
                                         fullWidth
+                                        onChange={(e) => setCompanyname(e.target.value)}
                                         required
                                     />
                                     <TextField
-                                        sx={{ mt: 2 }}
                                         label="HR Name"
                                         id="hr-name"
                                         name="hr-name"
                                         type="text"
-                                        variant="outlined"
+                                        // variant="outlined"
                                         fullWidth
+                                        onChange={(e) => setHrname(e.target.value)}
                                         required
+                                        sx={{ mt: 2 }}
                                     />
                                     <TextField
-                                        sx={{ mt: 2 }}
                                         label="Contact Number"
                                         id="contact"
                                         name="contact"
                                         type="tel"
                                         pattern="[1-9]{1}[0-9]{9}"
+                                        // variant="outlined"
+                                        onChange={(e) => setContact(e.target.value)}
                                         fullWidth
                                         required
+                                        sx={{ mt: 2 }}
                                     />
                                     <TextField
                                         sx={{ mt: 2 }}
@@ -88,6 +135,7 @@ export const CompanyRegister = () => {
                                         type="textarea"
                                         rows={3}
                                         multiline
+                                        onChange={(e) => setAddress(e.target.value)}
                                         required
                                         fullWidth
                                     />
@@ -130,54 +178,13 @@ export const CompanyRegister = () => {
                                         name="website"
                                         type="text"
                                         variant="outlined"
+                                        onChange={(e) => setWebsite(e.target.value)}
                                         fullWidth
                                         required
                                         sx={{ mt: 2 }}
                                     />
-                                    {/* <TextField
-                                        label="Eligibility Criteria"
-                                        id="eligible"
-                                        name="eligible"
-                                        type="text"
-                                        variant="outlined"
-                                        fullWidth
-                                        required
-                                        sx={{ mt: 2 }}
-                                    />
-                                    <TextField
-                                        label="CTC"
-                                        id="ctc"
-                                        name="ctc"
-                                        type="text"
-                                        variant="outlined"
-                                        fullWidth
-                                        required
-                                        sx={{ mt: 2 }}
-                                    />
-                                    <Box sx={{ minWidth: 300, mt: 2 }}>
-                                        <FormControl fullWidth>
-                                            <InputLabel id="domian" required >Domain</InputLabel>
-                                            <Select
-                                                labelId="domain"
-                                                id="seldomain"
-                                                value={domain}
-                                                label="Domain"
-
-                                                onChange={(e) => {
-                                                    setDomain(e.target.value)
-                                                }}
-                                            >
-                                                <MenuItem value={"it"}>IT</MenuItem>
-                                                <MenuItem value={"ec"}>EC</MenuItem>
-                                                <MenuItem value={"ct"}>CT</MenuItem>
-                                                <MenuItem value={"consultancy"}>Consultancy</MenuItem>
-                                                <MenuItem value={"other"}>Other</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </Box> */}
                                 </Grid>
                             </div>
-                            {/* </Grid> */}
                         </Grid>
                         <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <Button fullWidth type="submit" variant="contained" sx={{}}>
@@ -185,10 +192,10 @@ export const CompanyRegister = () => {
                             </Button>
                         </div>
                     </Container>
-
                 </form>
             </div>
-            <Footer />
-        </>
+            {/* <Footer /> */}
+        </div>
+        // </>
     )
 }

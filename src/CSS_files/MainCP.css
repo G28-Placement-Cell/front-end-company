@@ -1,5 +1,7 @@
 /* ChangePassword.css */
 .change-password-container {
+  justify-self: center;
+  align-self: center;
     width: 400px;
     max-width: 90vw;
     margin: 0 auto;
@@ -10,9 +12,8 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    margin-top: 80px;
-    
-box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+    /* margin-top: 80px; */
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
   }
   
   h2 {

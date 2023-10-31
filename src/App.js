@@ -110,6 +110,7 @@ function App() {
     <div className="main">
       <Router>
         <Header />
+        <div style={{minHeight:'84vh'}}>
         <Switch>
           <Route exact path='/'>
             {/* <Navbar /> */}
@@ -194,6 +195,7 @@ function App() {
             <Errored />
           </Route>
         </Switch>
+        </div>
         <FooterC />
       </Router>
     </div>

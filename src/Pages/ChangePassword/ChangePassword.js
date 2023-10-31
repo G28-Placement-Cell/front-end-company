@@ -1,13 +1,9 @@
 import React from 'react'
-import Header from './Header.js';
-import Footer from './Footer.js';
 import MainCP from './MainCP.js';
 export default function ChangePassword() {
   return (
-    <div>
-      {/* <Header /> */}
+    <div style={{paddingTop:'80px', backgroundColor:'#e4eaf5'}}>
       <MainCP />
-      {/* <Footer /> */}
     </div>
   )
 }

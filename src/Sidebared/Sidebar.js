@@ -39,5 +39,17 @@ export const SidebarData = [
     path: '/',
     icon: <BiIcons.BiLogOut />,
     cName: 'nav-text'
+  },
+  {
+    title: 'register',
+    path: '/register',
+    icon: <AiIcons.AiOutlineUserAdd />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'login',
+    path: '/login',
+    icon: <IoIcons.IoMdLogIn />,
+    cName: 'nav-text'
   }
 ];
