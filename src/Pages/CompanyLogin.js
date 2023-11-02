@@ -55,17 +55,7 @@ export const CompanyLogin = () => {
 
 
     return (
-        <div style={{backgroundColor:'#e4eaf5'}}>
-            {/* <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        Placement Cell
-                    </Typography>
-                    <Button color="inherit" sx={{ mx: 1 }}>Login As</Button>
-                    <Button color="inherit" sx={{ mx: 1 }}>Contact us</Button>
-                    <Button color="inherit" sx={{ mx: 1 }}>About Us</Button>
-                </Toolbar>
-            </AppBar> */}
+        <div style={{ backgroundColor: '#e4eaf5' }}>
             <Grid style={{ minHeight: '80vh' }} container>
                 {/* Left 60% - Image */}
                 <Grid sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} item xs={8}>
@@ -117,7 +107,6 @@ export const CompanyLogin = () => {
                     </div>
                 </Grid>
             </Grid>
-            {/* <Footer /> */}
         </div>
     );
 }

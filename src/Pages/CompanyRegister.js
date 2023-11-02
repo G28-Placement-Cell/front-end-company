@@ -49,7 +49,7 @@ export const CompanyRegister = () => {
         }
     }
 
-    const [register, { isLoading }] = useRegisterMutation();
+    const [register] = useRegisterMutation();
     // const navigate = useNavigate();
     const history = useHistory();
     const dispatch = useDispatch();
@@ -79,9 +79,9 @@ export const CompanyRegister = () => {
     return (
         // <>
         // <CssBaseline />
-        <div style={{backgroundColor:'#e4eaf5'}}>
+        <div style={{ backgroundColor: '#e4eaf5' }}>
             {console.log("CompanyRegister.js")}
-            <Typography variant="h4" sx={{pt:3, fontWeight: "bold", textAlign: "center" }}>
+            <Typography variant="h4" sx={{ pt: 3, fontWeight: "bold", textAlign: "center" }}>
                 Company Registration
             </Typography>
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>

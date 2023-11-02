@@ -16,7 +16,7 @@ function ComanyProfile() {
       }
     }).then((res) => res.json()).then((data) => {
       console.log(data);
-      setCompany(data.company);
+      setCompany(data.comp);
       setLoading(false);
     }).catch((err) => {
       console.log(err);
@@ -63,7 +63,7 @@ function ComanyProfile() {
                       <h6 className="mb-0">Company Name</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {company.company_name}
+                      {company.companyname}
                     </div>
                   </div>
                   <hr />
@@ -72,7 +72,7 @@ function ComanyProfile() {
                       <h6 className="mb-0">HR Name</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {company.hr_name}
+                      {company.hrname}
                     </div>
                   </div>
                   <hr />
@@ -81,7 +81,7 @@ function ComanyProfile() {
                       <h6 className="mb-0">Contact No</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {company.contact_no}
+                      {company.contact}
                     </div>
                   </div>
                   <hr />
@@ -90,7 +90,7 @@ function ComanyProfile() {
                       <h6 className="mb-0">Email ID</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {company.email_id}
+                      {company.email}
                     </div>
                   </div>
                   <hr />
@@ -108,7 +108,7 @@ function ComanyProfile() {
                       <h6 className="mb-0">Company Address</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {company.company_address}
+                      {company.address}
                     </div>
                   </div>
                   <hr />
