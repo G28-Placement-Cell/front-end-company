@@ -13,7 +13,7 @@
     background-color: #f0f0f0;
   }
   
-  .mainjp {
+  /* .mainjp {
     position: absolute;
     top: 0;
     left: 0;
@@ -22,9 +22,7 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7) ),url('https://media.istockphoto.com/id/1282301093/photo/on-a-meeting-chief-industrial-engineer-reports-to-a-group-of-specialists-managers-uses.jpg?s=1024x1024&w=is&k=20&c=PxQ8FO93Whk0sj1WSvr_0PYTkbg9DodWX29518XSkCc=');
     background-size: cover;
     ; /* Apply a slight blur to the background */
-    z-index: -1;
-  }
-  
+    
   
   .options {
     display: flex;
