@@ -1,6 +1,6 @@
 // import './CSS_files/App.css';
 // import Navbar from './Pages/Navbar';
-import { Route, Switch, HashRouter as Router, useHistory } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import api from './api/posts.js';
 import JobProfile from './Pages/JobProfile/JobProfile.js';
