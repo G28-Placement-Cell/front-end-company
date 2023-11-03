@@ -4,7 +4,7 @@ import { Route, Switch, HashRouter as Router, useHistory } from 'react-router-do
 import { useState, useEffect } from 'react';
 import api from './api/posts.js';
 import JobProfile from './Pages/JobProfile/JobProfile.js';
-import Announcement from './Pages/Announcement.js';
+import AnnouncementSection from './Pages/AnnouncementSection.js';
 import ChangePassword from './Pages/ChangePassword/ChangePassword.js';
 import AboutUs from './Pages/AboutUs.js';
 import Missing from './Pages/Missing.js';
@@ -130,7 +130,7 @@ function App() {
             <JobProfile />
           </Route>
           <Route exact path='/announcement'>
-            <Announcement />
+            <AnnouncementSection />
           </Route>
           <Route exact path='/changepassword'>
             <ChangePassword />
