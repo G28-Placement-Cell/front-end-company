@@ -2,7 +2,7 @@ import React from 'react'
 import {useParams,Link} from 'react-router-dom'
 import {useEffect} from 'react';
 import '../../CSS_files/EditPost.css';
-import Footer from '../ChangePassword/Footer';
+import Footer from '../../Components/Footer';
 export default function Editpost({posts,handleEdit,editName, seteditName,editBody,setEditBody,editType,seteditType,editCPI,seteditCPI,editOpenfor,seteditOpenfor,editRegopen,seteditRegopen,editRegclose,seteditRegclose}) {
   const { id } = useParams();
     const post = posts.find(post => (post.id).toString() === id);

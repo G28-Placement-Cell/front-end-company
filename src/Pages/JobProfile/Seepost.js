@@ -1,7 +1,6 @@
 import React from 'react';
 import Feed from './Feed';
 import {Link} from 'react-router-dom';
-import Footer from './Footer.js';
 export default function See(props) {
 
   return (
@@ -19,7 +18,6 @@ export default function See(props) {
 
     </div>
     </div>
-    <Footer />
     
     </>
   )

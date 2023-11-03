@@ -41,15 +41,16 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'register',
+    title: 'Register',
     path: '/register',
     icon: <AiIcons.AiOutlineUserAdd />,
     cName: 'nav-text'
   },
   {
-    title: 'login',
+    title: 'Login',
     path: '/login',
     icon: <IoIcons.IoMdLogIn />,
+    
     cName: 'nav-text'
   }
 ];

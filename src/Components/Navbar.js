@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import { SidebarData } from '../../Sidebared/Sidebar';
+import { SidebarData } from '../Sidebared/Sidebar';
 import {Link} from 'react-router-dom'  
 import * as FaIcons from 'react-icons/fa';
 

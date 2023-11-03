@@ -1,6 +1,4 @@
-import React from 'react'
-import Header from './Header.js';
-import Footer from './Footer.js';
+import React from 'react';
 import MainJP from './MainJP.js';
 
 export default function JobProfile() {

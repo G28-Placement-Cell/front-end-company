@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import '../../CSS_files/MainJP.css';
-import Footer from './Footer.js';
 export default function MainJP() {
   return (
     <>

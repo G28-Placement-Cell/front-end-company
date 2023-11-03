@@ -8,11 +8,10 @@ function Footer() {
         <Box
             component="footer"
             sx={{
-                mt: 'auto',
                 py: 2,
-                backgroundColor: '#212330', // Background color for the footer
-                color: '#fff', // Text color for the footer
-                // position: 'absolute',
+                backgroundColor: '#212330',
+                color: '#fff',
+                position: 'sticky',
                 // bottom: 0,
                 width: '100%',
             }}
@@ -31,6 +30,7 @@ function Footer() {
                         sx={{ display: 'flex', alignItems: 'center' }}
                     >
                         <GitHubIcon sx={{ fontSize: 20, color: '#fff', ml: '5px' }} />
+                        {/* GitHub */}
                     </Link>
                 </Typography>
             </div>

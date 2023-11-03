@@ -10,17 +10,17 @@ import AboutUs from './Pages/AboutUs.js';
 import Missing from './Pages/Missing.js';
 import ContactUs from './Pages/ContactUs.js';
 import CompanyProfile from './Pages/CompanyProfile.js';
-import Header from './Pages/ChangePassword/Header'
-import FooterC from './Pages/ChangePassword/Footer'
+import Header from './Components/Header'
+import Footer from './Components/Footer'
 import SeePost from './Pages/JobProfile/Seepost.js';
 import NewPost from './Pages/JobProfile/Newpost.js';
 import EditPost from './Pages/JobProfile/Editpost.js';
 import Details from './Pages/JobProfile/Details.js';
-import FooterJ from './Pages/JobProfile/Footer';
+// import FooterJ from './Pages/JobProfile/Footer';
 import { Errored } from './Pages/Errored.js';
 import { CompanyLogin } from "./Pages/CompanyLogin.js";
 import { CompanyRegister } from "./Pages/CompanyRegister.js"
-import Footer from './Pages/JobProfile/Footer';
+// import Footer from './Pages/JobProfile/Footer';
 function App() {
   const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState('');
@@ -196,7 +196,7 @@ function App() {
           </Route>
         </Switch>
         </div>
-        <FooterC />
+        <Footer />
       </Router>
     </div>
   );

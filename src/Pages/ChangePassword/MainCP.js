@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../../CSS_files/MainCP.css'; 
-import Footer from '../JobProfile/Footer.js';
+import Footer from '../../Components/Footer.js';
 function ChangePassword() {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');

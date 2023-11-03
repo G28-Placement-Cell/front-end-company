@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../CSS_files/EditPost.css';
-import Footer from '../ChangePassword/Footer';
 import {Link} from 'react-router-dom';
 export default function Newpost({handleSubmit,editName, seteditName,editBody,setEditBody,editType,seteditType,editCPI,seteditCPI,editLink,seteditLink,editOpenfor,seteditOpenfor,editRegopen,seteditRegopen,editRegclose,seteditRegclose}) 
 {
@@ -77,7 +76,6 @@ export default function Newpost({handleSubmit,editName, seteditName,editBody,set
           <Link to='/seepost'><button type="backtohomepage">Back to Home Page</button></Link>
         </form>
     </div>
-    <Footer />
     </>
   )
 }
