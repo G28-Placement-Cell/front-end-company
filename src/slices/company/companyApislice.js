@@ -37,10 +37,21 @@ export const companyApislice = apislice.injectEndpoints({
                 method: 'GET',
                 message: "got data"
             })
-        })
+        }),
+        change_password: builder.mutation({
+            query: (data) => ({
+                url: `${company_url}/change_password`,
+                method: 'POST',
+                headers: {
+                    authorization: 'Bearer ' + localStorage.getItem('token')
+                },
+                body: data,
+                message: "ok"
+            })
+        }),
     })
 })
 
 
 
-export const { useLoginMutation, useLogoutMutation, useRegisterMutation, useGetdataMutation } = companyApislice;
+export const { useLoginMutation, useLogoutMutation, useRegisterMutation, useGetdataMutation, useChange_passwordMutation } = companyApislice;
