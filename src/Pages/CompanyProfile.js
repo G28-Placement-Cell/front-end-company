@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { styled } from '@mui/material/styles';
 
 function ComanyProfile() {
 
@@ -23,18 +22,6 @@ function ComanyProfile() {
       setLoading(false);
     });
   }, [])
-
-  const VisuallyHiddenInput = styled('input')({
-    clip: 'rect(0 0 0 0)',
-    clipPath: 'inset(50%)',
-    height: 1,
-    overflow: 'hidden',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    whiteSpace: 'nowrap',
-    width: 1,
-  });
 
   if (loading) return (<div>Loading...</div>);
 
