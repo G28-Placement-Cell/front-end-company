@@ -4,7 +4,7 @@ import { styled, alpha } from '@mui/material/styles';
 import { useState } from "react";
 import { useRegisterMutation } from "../slices/company/companyApislice";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../slices/company/authslice";
 
 const VisuallyHiddenInput = styled('input')({
@@ -18,8 +18,6 @@ const VisuallyHiddenInput = styled('input')({
     whiteSpace: 'nowrap',
     width: 1,
 });
-
-
 
 export const CompanyRegister = () => {
     const [companyname, setCompanyname] = React.useState('');
@@ -51,7 +49,7 @@ export const CompanyRegister = () => {
 
     const [register] = useRegisterMutation();
     // const navigate = useNavigate();
-    const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const submitHandler = async (e) => {
@@ -67,7 +65,7 @@ export const CompanyRegister = () => {
             try {
                 const res = await register({ companyname, hrname, contact, address, email, website, password, altpassword }).unwrap();
                 dispatch(setCredentials({ ...res }));
-                history.push("/company/login");
+                navigate('/company/login');
             } catch (error) {
                 console.log(error);
             }

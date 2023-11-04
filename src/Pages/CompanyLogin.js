@@ -6,7 +6,7 @@ import company from '../images/company.png';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useLoginMutation } from '../slices/company/companyApislice';
 import { setCredentials } from '../slices/company/authslice';
 import { toast } from 'react-toastify';
@@ -32,7 +32,7 @@ export const CompanyLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const [login, { isLoading }] = useLoginMutation();
@@ -46,7 +46,7 @@ export const CompanyLogin = () => {
         try {
             const response = await login(loginData).unwrap();
             dispatch(setCredentials(response));
-            history.push('/profile');
+            navigate('/profile');
         } catch (error) {
             toast.error(error.data.message);
             console.log(error);

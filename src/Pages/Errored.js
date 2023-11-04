@@ -1,13 +1,13 @@
 import React from 'react';
 import img from '../images/errorimage.png';
 import { Button } from '@mui/material';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const Errored = () => {
-    const history = useHistory()
+    const navigate = useNavigate();
 
     const navigateProf = () => {
-        history.push('/companyprofile');
+        navigate('/companyprofile');
     }
 
     return (

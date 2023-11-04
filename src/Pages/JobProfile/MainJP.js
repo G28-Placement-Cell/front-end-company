@@ -6,12 +6,11 @@ export default function MainJP() {
     <>
     <div style={{minHeight:'85vh'}}>
       <div className="mainjp">
-      <div className="background-image" />
         <div className="options">
           <Link to='/newpost'><button className="mainjpbtn">Add a New Job Profile</button></Link>
           <Link to='/seepost'><button className="mainjpbtn">See All the Existing Job Profiles</button></Link>
         </div>
-      </div>
+        </div>
     </div>
     {/* <Footer /> */}
     </>
