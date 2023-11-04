@@ -40,10 +40,10 @@ function App() {
   const [editRegopen, seteditRegopen] = useState("");
   const [editRegclose, seteditRegclose] = useState("");
   const [editLink, seteditLink] = useState("");
-  const [location,setLocation] = useState("");
-  const [companytype,setCompanytype] = useState("");
-  const [CTC,setCTC] = useState("");
-  const [stipend,setStipend] = useState("");
+  const [location, setLocation] = useState("");
+  const [companytype, setCompanytype] = useState("");
+  const [CTC, setCTC] = useState("");
+  const [stipend, setStipend] = useState("");
 
   // const navigate = useNavigate();
 
@@ -112,65 +112,65 @@ function App() {
     seteditRegclose("");
     seteditLink("");
     setCTC("");
-      setStipend("");
-      setCompanytype("");
-      setLocation("");
+    setStipend("");
+    setCompanytype("");
+    setLocation("");
     // navigate('/');
   };
 
-  useEffect(() => {
-    const filteredResults = posts.filter(
-      (post) =>
-        post.name.toLowerCase().includes(search.toLowerCase()) ||
-        post.name.toLowerCase().includes(search.toLowerCase())
-    );
-    setSearchResults(filteredResults);
-  }, [posts, search]);
+  // useEffect(() => {
+  //   const filteredResults = posts.filter(
+  //     (post) =>
+  //       post.name.toLowerCase().includes(search.toLowerCase()) ||
+  //       post.name.toLowerCase().includes(search.toLowerCase())
+  //   );
+  //   setSearchResults(filteredResults);
+  // }, [posts, search]);
 
-  useEffect(() => {
-    setIsLoading(true);
-    async function fetchPosts() {
-      try {
-        console.log("hii");
-        const response = await api.get("/posts");
-        setPosts(response.data);
-      } catch (err) {
-        if (err.response) {
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
-        } else {
-          console.log(`Error : ${err.message}`);
-        }
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    setTimeout(() => {
-      fetchPosts();
-    }, 2000);
-  }, []);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   async function fetchPosts() {
+  //     try {
+  //       console.log("hii");
+  //       const response = await api.get("/posts");
+  //       setPosts(response.data);
+  //     } catch (err) {
+  //       if (err.response) {
+  //         console.log(err.response.data);
+  //         console.log(err.response.status);
+  //         console.log(err.response.headers);
+  //       } else {
+  //         console.log(`Error : ${err.message}`);
+  //       }
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
+  //   setTimeout(() => {
+  //     fetchPosts();
+  //   }, 2000);
+  // }, []);
 
   return (
     <div className="main">
       <Router>
         <Header />
-        <div style={{ minHeight: "84vh" , backgroundColor : "#E4EAF5"}}>
+        <div style={{ minHeight: "84vh", backgroundColor: "#E4EAF5" }}>
           <ToastContainer />
           <Routes>
-            <Route exact path="/" element={<CompanyProfile />} />
-            <Route exact path="/login" element = {<CompanyLogin />} />
-            <Route exact path="/register" element = {<CompanyRegister />} />
-            <Route exact path="/companyprofile" element = {<CompanyProfile />} />
-            <Route exact path="/jobprofile" element ={<SeePost posts={searchResults} isLoading={isLoading} />} />
-            <Route exact path="/announcement" element ={<Announcement />} />
-            <Route exact path="/changepassword" element = {<ChangePassword />} />
-            <Route exact path="/aboutus" element = {<AboutUs />} />
+            <Route exact path="/" element={<CompanyLogin />} />
+            <Route exact path="/profile" element={<CompanyProfile />} />
+            <Route exact path="/register" element={<CompanyRegister />} />
+            <Route exact path="/companyprofile" element={<CompanyProfile />} />
+            <Route exact path="/jobprofile" element={<SeePost posts={searchResults} isLoading={isLoading} />} />
+            <Route exact path="/announcement" element={<Announcement />} />
+            <Route exact path="/changepassword" element={<ChangePassword />} />
+            <Route exact path="/aboutus" element={<AboutUs />} />
             <Route exact path="/logout"></Route>
-            <Route exact path="/contactus" element ={ <ContactUs /> } />
+            <Route exact path="/contactus" element={<ContactUs />} />
             {/* <Route exact path="/seepost" element = {<SeePost posts={searchResults} isLoading={isLoading} />} /> */}
             <Route exact path="/newpost"
-              element = {<NewPost
+              element={<NewPost
                 handleSubmit={handleSubmit}
                 editName={editName}
                 seteditName={seteditName}
@@ -197,9 +197,9 @@ function App() {
                 stipend={stipend}
                 setStipend={setStipend}
               />} />
-            <Route exact path="/moredetails/:id" element = {<Details posts={posts} />} />
+            <Route exact path="/moredetails/:id" element={<Details posts={posts} />} />
             <Route exact path="/editpost/:id"
-              element = {<EditPost
+              element={<EditPost
                 posts={posts}
                 handleEdit={handleEdit}
                 editName={editName}
@@ -225,7 +225,7 @@ function App() {
                 stipend={stipend}
                 setStipend={setStipend}
               />} />
-            <Route path="*" element = {<Errored />} />
+            <Route path="*" element={<Errored />} />
             {/* </Switch> */}
           </Routes>
         </div>
