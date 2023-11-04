@@ -21,7 +21,7 @@ function Header() {
     try {
       await logoutapicall().unwrap();
       dispatch(logout());
-      navigate("/companylogin");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

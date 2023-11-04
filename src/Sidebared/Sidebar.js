@@ -12,7 +12,7 @@ export const SidebarData = [
   {
     title: 'Job Profile',
     path: '/jobprofile',
-    icon: <ImIcons.ImProfile/>,
+    icon: <ImIcons.ImProfile />,
     cName: 'nav-text'
   },
   {
@@ -21,7 +21,7 @@ export const SidebarData = [
     icon: <HiIcons.HiOfficeBuilding />,
     cName: 'nav-text'
   },
-  
+
   {
     title: 'Announcements',
     path: '/announcement',
@@ -48,9 +48,9 @@ export const SidebarData = [
   },
   {
     title: 'Login',
-    path: '/login',
+    path: '/',
     icon: <IoIcons.IoMdLogIn />,
-    
+
     cName: 'nav-text'
   }
 ];

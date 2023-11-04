@@ -6,6 +6,8 @@ import { useRegisterMutation } from "../slices/company/companyApislice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../slices/company/authslice";
+import { useLogoutMutation } from "../slices/company/companyApislice";
+import { logout } from "../slices/company/authslice";
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -30,6 +32,19 @@ export const CompanyRegister = () => {
     const [altpassword, setAltpassword] = React.useState('');
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
+    const dispatch = useDispatch();
+    const [logoutapicall] = useLogoutMutation();
+    const navigate = useNavigate();
+
+    const logoutHandler = async () => {
+        try {
+            await logoutapicall().unwrap();
+            dispatch(logout());
+            navigate("/");
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const verify = (e) => {
         e.preventDefault();
@@ -49,8 +64,6 @@ export const CompanyRegister = () => {
 
     const [register] = useRegisterMutation();
     // const navigate = useNavigate();
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -65,7 +78,8 @@ export const CompanyRegister = () => {
             try {
                 const res = await register({ companyname, hrname, contact, address, email, website, password, altpassword }).unwrap();
                 dispatch(setCredentials({ ...res }));
-                navigate('/company/login');
+                logoutHandler();
+                navigate('/');
             } catch (error) {
                 console.log(error);
             }

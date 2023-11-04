@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router';
 import { useLoginMutation } from '../slices/company/companyApislice';
 import { setCredentials } from '../slices/company/authslice';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const CompanyLogin = () => {
 
