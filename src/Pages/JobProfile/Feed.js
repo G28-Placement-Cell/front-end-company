@@ -27,7 +27,14 @@ import "../../CSS_files/AnnouncementSection.css";
 import { Link, useNavigate } from "react-router-dom";
 
 const Feeds = ({ title }) => {
-  const _id = localStorage.getItem("_id");
+  const companyInfoJSON = localStorage.getItem('companyInfo');
+  const companyInfo = JSON.parse(companyInfoJSON);
+  const _id = companyInfo?._id;
+
+  // Now, you can use '_id' in your code
+  console.log(_id);
+
+
   const [jobProfiles, setJobProfiles] = useState([]);
   const [loading, setLoading] = useState(true); // Add loading state
 
@@ -67,9 +74,10 @@ const Feeds = ({ title }) => {
         display: "flex",
         justifyContent: "center",
         padding: "5vh 5vw",
+
       }}
     >
-      <Paper sx={{ py: 1, px: 3 }} className="container1">
+      <Paper sx={{ py: 1, px: 3, width: '90vw' }} className="container1">
         <Typography variant="h5" sx={{ pt: 1, pb: 1 }}>
           Current Job Profiles {title}:
         </Typography>
@@ -95,41 +103,13 @@ const Feeds = ({ title }) => {
                     }
                     secondary={
                       <div>
-                        {/* <Typography>
-                          Type (Job/SI) - {jobProfile.type}
-                        </Typography>
-                        <Typography>
-                          Location : {jobProfile.location}
-                        </Typography>
-                        <Typography>
-                          CPI : {jobProfile.cpi}
-                        </Typography>
-                        <Typography>
-                          Open for : {jobProfile.open_for}
-                        </Typography>
-                        <Typography>
-                          Company type : {jobProfile.company_type}
-                        </Typography>
-                        <Typography>
-                          Registration starts from : {jobProfile.reg_open}
-                        </Typography>
-                        <Typography>
-                          Registration closes at : {jobProfile.reg_close}
-                        </Typography>
-                        <Typography>CTC : {jobProfile.ctc}</Typography>
-                        <Typography>
-                          Stipend : {jobProfile.stipend}
-                        </Typography>
-                        <Typography>
-                          Description : {jobProfile.body}
-                        </Typography> */}
                         <div className="card-body">
                           <div className="row">
                             <div className="col-sm-3">
                               <h6 className="mb-0">Company Name</h6>
                             </div>
                             <div className="col-sm-9 text-secondary">
-                              {jobProfile.name}
+                              {jobProfile.company_name}
                             </div>
                           </div>
                           <hr />
@@ -138,7 +118,7 @@ const Feeds = ({ title }) => {
                               <h6 className="mb-0">Type (Job/SI)</h6>
                             </div>
                             <div className="col-sm-9 text-secondary">
-                              {jobProfile.type}
+                              {jobProfile.company_type}
                             </div>
                           </div>
                           <hr />
@@ -156,7 +136,7 @@ const Feeds = ({ title }) => {
                               <h6 className="mb-0">CPI Criteria</h6>
                             </div>
                             <div className="col-sm-9 text-secondary">
-                              {jobProfile.cpi}
+                              {jobProfile.cpi_criteria}
                             </div>
                           </div>
                           <hr />
@@ -183,7 +163,7 @@ const Feeds = ({ title }) => {
                               <h6 className="mb-0">Registration Starts from</h6>
                             </div>
                             <div className="col-sm-9 text-secondary">
-                              {jobProfile.reg_open}
+                              {jobProfile.registration_start_date}
                             </div>
                           </div>
                           <hr />
@@ -192,7 +172,7 @@ const Feeds = ({ title }) => {
                               <h6 className="mb-0">Registration Closes at</h6>
                             </div>
                             <div className="col-sm-9 text-secondary">
-                              {jobProfile.reg_close}
+                              {jobProfile.registration_start_date}
                             </div>
                           </div>
                           <hr />
@@ -219,7 +199,7 @@ const Feeds = ({ title }) => {
                               <h6 className="mb-0">Description</h6>
                             </div>
                             <div className="col-sm-9 text-secondary">
-                              {jobProfile.body}
+                              {jobProfile.job_description}
                             </div>
                           </div>
                           <hr />
@@ -232,7 +212,7 @@ const Feeds = ({ title }) => {
                           }}
                           color="text.secondary"
                         >
-                          {new Date(jobProfile.reg_open).toLocaleString()}
+                          {new Date(jobProfile.registration_start_date).toLocaleString()}
                         </Typography>
                         <Typography
                           sx={{
