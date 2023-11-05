@@ -6,6 +6,7 @@ import {
   BrowserRouter as Router,
   useNavigate,
 } from "react-router-dom";
+import { Tablet } from "./Pages/Tablet.js"
 import { useState, useEffect } from "react";
 import api from "./api/posts.js";
 import JobProfile from "./Pages/JobProfile/JobProfile.js";
@@ -225,6 +226,7 @@ function App() {
                 stipend={stipend}
                 setStipend={setStipend}
               />} />
+              <Route path="/seereg" element={<Tablet/>}></Route>
             <Route path="*" element={<Errored />} />
             {/* </Switch> */}
           </Routes>

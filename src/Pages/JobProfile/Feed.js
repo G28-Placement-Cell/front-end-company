@@ -231,9 +231,14 @@ const Feeds = ({ title }) => {
                               // gap:'10px'
                             }}
                           >
+                            <Link to={`/seereg`}>
                             <button style={{ backgroundColor: '#2B2442', width: '200px', borderRadius: '5px' }}>
                               See registered students
                             </button>
+
+                            </Link>
+                            
+
                             <Link to={`/editpost/${jobProfile.id}`}><button style={{ backgroundColor: '#2B2442', width: '200px', marginLeft: '15px', borderRadius: '5px' }}>Edit the profile</button></Link>
                           </div>
                         </Typography>
