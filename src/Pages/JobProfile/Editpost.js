@@ -10,20 +10,21 @@ export default function Editpost({posts,handleEdit,editName, seteditName,editBod
         if(post)
         {
             seteditName(post.name);
-            setEditBody(post.body);
             seteditType(post.type);
+            setLocation(post.location);
             seteditCPI(post.cpi);
             seteditOpenfor(post.open_for);
+            setCompanytype(post.companytype);
             seteditRegopen(post.reg_open);
             seteditRegclose(post.reg_close);
-            setLocation(post.location);
-            setCompanytype(post.companytype);
-            setCTC(CTC);
-            setStipend(stipend);
+            setCTC(post.CTC);
+            setStipend(post.stipend);
+            setEditBody(post.body);
         }
     },[post,seteditName,setEditBody,seteditType,seteditCPI,seteditOpenfor,seteditRegopen,seteditRegclose,setLocation,setCTC,setStipend,setCompanytype])
   return (
     <>
+    
     <div className="NewPost">
     {editName && 
         <>
@@ -93,7 +94,6 @@ export default function Editpost({posts,handleEdit,editName, seteditName,editBod
               value={editRegopen}
               onChange={(e) => seteditRegopen(e.target.value)}
           />
-          <br />
           <label htmlFor="postRegclose">Registration closes at:</label>
           <input
             id="postRegclose"
