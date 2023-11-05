@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { styled } from '@mui/material/styles';
 
 function ComanyProfile() {
 
@@ -24,22 +23,10 @@ function ComanyProfile() {
     });
   }, [])
 
-  const VisuallyHiddenInput = styled('input')({
-    clip: 'rect(0 0 0 0)',
-    clipPath: 'inset(50%)',
-    height: 1,
-    overflow: 'hidden',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    whiteSpace: 'nowrap',
-    width: 1,
-  });
-
   if (loading) return (<div>Loading...</div>);
 
   return (
-    <div style={{ width: '100%', backgroundColor:'#e4eaf5' }}>
+    <div style={{ width: '100%', backgroundColor: '#e4eaf5' }}>
       <div className="container" style={{ width: '100%' }}>
         <div className="main-body" style={{ width: '100%' }}>
           <div className="row gutters-sm">
@@ -63,7 +50,7 @@ function ComanyProfile() {
                       <h6 className="mb-0">Company Name</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {company.companyname}
+                      {company?.companyname}
                     </div>
                   </div>
                   <hr />
@@ -72,7 +59,7 @@ function ComanyProfile() {
                       <h6 className="mb-0">HR Name</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {company.hrname}
+                      {company?.hrname}
                     </div>
                   </div>
                   <hr />
@@ -81,7 +68,7 @@ function ComanyProfile() {
                       <h6 className="mb-0">Contact No</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {company.contact}
+                      {company?.contact}
                     </div>
                   </div>
                   <hr />
@@ -90,7 +77,7 @@ function ComanyProfile() {
                       <h6 className="mb-0">Email ID</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {company.email}
+                      {company?.email}
                     </div>
                   </div>
                   <hr />
@@ -99,7 +86,7 @@ function ComanyProfile() {
                       <h6 className="mb-0">Website</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {company.website}
+                      {company?.website}
                     </div>
                   </div>
                   <hr />
@@ -108,7 +95,7 @@ function ComanyProfile() {
                       <h6 className="mb-0">Company Address</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {company.address}
+                      {company?.address}
                     </div>
                   </div>
                   <hr />
