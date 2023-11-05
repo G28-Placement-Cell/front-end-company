@@ -39,17 +39,10 @@ function Header() {
         >
           Placement Cell
         </Typography>
-        <div style={{ display: "flex", justifyContent: "inherit" }}>
-          <Button
-            color="inherit"
-            sx={{ minWidth: "7vw" }}
-          >
-            Contact us
-          </Button>
-          <Button color="inherit" sx={{minWidth: "7vw"}}>About Us</Button>
-          <Button color="inherit" onClick={logoutHandler}>
-            Logout
-          </Button>
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Button color="inherit" style={{ minWidth: '16vh' }}>Contact us</Button>
+          <Button color='inherit' style={{ minWidth: '16vh' }} onClick={() => navigate('/aboutus')}>About Us</Button>
+          <Button color="inherit" onClick={logoutHandler}>Logout</Button>
         </div>
       </Toolbar>
     </AppBar>
