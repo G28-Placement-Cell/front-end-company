@@ -6,7 +6,7 @@ import {
   BrowserRouter as Router,
   useNavigate,
 } from "react-router-dom";
-import { Tablet } from "./Pages/Tablet.js"
+import { Tablet } from "./Pages/JobProfile/Reg_Students.js"
 import { useState, useEffect } from "react";
 import api from "./api/posts.js";
 import JobProfile from "./Pages/JobProfile/JobProfile.js";
