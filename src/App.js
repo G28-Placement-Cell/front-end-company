@@ -1,4 +1,4 @@
-// import './CSS_files/App.css';
+import './CSS_files/App.css';
 // import Navbar from './Pages/Navbar';
 import {
   Route,
@@ -27,7 +27,11 @@ import { Errored } from "./Pages/Errored.js";
 import { CompanyLogin } from "./Pages/CompanyLogin.js";
 import { CompanyRegister } from "./Pages/CompanyRegister.js";
 import { ToastContainer } from "react-toastify";
+import AnnouncementSection from "./Pages/Adminannoun.js" 
 // import Footer from './Pages/JobProfile/Footer';
+
+
+
 function App() {
   const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState("");
@@ -153,7 +157,7 @@ function App() {
   // }, []);
 
   return (
-    <div className="main">
+    // <div >
       <Router>
         <Header />
         <div style={{ minHeight: "84vh", backgroundColor: "#E4EAF5" }}>
@@ -165,6 +169,7 @@ function App() {
             <Route exact path="/companyprofile" element={<CompanyProfile />} />
             <Route exact path="/jobprofile" element={<SeePost posts={searchResults} isLoading={isLoading} />} />
             <Route exact path="/announcement" element={<Announcement />} />
+            <Route exact path='/adminannouncements' element={<AnnouncementSection />} />
             <Route exact path="/changepassword" element={<ChangePassword />} />
             <Route exact path="/aboutus" element={<AboutUs />} />
             <Route exact path="/logout"></Route>
@@ -233,7 +238,7 @@ function App() {
         </div>
         <Footer />
       </Router>
-    </div>
+    
   );
 }
 

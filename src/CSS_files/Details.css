@@ -1,7 +1,7 @@
 /* Details.css */
 
 /* Center the content both horizontally and vertically */
-.container {
+.detailscontainer {
     display: flex;
     justify-content: center;
     align-items: center;
