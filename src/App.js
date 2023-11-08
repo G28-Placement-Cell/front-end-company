@@ -12,7 +12,6 @@ import api from "./api/posts.js";
 import JobProfile from "./Pages/JobProfile/JobProfile.js";
 import Announcement from "./Pages/Announcement.js";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword.js";
-import AboutUs from "./Pages/AboutUs.js";
 import Missing from "./Pages/Missing.js";
 import ContactUs from "./Pages/ContactUs.js";
 import CompanyProfile from "./Pages/CompanyProfile.js";
@@ -27,6 +26,7 @@ import { Errored } from "./Pages/Errored.js";
 import { CompanyLogin } from "./Pages/CompanyLogin.js";
 import { CompanyRegister } from "./Pages/CompanyRegister.js";
 import { ToastContainer } from "react-toastify";
+import AboutUs from './Pages/AboutUs.js';
 // import Footer from './Pages/JobProfile/Footer';
 function App() {
   const [posts, setPosts] = useState([]);
@@ -199,6 +199,7 @@ function App() {
                 setStipend={setStipend}
               />} />
             <Route exact path="/moredetails/:id" element={<Details posts={posts} />} />
+            <Route path='/aboutus' element={<AboutUs />}/>
             <Route exact path="/editpost/:id"
               element={<EditPost
                 posts={posts}
