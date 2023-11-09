@@ -27,7 +27,10 @@ import { CompanyLogin } from "./Pages/CompanyLogin.js";
 import { CompanyRegister } from "./Pages/CompanyRegister.js";
 import { ToastContainer } from "react-toastify";
 import AboutUs from './Pages/AboutUs.js';
-import AnnouncementSection from "./Pages/Adminannoun.js" 
+import AnnouncementSection from "./Pages/Adminannoun.js"
+import Announcements from "./Pages/Announcement.js" 
+import AddAnnouncement from './Pages/Addannouncement.js';
+// import AddAnnouncement from './Pages/Addannouncement.js';
 // import Footer from './Pages/JobProfile/Footer';
 
 
@@ -168,8 +171,9 @@ function App() {
             <Route exact path="/register" element={<CompanyRegister />} />
             <Route exact path="/companyprofile" element={<CompanyProfile />} />
             <Route exact path="/jobprofile" element={<SeePost posts={searchResults} isLoading={isLoading} />} />
-            <Route exact path="/announcement" element={<Announcement />} />
             <Route exact path='/adminannouncements' element={<AnnouncementSection />} />
+            <Route exact path='/announcements/company/:id' element={<Announcements />} />
+            <Route exact path='/addAnnouncementStudent/:id' element={<AddAnnouncement/>}/>
             <Route exact path="/changepassword" element={<ChangePassword />} />
             <Route exact path="/aboutus" element={<AboutUs />} />
             <Route exact path="/logout"></Route>

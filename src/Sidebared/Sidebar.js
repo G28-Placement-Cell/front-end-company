@@ -24,7 +24,13 @@ export const SidebarData = [
 
   {
     title: 'Announcements',
-    path: '/announcement',
+    path: '/announcements/company/:id',
+    icon: <TfiIcons.TfiAnnouncement />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Announcements for student',
+    path: '/addAnnouncementStudent/:id',
     icon: <TfiIcons.TfiAnnouncement />,
     cName: 'nav-text'
   },
