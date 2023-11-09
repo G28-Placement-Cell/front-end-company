@@ -21,6 +21,8 @@ import SeePost from "./Pages/JobProfile/Seepost.js";
 import NewPost from "./Pages/JobProfile/Newpost.js";
 import EditPost from "./Pages/JobProfile/Editpost.js";
 import Details from "./Pages/JobProfile/Details.js";
+import AnnouncementSectionStudent from './Pages/AnnouncementSectionStudent';
+import AddAnnouncementStudent from './Pages/AddAnnouncementStudent';
 // import FooterJ from './Pages/JobProfile/Footer';
 import { Errored } from "./Pages/Errored.js";
 import { CompanyLogin } from "./Pages/CompanyLogin.js";
@@ -168,8 +170,10 @@ function App() {
             <Route exact path="/register" element={<CompanyRegister />} />
             <Route exact path="/companyprofile" element={<CompanyProfile />} />
             <Route exact path="/jobprofile" element={<SeePost posts={searchResults} isLoading={isLoading} />} />
-            <Route exact path="/announcement" element={<Announcement />} />
+            {/* <Route exact path="/announcement" element={<Announcement />} /> */}
+            <Route path='/StudentAnnouncements' element={<AnnouncementSectionStudent />} />
             <Route exact path='/adminannouncements' element={<AnnouncementSection />} />
+            <Route path='/addAnnouncementStudent' element={<AddAnnouncementStudent />} />
             <Route exact path="/changepassword" element={<ChangePassword />} />
             <Route exact path="/aboutus" element={<AboutUs />} />
             <Route exact path="/logout"></Route>
