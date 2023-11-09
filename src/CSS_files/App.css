@@ -3,34 +3,38 @@
 } */
 
 
-.Missing h2, .PostPage h2, 
-.Missing p, .PostPage p {
+.Missing h2,
+.PostPage h2,
+.Missing p,
+.PostPage p {
   margin-bottom: 1rem;
 }
-p{
-  text-align: center;
-}
-.navbar ul{
+
+.navbar ul {
   display: flex;
   flex-wrap: wrap;
   font-family: 'Bree Serif', serif;
   font-size: 15px;
 }
-.navbar li{
+
+.navbar li {
   color: white;
   list-style: none;
   padding: 15px 20px;
 }
-.navbar{
+
+.navbar {
   display: inline-block;
   width: 800px;
   /* border: 2px solid red; */
 }
-.navbar li a{
-  text-decoration:none;
+
+.navbar li a {
+  text-decoration: none;
   color: white;
 }
-.navbar ul li::after{
+
+.navbar ul li::after {
   content: "";
   width: 0%;
   height: 2px;
@@ -39,16 +43,18 @@ p{
   margin: auto;
   transition: 0.5s;
 }
-.navbar ul li:hover::after
-{
+
+.navbar ul li:hover::after {
   width: 100%;
 }
-.i1{
+
+.i1 {
   width: 100px;
   margin: auto;
 }
-.sideimage{
-  float:right;
+
+.sideimage {
+  float: right;
   overflow: auto;
   padding-right: 30px;
   font-family: 'Bree Serif', serif;
@@ -57,68 +63,78 @@ p{
   margin-top: 20px;
   padding-top: 0px;
 }
-#bars{
+
+#bars {
   display: none;
 }
-.navbar .fa{
+
+.navbar .fa {
   color: white;
   display: none;
 }
-@media(max-width:1000px)
-{
-  .navbar ul{
-      margin-top: 40px;
+
+@media(max-width:1000px) {
+  .navbar ul {
+    margin-top: 40px;
   }
-  .navbar ul li{
-      display: inline-block;
-      padding-left: 5px;
-      margin: 5px;
-      margin-left: 0px;
+
+  .navbar ul li {
+    display: inline-block;
+    padding-left: 5px;
+    margin: 5px;
+    margin-left: 0px;
   }
-  .navbar{
-      position: absolute;
-      background: 	#4B0082;
-      height: 100vh;
-      width: 200px;
-      top: 0;
-      left: -200px;
-      text-align: left;
-      transition: 1s;
+
+  .navbar {
+    position: absolute;
+    background: #4B0082;
+    height: 100vh;
+    width: 200px;
+    top: 0;
+    left: -200px;
+    text-align: left;
+    transition: 1s;
   }
-  .navbar .fa{
-      width: 20px;
-      display: inline-block;
-      margin-left: 10px;
-      margin-right: 20px;
-      cursor: pointer;
-      color: white;
-      font-size: 22px;
+
+  .navbar .fa {
+    width: 20px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+    color: white;
+    font-size: 22px;
   }
-  #bars
-  {
-      top: 0;
-      margin: 0;
-      display: inline-block;
-      color: white;
-      margin-left: 10px;
-      margin-top: 20px;
+
+  #bars {
+    top: 0;
+    margin: 0;
+    display: inline-block;
+    color: white;
+    margin-left: 10px;
+    margin-top: 20px;
   }
-  #close{
-      margin-left: 150px;
+
+  #close {
+    margin-left: 150px;
   }
 }
-#bt1{
+
+#bt1 {
   margin-right: 10px;
 }
-#button1{
+
+#button1 {
   color: white;
   text-decoration: none;
 }
-#button2{
+
+#button2 {
   color: white;
   text-decoration: none;
 }
-.header{
+
+.header {
   color: #2B2442;
   margin-bottom: 0px;
 }
