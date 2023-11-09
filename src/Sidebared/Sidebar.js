@@ -7,6 +7,7 @@ import * as RxIcons from "react-icons/rx"
 import * as TbIcons from 'react-icons/tb'
 import * as ImIcons from 'react-icons/im';
 import * as AiIcons from 'react-icons/ai';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 
 export const SidebarData = [
   {
@@ -21,21 +22,14 @@ export const SidebarData = [
     icon: <HiIcons.HiOfficeBuilding />,
     cName: 'nav-text'
   },
-
   {
     title: 'Announcements',
-    path: '/announcements/company/:id',
+    path: '/announcement',
     icon: <TfiIcons.TfiAnnouncement />,
     cName: 'nav-text'
   },
   {
-    title: 'Announcements for student',
-    path: '/addAnnouncementStudent/:id',
-    icon: <TfiIcons.TfiAnnouncement />,
-    cName: 'nav-text'
-  },
-  {
-    title: 'Admin announcements',
+    title: 'Announcements by Admin',
     path: '/adminannouncements',
     icon: <TfiIcons.TfiAnnouncement />,
     cName: 'nav-text'
@@ -46,5 +40,10 @@ export const SidebarData = [
     icon: <TbIcons.TbArrowsExchange />,
     cName: 'nav-text'
   },
-  
+  {
+    title: "Log out",
+    path: "/logout",
+    icon: <LogoutRoundedIcon />,
+    cName: "nav-text",
+  }
 ];

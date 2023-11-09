@@ -68,7 +68,7 @@ const AnnouncementSection = ({ title }) => {
     const navigate = useNavigate();
 
     return (
-        <div style={{ position: 'relative', padding:'10px' }}>
+        <div style={{ position: 'relative', padding:'20px' }}>
       <Paper sx={{ py: 1, px: 3 }} className="container">
         <Typography variant="h5" sx={{ pt: 1, pb: 1 }}>
           Admin Announcements {title}:
