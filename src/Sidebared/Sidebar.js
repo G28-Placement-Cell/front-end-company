@@ -23,8 +23,8 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Announcements',
-    path: '/announcement',
+    title: 'Announcements for students',
+    path: '/announcements/company/:id',
     icon: <TfiIcons.TfiAnnouncement />,
     cName: 'nav-text'
   },
