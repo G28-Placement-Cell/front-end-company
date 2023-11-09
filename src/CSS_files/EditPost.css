@@ -26,8 +26,8 @@
   input[type="text"],
   textarea {
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+    margin-bottom: 0px;
+    /* border: 1px solid #ccc; */
     border-radius: 5px;
     font-size: 1rem;
   }

@@ -59,15 +59,6 @@ function ComanyProfile() {
                     <hr />
                     <div className="row">
                         <div className="col-sm-3">
-                            <h6 className="mb-0">Type (Job/SI)</h6>
-                        </div>
-                        <div className="col-sm-9 text-secondary">
-                            {company?.company_type}
-                        </div>
-                    </div>
-                    <hr />
-                    <div className="row">
-                        <div className="col-sm-3">
                             <h6 className="mb-0">Location</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
@@ -86,10 +77,28 @@ function ComanyProfile() {
                     <hr />
                     <div className="row">
                         <div className="col-sm-3">
-                            <h6 className="mb-0">Company Type</h6>
+                            <h6 className="mb-0">Contact</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
-                            {company?.company_type}
+                            {company?.contact}
+                        </div>
+                    </div>
+                    <hr />
+                    <div className="row">
+                        <div className="col-sm-3">
+                            <h6 className="mb-0">Email</h6>
+                        </div>
+                        <div className="col-sm-9 text-secondary">
+                            {company?.email}
+                        </div>
+                    </div>
+                    <hr />
+                    <div className="row">
+                        <div className="col-sm-3">
+                            <h6 className="mb-0">Website</h6>
+                        </div>
+                        <div className="col-sm-9 text-secondary">
+                            {company?.website}
                         </div>
                     </div>
                     <hr />

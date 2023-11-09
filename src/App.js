@@ -10,7 +10,6 @@ import { useState, useEffect } from "react";
 import api from "./api/posts.js";
 import Announcement from "./Pages/Announcement.js";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword.js";
-import AboutUs from "./Pages/AboutUs.js";
 import ContactUs from "./Pages/ContactUs.js";
 import CompanyProfile from "./Pages/CompanyProfile.js";
 import Header from "./Components/Header";
@@ -19,11 +18,21 @@ import SeePost from "./Pages/JobProfile/Seepost.js";
 import NewPost from "./Pages/JobProfile/Newpost.js";
 import EditPost from "./Pages/JobProfile/Editpost.js";
 import Details from "./Pages/JobProfile/Details.js";
+import AnnouncementSectionStudent from './Pages/AnnouncementSectionStudent';
+import AddAnnouncementStudent from './Pages/AddAnnouncementStudent';
+// import FooterJ from './Pages/JobProfile/Footer';
 import { Errored } from "./Pages/Errored.js";
 import { CompanyLogin } from "./Pages/CompanyLogin.js";
 import { CompanyRegister } from "./Pages/CompanyRegister.js";
 import { ToastContainer } from "react-toastify";
+import AboutUs from './Pages/AboutUs.js';
 import AnnouncementSection from "./Pages/Adminannoun.js"
+import Announcements from "./Pages/Announcement.js" 
+import AddAnnouncement from './Pages/Addannouncement.js';
+// import AddAnnouncement from './Pages/Addannouncement.js';
+// import Footer from './Pages/JobProfile/Footer';
+
+
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -151,60 +160,89 @@ function App() {
 
   return (
     // <div >
-    <Router>
-      <Header />
-      <div style={{ minHeight: "84vh", backgroundColor: "#E4EAF5" }}>
-        <ToastContainer />
-        <Routes>
-          <Route exact path="/" element={<CompanyLogin />} />
-          <Route exact path="/profile" element={<CompanyProfile />} />
-          <Route exact path="/register" element={<CompanyRegister />} />
-          <Route exact path="/companyprofile" element={<CompanyProfile />} />
-          <Route exact path="/jobprofile" element={<SeePost posts={searchResults} isLoading={isLoading} />} />
-          <Route exact path="/announcement" element={<Announcement />} />
-          <Route exact path='/adminannouncements' element={<AnnouncementSection />} />
-          <Route exact path="/changepassword" element={<ChangePassword />} />
-          <Route exact path="/aboutus" element={<AboutUs />} />
-          <Route exact path="/logout"></Route>
-          <Route exact path="/contactus" element={<ContactUs />} />
-          {/* <Route exact path="/seepost" element = {<SeePost posts={searchResults} isLoading={isLoading} />} /> */}
-          <Route exact path="/newpost" element={<NewPost />} />
-          <Route exact path="/moredetails/:id" element={<Details posts={posts} />} />
-          <Route exact path="/editpost/:id"
-            element={<EditPost
-              posts={posts}
-              handleEdit={handleEdit}
-              editName={editName}
-              seteditName={seteditName}
-              editBody={editBody}
-              setEditBody={setEditBody}
-              editType={editType}
-              seteditType={seteditType}
-              editCPI={editCPI}
-              seteditCPI={seteditCPI}
-              editOpenfor={editOpenfor}
-              seteditOpenfor={seteditOpenfor}
-              editRegopen={editRegopen}
-              seteditRegopen={seteditRegopen}
-              editRegclose={editRegclose}
-              seteditRegclose={seteditRegclose}
-              location={location}
-              setLocation={setLocation}
-              companytype={companytype}
-              setCompanytype={setCompanytype}
-              CTC={CTC}
-              setCTC={setCTC}
-              stipend={stipend}
-              setStipend={setStipend}
-            />} />
-          <Route path="/seereg" element={<Tablet />}></Route>
-          <Route path="*" element={<Errored />} />
-          {/* </Switch> */}
-        </Routes>
-      </div>
-      <Footer />
-    </Router>
-
+      <Router>
+        <Header />
+        <div style={{ minHeight: "84vh", backgroundColor: "#E4EAF5" }}>
+          <ToastContainer />
+          <Routes>
+            <Route exact path="/" element={<CompanyLogin />} />
+            <Route exact path="/profile" element={<CompanyProfile />} />
+            <Route exact path="/register" element={<CompanyRegister />} />
+            <Route exact path="/companyprofile" element={<CompanyProfile />} />
+            <Route exact path="/jobprofile" element={<SeePost posts={searchResults} isLoading={isLoading} />} />
+            <Route exact path='/adminannouncements' element={<AnnouncementSection />} />
+            <Route exact path='/announcements/company' element={<Announcements />} />
+            <Route exact path='/addAnnouncementStudent' element={<AddAnnouncement/>}/>
+            <Route exact path="/changepassword" element={<ChangePassword />} />
+            <Route exact path="/aboutus" element={<AboutUs />} />
+            <Route exact path="/logout"></Route>
+            <Route exact path="/contactus" element={<ContactUs />} />
+            {/* <Route exact path="/seepost" element = {<SeePost posts={searchResults} isLoading={isLoading} />} /> */}
+            <Route exact path="/newpost"
+              element={<NewPost
+                handleSubmit={handleSubmit}
+                editName={editName}
+                seteditName={seteditName}
+                editBody={editBody}
+                setEditBody={setEditBody}
+                editType={editType}
+                seteditType={seteditType}
+                editCPI={editCPI}
+                seteditCPI={seteditCPI}
+                editLink={editLink}
+                seteditLink={seteditLink}
+                editOpenfor={editOpenfor}
+                seteditOpenfor={seteditOpenfor}
+                editRegopen={editRegopen}
+                seteditRegopen={seteditRegopen}
+                editRegclose={editRegclose}
+                seteditRegclose={seteditRegclose}
+                location={location}
+                setLocation={setLocation}
+                companytype={companytype}
+                setCompanytype={setCompanytype}
+                CTC={CTC}
+                setCTC={setCTC}
+                stipend={stipend}
+                setStipend={setStipend}
+              />} />
+            <Route exact path="/moredetails/:id" element={<Details posts={posts} />} />
+            <Route path='/aboutus' element={<AboutUs />}/>
+            <Route exact path="/editpost/:id"
+              element={<EditPost
+                posts={posts}
+                handleEdit={handleEdit}
+                editName={editName}
+                seteditName={seteditName}
+                editBody={editBody}
+                setEditBody={setEditBody}
+                editType={editType}
+                seteditType={seteditType}
+                editCPI={editCPI}
+                seteditCPI={seteditCPI}
+                editOpenfor={editOpenfor}
+                seteditOpenfor={seteditOpenfor}
+                editRegopen={editRegopen}
+                seteditRegopen={seteditRegopen}
+                editRegclose={editRegclose}
+                seteditRegclose={seteditRegclose}
+                location={location}
+                setLocation={setLocation}
+                companytype={companytype}
+                setCompanytype={setCompanytype}
+                CTC={CTC}
+                setCTC={setCTC}
+                stipend={stipend}
+                setStipend={setStipend}
+              />} />
+              <Route path="/seereg" element={<Tablet/>}></Route>
+            <Route path="*" element={<Errored />} />
+            {/* </Switch> */}
+          </Routes>
+        </div>
+        <Footer />
+      </Router>
+    
   );
 }
 
