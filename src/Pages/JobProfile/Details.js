@@ -7,7 +7,7 @@ export default function Details({ posts }) {
   const post = posts.find((post) => post.id.toString() === id);
 
   return (
-    <div className="container">
+    <div className="detailscontainer">
       <div className="box">
          <h1>Company - {post.name}</h1> 
          <h1>Type - {post.type}</h1> 

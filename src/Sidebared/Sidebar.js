@@ -29,28 +29,16 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
+    title: 'Admin announcements',
+    path: '/adminannouncements',
+    icon: <TfiIcons.TfiAnnouncement />,
+    cName: 'nav-text'
+  },
+  {
     title: 'Change Password',
     path: '/changepassword',
     icon: <TbIcons.TbArrowsExchange />,
     cName: 'nav-text'
   },
-  {
-    title: 'Log out',
-    path: '/',
-    icon: <BiIcons.BiLogOut />,
-    cName: 'nav-text'
-  },
-  {
-    title: 'Register',
-    path: '/register',
-    icon: <AiIcons.AiOutlineUserAdd />,
-    cName: 'nav-text'
-  },
-  {
-    title: 'Login',
-    path: '/',
-    icon: <IoIcons.IoMdLogIn />,
-
-    cName: 'nav-text'
-  }
+  
 ];
