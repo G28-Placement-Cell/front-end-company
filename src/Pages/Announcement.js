@@ -21,8 +21,8 @@ const Announcements = ({ title }) => {
 
   // const {id} = useParams();
   const company_id = localStorage.getItem('companyInfo');
-  const companyId = company_id ? JSON.parse(company_id)._id : null;
-  console.log(companyId);
+  const id = company_id ? JSON.parse(company_id)._id : null;
+  console.log(id);
   const [announcements, setAnnouncements] = useState([]);
   const [announcementText, setAnnouncementText] = useState('');
   const [loading, setLoading] = useState(true); // Add loading state
@@ -30,7 +30,7 @@ const Announcements = ({ title }) => {
   const [filteredAnnouncements, setFilteredAnnouncements] = useState([]); // Add filteredAnnouncements state
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/announcements/company/${companyId}`, {
+    fetch(`http://localhost:8000/api/announcements/company/${id}`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -126,7 +126,7 @@ const Announcements = ({ title }) => {
         color="primary"
         aria-label="add"
         sx={{ position: 'fixed', bottom: 60, right: 20 }}
-        onClick={() => navigate(`/addAnnouncementStudent/${companyId}`)}
+        onClick={() => navigate('/addAnnouncementStudent')}
       >
         <AddIcon />
       </Fab>

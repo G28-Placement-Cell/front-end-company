@@ -10,6 +10,10 @@ import {
 import '../CSS_files/AnnouncementSection.css'
 
 const AddAnnouncement = () => {
+
+    const company_id = localStorage.getItem('companyInfo');
+    const id = company_id ? JSON.parse(company_id)._id : null;
+
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [date, setDate] = useState(new Date());
@@ -19,10 +23,10 @@ const AddAnnouncement = () => {
     const [announcements, setAnnouncements] = useState([]); // Add announcements state
 
 
-    const {id} = useParams();
+    // const {id} = useParams();
     // const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-    console.log(id);
+    // console.log(id);
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -58,7 +62,7 @@ const AddAnnouncement = () => {
             setLoading(false);
             setSuccess(true);
             setError("");
-            navigate("/announcements/:id");
+            navigate("/announcements/company");
         }
         catch (err) {
             setLoading(false);

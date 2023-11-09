@@ -174,8 +174,8 @@ function App() {
             <Route exact path="/companyprofile" element={<CompanyProfile />} />
             <Route exact path="/jobprofile" element={<SeePost posts={searchResults} isLoading={isLoading} />} />
             <Route exact path='/adminannouncements' element={<AnnouncementSection />} />
-            <Route exact path='/announcements/company/:id' element={<Announcements />} />
-            <Route exact path='/addAnnouncementStudent/:id' element={<AddAnnouncement/>}/>
+            <Route exact path='/announcements/company' element={<Announcements />} />
+            <Route exact path='/addAnnouncementStudent' element={<AddAnnouncement/>}/>
             <Route exact path="/changepassword" element={<ChangePassword />} />
             <Route exact path="/aboutus" element={<AboutUs />} />
             <Route exact path="/logout"></Route>
