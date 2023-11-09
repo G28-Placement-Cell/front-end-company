@@ -1,113 +1,200 @@
-import React from 'react'
-import '../../CSS_files/EditPost.css';
-import {Link} from 'react-router-dom';
-export default function Newpost({handleSubmit,editName, seteditName,editBody,setEditBody,editType,seteditType,editCPI,seteditCPI,editLink,seteditLink,editOpenfor,seteditOpenfor,editRegopen,seteditRegopen,editRegclose,seteditRegclose,location,setLocation,CTC,setCTC,stipend,setStipend,companytype,setCompanytype}) 
-{
+import React from 'react';
+import { Button, Paper, Typography, Stack, InputBase, Select, MenuItem } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
+export default function Newpost() {
+
+  const companyInfo = JSON.parse(localStorage.getItem('companyInfo'));
+  const companyId = companyInfo && companyInfo._id;
+
+  if (companyId) {
+    // You have the company ID now. You can use it in your code.
+    console.log('Company ID:', companyId);
+  } else {
+    console.error('Company ID not found in local storage.');
+  }
+
+  const navigate = useNavigate();
+
+  const [editName, seteditName] = React.useState('');
+  const [location, setLocation] = React.useState('');
+  const [editCPI, setEditCPI] = React.useState('');
+  const [editOpenfor, setEditOpenfor] = React.useState('');
+  const [companyType, setCompanyType] = React.useState('');
+  const [offerType, setOfferType] = React.useState('');
+  const [editRegopen, setEditRegopen] = React.useState('');
+  const [editRegclose, seteditRegclose] = React.useState('');
+  const [CTC, setCTC] = React.useState('');
+  const [stipend, setStipend] = React.useState('');
+  const [editBody, setEditBody] = React.useState('');
+
+  const onSubmit = () => {
+    // Parse and convert ctc to a number if it's a string
+    const ctcValue = isNaN(CTC) ? CTC : parseFloat(CTC);
+
+    const newPost = {
+      company: companyId,
+      company_name: editName,
+      company_type: companyType,
+      location: location,
+      cpi_criteria: editCPI,
+      offer_type: offerType,
+      open_for: editOpenfor,
+      registration_start_date: editRegopen,
+      registration_end_date: editRegclose,
+      ctc: ctcValue, // Use ctcValue instead of CTC
+      stipend: stipend,
+      job_description: editBody,
+    };
+
+    // Send a POST request to your backend using the fetch function
+    fetch('http://localhost:8000/api/jobprofile', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      },
+      body: JSON.stringify(newPost),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('POST request successful', data);
+        navigate('/jobprofile');
+      })
+      .catch((error) => {
+        console.log('POST request failed', error);
+        console.error('Error sending POST request', error);
+      });
+  };
+
   return (
-    <>
-    <div className="NewPost">
-      <h2>New Profile</h2>
-      <form className="newPostForm" onSubmit={(e) => e.preventDefault()}>
-      <label htmlFor="postName">Name :</label>
-          <input
-              id="postName"
-              type="text"
-              required
+    <div style={{ position: 'relative', padding: '20px' }}>
+      <Paper sx={{ py: 1, px: 3 }} className="container">
+        <Typography variant="h4" sx={{ textAlign: 'left', mt: 2, mb: 3 }}>Add a new Post</Typography>
+        <form onSubmit={onSubmit}>
+          <Stack direction="column" spacing={2} sx={{ pb: 2 }}>
+            <Typography variant="body1" sx={{ textAlign: 'left' }}>Name</Typography>
+            <InputBase
+              placeholder="Name"
               value={editName}
               onChange={(e) => seteditName(e.target.value)}
-          />
-          <label htmlFor="postType">Type (Job/SI) :</label>
-          <input
-              id="postType"
-              type="text"
+              inputProps={{ 'aria-label': 'Name' }}
               required
-              value={editType}
-              onChange={(e) => seteditType(e.target.value)}
-          />
-          <label htmlFor="location">Location :</label>
-          <input
-              id="location"
-              type="text"
+            />
+
+            <Typography variant="body1" sx={{ textAlign: 'left' }}>Offer Type</Typography>
+            <Select
+              value={offerType}
+              onChange={(e) => setOfferType(e.target.value)}
               required
+            >
+              <MenuItem value="si">SI</MenuItem>
+              <MenuItem value="job">Job</MenuItem>
+            </Select>
+
+            <Typography variant="body1" sx={{ textAlign: 'left' }}>Location</Typography>
+            <InputBase
+              placeholder="Location"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-          />
-          <label htmlFor="postCPI">CPI:</label>
-          <input
-              id="postCPI"
-              type="text"
+              inputProps={{ 'aria-label': 'Location' }}
               required
-              value={editCPI}
-              onChange={(e) => seteditCPI(e.target.value)}
-          />
-          {/* <label htmlFor="postLink">Link to your Website:</label>
-          <input
-              id="postLink"
-              type="text"
-              required
-              value={editLink}
-              onChange={(e) => seteditLink(e.target.value)}
-          /> */}
-          <label htmlFor="postOpenfor">Open for:</label>
-          <input
-              id="postOpenfor"
-              type="text"
-              required
+            />
+
+            <Typography variant="body1" sx={{ textAlign: 'left' }}>Open for</Typography>
+            <InputBase
+              placeholder="Open for"
               value={editOpenfor}
-              onChange={(e) => seteditOpenfor(e.target.value)}
-          />
-          <label htmlFor="companytype">Company Type :</label>
-          <input
-              id="companytype"
-              type="text"
+              onChange={(e) => setEditOpenfor(e.target.value)}
+              inputProps={{ 'aria-label': 'Open for' }}
               required
-              value={companytype}
-              onChange={(e) => setCompanytype(e.target.value)}
-          />
-          <label htmlFor="postRegopen">Registration opens from:</label>
-          <input
-              id="postRegopen"
-              type="text"
+            />
+
+            <Typography variant="body1" sx={{ textAlign: 'left' }}>CPI Criteria</Typography>
+            <InputBase
+              placeholder="CPI Criteria"
+              value={editCPI}
+              onChange={(e) => setEditCPI(e.target.value)}
+              inputProps={{ 'aria-label': 'CPI Criteria' }}
               required
+            />
+
+            <Typography variant="body1" sx={{ textAlign: 'left' }}>Company Type</Typography>
+            <InputBase
+              placeholder="Company Type"
+              value={companyType}
+              onChange={(e) => setCompanyType(e.target.value)}
+              inputProps={{ 'aria-label': 'Company Type' }}
+              required
+            />
+
+            <Typography variant="body1" sx={{ textAlign: 'left' }}>Registration Starts from</Typography>
+            <InputBase
+              placeholder="Registration Starts from"
+              type="datetime-local"
               value={editRegopen}
-              onChange={(e) => seteditRegopen(e.target.value)}
-          />
-          <br />
-          <label htmlFor="postRegclose">Registration closes at:</label>
-          <input
-            id="postRegclose"
-            type="text"
-            required
-            value={editRegclose}
-            onChange={(e) => seteditRegclose(e.target.value)}
-          />
-          <label htmlFor="ctc">CTC :</label>
-          <input
-            id="ctc"
-            type="text"
-            required
-            value={CTC}
-            onChange={(e) => setCTC(e.target.value)}
-          />
-          <label htmlFor="stipend">Stipend :</label>
-          <input
-            id="stipend"
-            type="text"
-            required
-            value={stipend}
-            onChange={(e) => setStipend(e.target.value)}
-          />
-          <label htmlFor="postBody">Body:</label>
-          <textarea
-              id="postBody"
+              onChange={(e) => setEditRegopen(e.target.value)}
+              inputProps={{ 'aria-label': 'Registration Starts from' }}
               required
+            />
+
+            <Typography variant="body1" sx={{ textAlign: 'left' }}>Registration Closes at</Typography>
+            <InputBase
+              placeholder="Registration Closes at"
+              type="datetime-local"
+              value={editRegclose}
+              onChange={(e) => seteditRegclose(e.target.value)}
+              inputProps={{ 'aria-label': 'Registration Closes at' }}
+              required
+            />
+
+            <Typography variant="body1" sx={{ textAlign: 'left' }}>CTC (in LPA)</Typography>
+            <InputBase
+              placeholder="CTC"
+              value={CTC}
+              onChange={(e) => {
+                const inputValue = e.target.value;
+                if (!isNaN(inputValue)) {
+                  setCTC(inputValue);
+                }
+              }}
+              inputProps={{ 'aria-label': 'CTC' }}
+              type="number"
+              required
+            />
+
+            <Typography variant="body1" sx={{ textAlign: 'left' }}>Stipend</Typography>
+            <InputBase
+              placeholder="Stipend"
+              value={stipend}
+              onChange={(e) => {
+                const inputValue = e.target.value;
+                if (!isNaN(inputValue)) {
+                  setStipend(inputValue);
+                }
+              }}
+              inputProps={{ 'aria-label': 'Stipend' }}
+              type="number"
+              required
+            />
+
+            <Typography variant="body1" sx={{ textAlign: 'left' }}>Description</Typography>
+            <InputBase
+              placeholder="Description"
+              multiline
+              rows={1}
               value={editBody}
               onChange={(e) => setEditBody(e.target.value)}
-          />
-          <button type="updatechanges" onClick={handleSubmit}>Add the new Post</button>
-          <Link to='/jobprofile'><button type="backtohomepage">Back to Home Page</button></Link>
+              inputProps={{ 'aria-label': 'Description' }}
+              required
+            />
+
+            <Button variant="contained" type="submit">
+              Add the new Post
+            </Button>
+          </Stack>
         </form>
+      </Paper>
     </div>
-    </>
-  )
+  );
 }
