@@ -99,6 +99,7 @@ const AddAnnouncement = () => {
     }, []);
 
     return (
+        <div style={{ position: 'relative' ,paddingTop:20, paddingBottom: 20}}>
         <Paper sx={{ py: 1, px: 3 }} className="container">
             <Typography variant="h4" sx={{ mt: 3 }} align="center" gutterBottom>
                 Add Announcement for Student
@@ -132,6 +133,7 @@ const AddAnnouncement = () => {
             </form>
            
         </Paper>
+        </div>
     );
 };
 

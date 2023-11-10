@@ -40,10 +40,4 @@ export const SidebarData = [
     icon: <TbIcons.TbArrowsExchange />,
     cName: 'nav-text'
   },
-  {
-    title: "Log out",
-    path: "/logout",
-    icon: <LogoutRoundedIcon />,
-    cName: "nav-text",
-  }
 ];
