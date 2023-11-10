@@ -73,7 +73,9 @@ export const Tablet = () => {
                 <StyledTableCell align="left">{row.Student_Id}</StyledTableCell>
                 <StyledTableCell align="left">{row.CPI}</StyledTableCell>
                 <StyledTableCell align="left">
-                  <Button color="inherit" component={Link} to={row.Resume} onClick={handleButtonClick(row.Resume)}>
+                <Button component={Link} to={row.Resume} sx={{backgroundColor:"#493D72", color:"white",'&:hover': {
+          backgroundColor: '#493D72', color:"white"
+        },}} onClick={handleButtonClick(row.Resume)}>
                     SEE RESUME
                   </Button>
                 </StyledTableCell>
