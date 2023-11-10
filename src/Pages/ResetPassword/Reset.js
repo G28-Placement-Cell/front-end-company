@@ -6,8 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 // import { logout } from '../slices/student/authslice';
 import { useNavigate } from 'react-router-dom';
-// import { useReset_passwordMutation } from '../../slices/company/companyApislice';
-// import { removeReset } from "../../slices/company/authslice";
+import { useReset_passwordMutation, useReset_applyMutation } from '../../slices/company/companyApislice';
+import { removeReset } from "../../slices/company/authslice";
 
 
 function ResetPassword() {
@@ -16,7 +16,7 @@ function ResetPassword() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
   const dispatch = useDispatch();
-//   const [reset_apply] = useReset_applyMutation();
+  const [reset_apply] = useReset_applyMutation();
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
@@ -25,9 +25,9 @@ function ResetPassword() {
       // console.log('ok');
       const resetId = localStorage.getItem('resetId');
       console.log(resetId);
-    //   const res = await reset_apply({ otp, password, resetId }).unwrap();
-    //   dispatch(removeReset());
-    //   toast.success(res.message);
+      const res = await reset_apply({ otp, password, resetId }).unwrap();
+      dispatch(removeReset());
+      toast.success(res.message);
       navigate('/');
     } catch (err) {
       toast.error(err?.data?.message || err.error);

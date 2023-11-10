@@ -102,7 +102,7 @@ export const CompanyLogin = () => {
                                 {/* Register link */}
                                 <a href='\register' style={{ textDecoration: 'none', color: 'blue' }} variant="contained" color="primary"> Register </a>
                                 {/* Forgot Password link */}
-                                <a href="#" style={{ textDecoration: 'none', color: 'blue' }}>Forgot Password?</a>
+                                <a href="/forgotpass" style={{ textDecoration: 'none', color: 'blue' }}>Forgot Password?</a>
                             </div>
                         </form>
                     </div>
