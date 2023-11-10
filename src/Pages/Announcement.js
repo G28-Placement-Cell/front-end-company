@@ -77,7 +77,7 @@ const Announcements = ({ title }) => {
   const navigate = useNavigate();
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative' ,paddingTop:20, paddingBottom: 20}}>
       <Paper sx={{ py: 1, px: 3 }} className="container">
         <Typography variant="h5" sx={{ pt: 1, pb: 1 }}>
           Announcements for Students {title}:

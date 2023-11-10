@@ -177,7 +177,6 @@ function App() {
             <Route exact path="/changepassword" element={<ChangePassword />} />
             <Route exact path="/resetpassword" element={<ResetPassword />} />
             <Route exact path="/aboutus" element={<AboutUs />} />
-            <Route exact path="/logout"></Route>
             <Route exact path="/contactus" element={<ContactUs />} />
             {/* <Route exact path="/seepost" element = {<SeePost posts={searchResults} isLoading={isLoading} />} /> */}
             <Route exact path="/newpost"
