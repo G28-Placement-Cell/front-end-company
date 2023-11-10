@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import api from "./api/posts.js";
 import Announcement from "./Pages/Announcement.js";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword.js";
+import ResetPassword from './Pages/ResetPassword/ResetPassword';
 import ContactUs from "./Pages/ContactUs.js";
 import CompanyProfile from "./Pages/CompanyProfile.js";
 import Header from "./Components/Header";
@@ -174,6 +175,7 @@ function App() {
             <Route exact path='/announcements/company' element={<Announcements />} />
             <Route exact path='/addAnnouncementStudent' element={<AddAnnouncement/>}/>
             <Route exact path="/changepassword" element={<ChangePassword />} />
+            <Route exact path="/resetpassword" element={<ResetPassword />} />
             <Route exact path="/aboutus" element={<AboutUs />} />
             <Route exact path="/logout"></Route>
             <Route exact path="/contactus" element={<ContactUs />} />
