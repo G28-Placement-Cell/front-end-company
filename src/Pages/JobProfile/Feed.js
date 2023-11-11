@@ -67,6 +67,9 @@ const Feeds = ({ title }) => {
 
   const navigate = useNavigate();
 
+  const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+
+
   return (
     <div
       style={{
@@ -74,10 +77,9 @@ const Feeds = ({ title }) => {
         display: "flex",
         justifyContent: "center",
         padding: "5vh 5vw",
-
       }}
     >
-      <Paper sx={{ py: 1, px: 3, width: '90vw' }} className="container1">
+      <Paper sx={{ py: 1, px: 3 }} className="container">
         <Typography variant="h5" sx={{ pt: 1, pb: 1 }}>
           Current Job Profiles {title}:
         </Typography>
@@ -163,7 +165,7 @@ const Feeds = ({ title }) => {
                               <h6 className="mb-0">Registration Starts from</h6>
                             </div>
                             <div className="col-sm-9 text-secondary">
-                              {jobProfile.registration_start_date}
+                              {new Date(jobProfile.registration_start_date).toLocaleDateString('en-GB', options)}
                             </div>
                           </div>
                           <hr />
@@ -172,9 +174,10 @@ const Feeds = ({ title }) => {
                               <h6 className="mb-0">Registration Closes at</h6>
                             </div>
                             <div className="col-sm-9 text-secondary">
-                              {jobProfile.registration_start_date}
+                              {new Date(jobProfile.registration_end_date).toLocaleDateString('en-GB', options)}
                             </div>
                           </div>
+
                           <hr />
                           <div className="row">
                             <div className="col-sm-3">
@@ -240,9 +243,9 @@ const Feeds = ({ title }) => {
 
 
                             {/* <Link to={`/editpost/${jobProfile.id}`}> */}
-                              <button onClick={()=>navigate(`/editpost/${jobProfile._id}`)} style={{ backgroundColor: '#2B2442', width: '200px', marginLeft: '15px', borderRadius: '5px' }}>
-                                Edit the profile
-                              </button>
+                            <button onClick={() => navigate(`/editpost/${jobProfile._id}`)} style={{ backgroundColor: '#2B2442', width: '200px', marginLeft: '15px', borderRadius: '5px' }}>
+                              Edit the profile
+                            </button>
                             {/* </Link> */}
                           </div>
                         </Typography>

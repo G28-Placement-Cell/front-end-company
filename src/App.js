@@ -31,6 +31,8 @@ import AnnouncementSection from "./Pages/Adminannoun.js"
 import Announcements from "./Pages/Announcement.js"
 import AddAnnouncement from './Pages/Addannouncement.js';
 import ForgotPass from './Pages/ForgotPass.js';
+import LogOut from './Pages/LogOut.js';
+
 // import AddAnnouncement from './Pages/Addannouncement.js';
 // import Footer from './Pages/JobProfile/Footer';
 
@@ -213,6 +215,7 @@ function App() {
           <Route path='/aboutus' element={<AboutUs />} />
           <Route exact path="/editpost/:id" element={<EditPost />} />
           <Route path="/seereg" element={<Tablet />}></Route>
+          <Route path='/logout' element={<LogOut />}></Route>
           <Route path="*" element={<Errored />} />
           {/* </Switch> */}
         </Routes>
