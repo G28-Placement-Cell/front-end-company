@@ -231,15 +231,19 @@ const Feeds = ({ title }) => {
                               // gap:'10px'
                             }}
                           >
-                            <Link to={`/seereg`}>
-                            <button style={{ backgroundColor: '#2B2442', width: '200px', borderRadius: '5px' }}>
+                            {/* <Link to={`/seereg`}> */}
+                            <button onClick={() => navigate('/seereg')} style={{ backgroundColor: '#2B2442', width: '200px', borderRadius: '5px' }}>
                               See registered students
                             </button>
 
-                            </Link>
-                            
+                            {/* </Link> */}
 
-                            <Link to={`/editpost/${jobProfile.id}`}><button style={{ backgroundColor: '#2B2442', width: '200px', marginLeft: '15px', borderRadius: '5px' }}>Edit the profile</button></Link>
+
+                            {/* <Link to={`/editpost/${jobProfile.id}`}> */}
+                              <button onClick={()=>navigate(`/editpost/${jobProfile._id}`)} style={{ backgroundColor: '#2B2442', width: '200px', marginLeft: '15px', borderRadius: '5px' }}>
+                                Edit the profile
+                              </button>
+                            {/* </Link> */}
                           </div>
                         </Typography>
                       </div>
