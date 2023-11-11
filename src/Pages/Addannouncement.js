@@ -99,40 +99,45 @@ const AddAnnouncement = () => {
     }, []);
 
     return (
-        <div style={{ position: 'relative' ,paddingTop:20, paddingBottom: 20}}>
-        <Paper sx={{ py: 1, px: 3 }} className="container">
-            <Typography variant="h4" sx={{ mt: 3 }} align="center" gutterBottom>
-                Add Announcement for Student
-            </Typography>
-            <form onSubmit={handleSubmit}>
-                <TextField
-                    label="Title"
-                    fullWidth
-                    variant="outlined"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    margin="normal"
-                    required
-                />
-                <TextField
-                    label="Description"
-                    fullWidth
-                    variant="outlined"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    margin="normal"
-                    multiline
-                    rows={2}
-                    required
-                />
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button type="submit" variant="contained" color="primary" sx={{ my: 2, width: '15vw' }}>
-                        Post Announcement
-                    </Button>
-                </div>
-            </form>
-           
-        </Paper>
+        <div style={{
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            padding: "5vh 5vw",
+        }}>
+            <Paper sx={{ py: 1, px: 3 }} className="container">
+                <Typography variant="h4" sx={{ mt: 3 }} align="center" gutterBottom>
+                    Add Announcement for Student
+                </Typography>
+                <form onSubmit={handleSubmit}>
+                    <TextField
+                        label="Title"
+                        fullWidth
+                        variant="outlined"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        margin="normal"
+                        required
+                    />
+                    <TextField
+                        label="Description"
+                        fullWidth
+                        variant="outlined"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        margin="normal"
+                        multiline
+                        rows={2}
+                        required
+                    />
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <Button type="submit" variant="contained" color="primary" sx={{ my: 2, width: '15vw' }}>
+                            Post Announcement
+                        </Button>
+                    </div>
+                </form>
+
+            </Paper>
         </div>
     );
 };

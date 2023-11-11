@@ -68,7 +68,12 @@ export default function Newpost() {
   };
 
   return (
-    <div style={{ position: 'relative', padding: '20px' }}>
+    <div style={{
+      position: "relative",
+      display: "flex",
+      justifyContent: "center",
+      padding: "5vh 5vw",
+    }}>
       <Paper sx={{ py: 1, px: 3 }} className="container">
         <Typography variant="h4" sx={{ textAlign: 'left', mt: 2, mb: 3 }}>Add a new Post</Typography>
         <form onSubmit={onSubmit}>

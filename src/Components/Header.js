@@ -12,6 +12,9 @@ import { logout } from "../slices/company/authslice";
 import TemporaryDrawer from "./Navbar.js";
 
 function Header() {
+  const companyInfoJSON = localStorage.getItem('companyInfo');
+  const companyInfo = JSON.parse(companyInfoJSON);
+
   const [sidebar, setSidebar] = useState(false);
   const dispatch = useDispatch();
   const [logoutapicall] = useLogoutMutation();
@@ -27,11 +30,12 @@ function Header() {
     }
   };
 
-  const showSidebar = () => setSidebar(!sidebar);
   return (
     <AppBar position="sticky" style={{ backgroundColor: "#2B2442" }}>
       <Toolbar>
-        <TemporaryDrawer />
+        {companyInfo && (
+          <TemporaryDrawer logoutHandler={logoutHandler} />
+        )}
         <Typography
           variant="h6"
           component="div"
@@ -40,9 +44,8 @@ function Header() {
           Placement Cell
         </Typography>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Button color="inherit" style={{ minWidth: '16vh' }}>Contact us</Button>
+        <Button color='inherit' style={{ minWidth: '16vh' }} onClick={() => navigate('/ContactUs')}>Contact Us</Button>
           <Button color='inherit' style={{ minWidth: '16vh' }} onClick={() => navigate('/aboutus')}>About Us</Button>
-          <Button color="inherit" onClick={logoutHandler}>Logout</Button>
         </div>
       </Toolbar>
     </AppBar>

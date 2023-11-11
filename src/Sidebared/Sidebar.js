@@ -11,15 +11,15 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 
 export const SidebarData = [
   {
-    title: 'Job Profile',
-    path: '/jobprofile',
-    icon: <ImIcons.ImProfile />,
-    cName: 'nav-text'
-  },
-  {
     title: 'Company Profile',
     path: '/companyprofile',
     icon: <HiIcons.HiOfficeBuilding />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Job Profile',
+    path: '/jobprofile',
+    icon: <ImIcons.ImProfile />,
     cName: 'nav-text'
   },
   {
@@ -39,5 +39,11 @@ export const SidebarData = [
     path: '/changepassword',
     icon: <TbIcons.TbArrowsExchange />,
     cName: 'nav-text'
+  },
+  {
+    title: 'Logout',
+    path: '/logout', // or whatever path you prefer
+    icon: <LogoutRoundedIcon />,
+    cName: 'nav-text',
   },
 ];

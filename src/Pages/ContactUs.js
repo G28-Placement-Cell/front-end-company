@@ -1,213 +1,68 @@
-// src/components/ContactUs.js
+import React from 'react';
+import '../CSS_files/contactus.css'
 
-import React from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  Link,
-  Avatar,
-} from "@mui/material";
-import EmailIcon from "@mui/icons-material/Email";
-import { FaPhone } from "react-icons/fa";
-
-const cardStyle = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  padding: "16px",
-  maxWidth: "300px",
-  width: "100%",
-  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-  minHeight: "300px",
-  overflowY: "auto",
-};
-
-const avatarStyle = {
-  width: "100px",
-  height: "100px",
-  marginBottom: "-12px",
-  backgroundColor: "#2b2442",
-};
-
-const linkedinIconStyle = {
-  color: "#0A66C2",
-};
-
-const headingStyle = {
-  textAlign: "center",
-  fontSize: "40px",
-  fontWeight: "bold",
-  margin: "20px",
-};
-
-const ContactUs = () => {
-  const contactInfo = [
-    {
-      name: "Aarsh Bhavsar",
-      phone: "123-456-7890",
-      linkedin: "https://www.linkedin.com",
-      image: "A",
-      email: "/contactus",
-    },
-    {
-      name: "Dhruv Lad",
-      phone: "123-456-7890",
-      linkedin: "https://www.linkedin.com",
-      image: "D",
-      email: "/contactus",
-    },
-    {
-      name: "Maulik Thakkar",
-      phone: "123-456-7890",
-      linkedin: "https://www.linkedin.com",
-      image: "M",
-      email: "/contactus",
-    },
-    {
-      name: "Shivang Kacha",
-      phone: "123-456-7890",
-      linkedin: "https://www.linkedin.com",
-      image: "S",
-      email: "/contactus",
-    },
-    {
-      name: "Sahil Lakdawala",
-      phone: "123-456-7890",
-      linkedin: "https://www.linkedin.com",
-      image: "S",
-      email: "/contactus",
-    },
-    {
-      name: "Vinit Mehta",
-      phone: "123-456-7890",
-      linkedin: "https://www.linkedin.com",
-      image: "V",
-      email: "/contactus",
-    },
-    {
-      name: "Shashank Upadhyay",
-      phone: "123-456-7890",
-      linkedin: "https://www.linkedin.com",
-      image: "S",
-      email: "/contactus",
-    },
-
-    {
-      name: "Aum Patel",
-      phone: "123-456-7890",
-      linkedin: "https://www.linkedin.com",
-      image: "A",
-      email: "/contactus",
-    },
-    {
-      name: "Divy Patel",
-      phone: "123-456-7890",
-      linkedin: "https://www.linkedin.com",
-      image: "D",
-      email: "/contactus",
-    },
-
-    {
-      name: "Vedant Shah",
-      phone: "123-456-7890",
-      linkedin: "https://www.linkedin.com",
-      image: "V",
-      email: "/contactus",
-    },
-    {
-      name: "Nishith Parekh",
-      phone: "123-456-7890",
-      linkedin: "https://www.linkedin.com",
-      image: "N",
-      email: "/contactus",
-    },
-
-    // Add more contact cards as needed
-  ];
-  const pageStyle = {
-    // Center horizontally
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: "center",
-    marginLeft:"20px",
-    maxWidth:"100%"
-  };
+function ContactUs() {
   return (
-    <>
-      <div style={{overflow:"hidden"}}>
-
-    
-      <div style={{ pageStyle }}>
-        <Typography
-          variant="h3"
-          style={{ marginTop:"10px",fontWeight: "bold", textAlign: "center" }}
-        >
-          Contact Us
-        </Typography>
-        <div >
-          <Grid
-            container
-            spacing={5}
-            style={{marginTop:"10px",marginLeft:"50px",maxWidth:"100%"}}
-            
-          >
-            {contactInfo.map((contact, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                <Card style={cardStyle}>
-                  <Link
-                    href={contact.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <Avatar
-                      src={contact.image}
-                      alt={contact.name}
-                      style={avatarStyle}
-                    />
-                  </Link>
-
-                  <CardContent style={{ flex: 1 }}>
-                    <Typography variant="h6" align="center">
-                      {contact.name}
-                    </Typography>
-                    <Typography variant="body1" align="center">
-                      <span
-                        style={{
-                          verticalAlign: "middle",
-                          marginRight: "8px",
-                          fontSize: "1.2em",
-                          
-                        }}
-                      >
-                        <FaPhone />
-                      </span>
-                      {contact.phone}
-                    </Typography>
-                    <Typography variant="body1" align="center">
-                      {" "}
-                      <Link
-                        href={contact.email}
-                        rel="noopener noreferrer"
-                        style={{ textDecoration: "none" }}
-                      >
-                        <EmailIcon style={linkedinIconStyle} />
-                        {contact.name}'s E-Mail
-                      </Link>
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </div >
-      </div >
-    </div>
-    </>
+      <section className="contact" id="contact">
+        <div className="container">
+          <div className="heading text-center">
+            <h2>Contact
+              <span> Us </span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              <br />incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+          <div className="row">
+            <div className="col-md-5">
+              <div className="title">
+                <h3>Contact detail</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
+              </div>
+              <div className="content">
+                {/* Info-1 */}
+                <div className="info">
+                  <i className="fas fa-mobile-alt" />
+                  <h4 className="d-inline-block">PHONE :
+                    <br />
+                    <span>+12457836913 , +12457836913</span></h4>
+                </div>
+                {/* Info-2 */}
+                <div className="info">
+                  <i className="far fa-envelope" />
+                  <h4 className="d-inline-block">EMAIL :
+                    <br />
+                    <span>example@info.com</span></h4>
+                </div>
+                {/* Info-3 */}
+                <div className="info">
+                  <i className="fas fa-map-marker-alt" />
+                  <h4 className="d-inline-block">ADDRESS :<br />
+                    <span>6743 last street , Abcd, Xyz</span></h4>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-7">
+              <form>
+                <div className="row">
+                  <div className="col-sm-6">
+                    <input type="text" className="form-control" placeholder="Name" />
+                  </div>
+                  <div className="col-sm-6">
+                    <input type="email" className="form-control" placeholder="Email" />
+                  </div>
+                  <div className="col-sm-12">
+                    <input type="text" className="form-control" placeholder="Subject" />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <textarea className="form-control" rows={5} id="comment" placeholder="Message" defaultValue={""} />
+                </div>
+                <button className="btn btn-block" type="submit">Send Now!</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
   );
-};
+}
 
 export default ContactUs;
