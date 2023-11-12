@@ -5,10 +5,6 @@ import { Button, Paper, Typography } from '@mui/material';
 export const Errored = () => {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const companyInfoJSON = localStorage.getItem('companyInfo');
-    }, []);
-
     return (
         <div style={{
             position: "relative",
