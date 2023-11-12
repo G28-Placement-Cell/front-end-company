@@ -7,9 +7,7 @@ export const Errored = () => {
 
     useEffect(() => {
         const companyInfoJSON = localStorage.getItem('companyInfo');
-        const companyInfo = JSON.parse(companyInfoJSON);
-
-    }, [navigate]);
+    }, []);
 
     return (
         <div style={{
