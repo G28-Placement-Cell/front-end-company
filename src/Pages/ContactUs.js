@@ -6,16 +6,16 @@ function ContactUs() {
       <section className="contact" id="contact">
         <div className="container">
           <div className="heading text-center">
-            <h2>Contact
-              <span> Us </span></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              <br />incididunt ut labore et dolore magna aliqua.</p>
+            <h2>Contact Us</h2>
+                               
+            <p>The Placement Cell at DA-IICT is a concept in its own form. It has the following structure comprising of three important parts viz. the placement office comprising of the Manager (Placements) and placement secretary, the faculty members and finally the student representatives from each stream. The structure aims at touching all the aspects required for the smooth functioning of placement process.
+             </p>
           </div>
           <div className="row">
             <div className="col-md-5">
               <div className="title">
                 <h3>Contact detail</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
+                {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p> */}
               </div>
               <div className="content">
                 {/* Info-1 */}
@@ -30,34 +30,24 @@ function ContactUs() {
                   <i className="far fa-envelope" />
                   <h4 className="d-inline-block">EMAIL :
                     <br />
-                    <span>example@info.com</span></h4>
+                    <span> placement@daiict.ac.in</span></h4>
                 </div>
                 {/* Info-3 */}
                 <div className="info">
                   <i className="fas fa-map-marker-alt" />
-                  <h4 className="d-inline-block">ADDRESS :<br />
-                    <span>6743 last street , Abcd, Xyz</span></h4>
+                  <h4 className="d-inline-block">ADDRESS :<br /></h4>
+                   <h4> Dhirubhai Ambani Institute of Information and Communication Technology, Near Indroda Circle, Gandhinagar - 382 007, Gujarat (India)</h4>
                 </div>
               </div>
             </div>
             <div className="col-md-7">
-              <form>
-                <div className="row">
-                  <div className="col-sm-6">
-                    <input type="text" className="form-control" placeholder="Name" />
-                  </div>
-                  <div className="col-sm-6">
-                    <input type="email" className="form-control" placeholder="Email" />
-                  </div>
-                  <div className="col-sm-12">
-                    <input type="text" className="form-control" placeholder="Subject" />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <textarea className="form-control" rows={5} id="comment" placeholder="Message" defaultValue={""} />
-                </div>
-                <button className="btn btn-block" type="submit">Send Now!</button>
-              </form>
+             
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.4972641895024!2d72.6263405749077!3d23.18854191011498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a3c9618d2c5%3A0xc54de484f986b1fa!2sDA-IICT!5e0!3m2!1sen!2sin!4v1699774054316!5m2!1sen!2sin"
+             width="600" height="300" 
+             style={{border:"0"}} allowfullscreen="" 
+             loading="lazy" 
+             referrerpolicy="no-referrer-when-downgrade"></iframe>
+             
             </div>
           </div>
         </div>
