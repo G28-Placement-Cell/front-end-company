@@ -36,7 +36,7 @@ function ResetPassword() {
   };
 
   return (
-    <div className="maincp" style={{ marginTop: 0, paddingTop: '20px' }}>
+    <div className="maincp">
       <div className="change-password-container">
         <h2>Reset Password</h2>
         <form id='uploadForm' onSubmit={submitHandler}>
