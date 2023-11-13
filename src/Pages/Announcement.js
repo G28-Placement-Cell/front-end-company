@@ -28,7 +28,27 @@ const Announcements = ({ title }) => {
   const [loading, setLoading] = useState(true); // Add loading state
   const [searchInput, setSearchInput] = useState(""); // Add searchInput state
   const [filteredAnnouncements, setFilteredAnnouncements] = useState([]); // Add filteredAnnouncements state
-
+  useEffect(() => {
+    console.log(localStorage.getItem('token'));
+    fetch('http://localhost:8000/api/company/profile', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    }).then((res) => res.json()).then((data) => {
+      console.log(data);
+      console.log(data.comp.isVerified)
+      if (data.comp.isVerified == false) {
+        // alert("Your profile is not verified yet");
+        navigate('/nv');
+      }
+      setLoading(false);
+    }).catch((err) => {
+      console.log(err);
+      setLoading(false);
+    });
+  }, [])
   useEffect(() => {
     fetch(`http://localhost:8000/api/announcements/company/${id}`, {
       method: 'GET',
@@ -49,23 +69,6 @@ const Announcements = ({ title }) => {
   // console.log(id);
 
 
-
-  const handleAnnouncementChange = (e) => {
-    setAnnouncementText(e.target.value);
-  };
-
-  const handleSubmitAnnouncement = () => {
-    if (announcementText.trim() !== '') {
-      const newAnnouncement = {
-        id: new Date().getTime(),
-        text: announcementText,
-        timestamp: new Date().toLocaleString(),
-      };
-
-      setAnnouncements([...announcements, newAnnouncement]);
-      setAnnouncementText('');
-    }
-  };
 
   // Simulate loading for 2 seconds (you should replace this with your actual data fetching code)
   useEffect(() => {
