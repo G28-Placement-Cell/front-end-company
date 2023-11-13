@@ -37,10 +37,20 @@ function Header() {
           component="div"
           sx={{ flexGrow: 1, marginLeft: 2 }}
         >
-          Placement Cell
+          {
+            companyInfo ?
+
+              < span onClick={() => navigate('/profile')} style={{ cursor: 'pointer' }}>
+                Placement Cell
+              </span>
+              :
+              <span onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+                Placement Cell
+              </span>
+          }
         </Typography>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Button color='inherit' style={{ minWidth: '16vh' }} onClick={() => navigate('/ContactUs')}>Contact Us</Button>
+          <Button color='inherit' style={{ minWidth: '16vh' }} onClick={() => navigate('/ContactUs')}>Contact Us</Button>
           <Button color='inherit' style={{ minWidth: '16vh' }} onClick={() => navigate('/aboutus')}>About Us</Button>
         </div>
       </Toolbar>
