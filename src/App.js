@@ -214,7 +214,7 @@ function App() {
           <Route exact path="/moredetails/:id" element={<Details posts={posts} />} />
           <Route path='/aboutus' element={<AboutUs />} />
           <Route exact path="/editpost/:id" element={<EditPost />} />
-          <Route path="/seereg" element={<Tablet />}></Route>
+          <Route path="/seereg/:id" element={<Tablet />}></Route>
           <Route path='/logout' element={<LogOut />}></Route>
           <Route path="*" element={<Errored />} />
           {/* </Switch> */}

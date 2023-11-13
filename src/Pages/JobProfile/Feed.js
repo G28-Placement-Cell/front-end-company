@@ -235,7 +235,7 @@ const Feeds = ({ title }) => {
                             }}
                           >
                             {/* <Link to={`/seereg`}> */}
-                            <button onClick={() => navigate('/seereg')} style={{ backgroundColor: '#2B2442', width: '200px', borderRadius: '5px' }}>
+                            <button onClick={() => navigate(`/seereg/${jobProfile._id}`)} style={{ backgroundColor: '#2B2442', width: '200px', borderRadius: '5px' }}>
                               See registered students
                             </button>
 

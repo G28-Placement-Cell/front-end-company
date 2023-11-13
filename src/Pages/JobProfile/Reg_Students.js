@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
@@ -9,8 +9,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 // import 'react-data-grid/lib/styles.css';
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -39,14 +40,76 @@ function createData(name, Student_Id, CPI, Resume) {
 }
 
 export const Tablet = () => {
-  const [stats, setStatus] = useState(true);
+  const jobId = useParams()?.id;
 
-  const rows = [
-    // Your data here
-  ];
+  const [regStudents, setRegStudents] = useState([]);
+  const [students, setStudents] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`http://localhost:8000/api/jobprofile/${jobId}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        'authorization': `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setRegStudents(data.applicants);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  }, [jobId]);
+
+  useEffect(() => {
+    const fetchStudentDetails = async () => {
+      const studentDetails = await Promise.all(
+        regStudents.map(async (student) => {
+          try {
+            const response = await fetch(`http://localhost:8000/api/student/${student}`, {
+              method: "GET",
+              headers: {
+                "content-type": "application/json",
+                'authorization': `Bearer ${localStorage.getItem("token")}`,
+              },
+            });
+
+            if (response.ok) {
+              const data = await response.json();
+              console.log(data.studentExist);
+              return data.studentExist; // Assuming that the student details are available in data.student
+            } else {
+              console.error(`Failed to fetch details for student with _id: ${student._id}`);
+              return null;
+            }
+          } catch (error) {
+            console.error(`Error while fetching details for student with _id: ${student._id}`, error);
+            return null;
+          }
+        })
+      );
+
+      setStudents(studentDetails.filter((detail) => detail !== null));
+    };
+
+    if (regStudents.length > 0) {
+      fetchStudentDetails();
+    }
+  }, [regStudents]);
 
   const openPDF = (filename) => {
     window.open(filename, '_blank');
+  };
+
+  const handleClickResume = async (resumeUrl) => {
+    if (!resumeUrl) {
+      return;
+    }
+    window.open(`http://localhost:8000/api/student/files/resume/${resumeUrl}`);
   };
 
   const handleButtonClick = (filename) => (event) => {
@@ -60,23 +123,49 @@ export const Tablet = () => {
         <Table stickyHeader sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="left">NAME</StyledTableCell>
               <StyledTableCell align="left">STUDENT ID</StyledTableCell>
+              <StyledTableCell align="left">NAME</StyledTableCell>
               <StyledTableCell align="left">CPI</StyledTableCell>
-              <StyledTableCell align="left">RESUME</StyledTableCell>
+              <StyledTableCell align="right">RESUME</StyledTableCell>
+              <StyledTableCell align="right">ACTION</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <StyledTableRow className="mt-10 py-10" key={row.name}>
-                <StyledTableCell align="left">{row.name}</StyledTableCell>
-                <StyledTableCell align="left">{row.Student_Id}</StyledTableCell>
-                <StyledTableCell align="left">{row.CPI}</StyledTableCell>
-                <StyledTableCell align="left">
-                <Button component={Link} to={row.Resume} sx={{backgroundColor:"#493D72", color:"white",'&:hover': {
-          backgroundColor: '#493D72', color:"white"
-        },}} onClick={handleButtonClick(row.Resume)}>
+            {students && students.length > 0 && students.map((row, index) => (
+              <StyledTableRow className="mt-10 py-10" key={index}>
+                <StyledTableCell align="left">{row?.student_id}</StyledTableCell>
+                <StyledTableCell align="left">{row?.name} {row?.surname}</StyledTableCell>
+                <StyledTableCell align="left">{row?.cpi}</StyledTableCell>
+                <StyledTableCell align="right">
+                  <Button
+                    sx={{
+                      width: '150px',
+                      backgroundColor: "#2B2442",
+                      color: "white",
+                      "&:hover": {
+                        backgroundColor: "#493D72",
+                        color: "white",
+                      },
+                    }}
+                    onClick={() => handleClickResume(row?.resume)}
+                  >
                     SEE RESUME
+                  </Button>
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  <Button
+                    sx={{
+                      width: '150px',
+                      backgroundColor: "#2B2442",
+                      color: "white",
+                      "&:hover": {
+                        backgroundColor: "#493D72",
+                        color: "white",
+                      },
+                    }}
+                    onClick={handleButtonClick(row?.Resume)}
+                  >
+                    SELECT
                   </Button>
                 </StyledTableCell>
               </StyledTableRow>
