@@ -21,6 +21,7 @@ const AnnouncementSection = ({ title }) => {
   const [announcements, setAnnouncements] = useState([]);
   const [announcementText, setAnnouncementText] = useState('');
   const [loading, setLoading] = useState(true); // Add loading state
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('http://localhost:8000/api/announcements/admin/company', {
@@ -40,32 +41,6 @@ const AnnouncementSection = ({ title }) => {
       });
   }, []);
 
-
-  const handleAnnouncementChange = (e) => {
-    setAnnouncementText(e.target.value);
-  };
-
-  const handleSubmitAnnouncement = () => {
-    if (announcementText.trim() !== '') {
-      const newAnnouncement = {
-        id: new Date().getTime(),
-        text: announcementText,
-        timestamp: new Date().toLocaleString(),
-      };
-
-      setAnnouncements([...announcements, newAnnouncement]);
-      setAnnouncementText('');
-    }
-  };
-
-  // Simulate loading for 2 seconds (you should replace this with your actual data fetching code)
-  // useEffect(() => {
-  //     setTimeout(() => {
-  //         setLoading(false);
-  //     }, 2000);
-  // }, []);
-
-  const navigate = useNavigate();
 
   return (
     <div style={{
