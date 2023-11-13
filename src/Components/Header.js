@@ -1,11 +1,7 @@
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import React, { useState } from "react";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
-import { SidebarData } from "../Sidebared/Sidebar";
 import "../Sidebared/Navbar.css";
-import { IconContext } from "react-icons";
 import { useDispatch } from "react-redux";
 import { useLogoutMutation } from "../slices/company/companyApislice";
 import { logout } from "../slices/company/authslice";

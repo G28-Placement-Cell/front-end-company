@@ -75,3 +75,11 @@
     font-weight: 300;
     color: #301c4a;
 }
+
+@media(max-width:1060px)
+{
+    .map-container iframe {
+        width:400px;
+        height: 300px;
+    }
+}
