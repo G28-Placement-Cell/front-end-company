@@ -32,6 +32,7 @@ import Announcements from "./Pages/Announcement.js"
 import AddAnnouncement from './Pages/Addannouncement.js';
 import ForgotPass from './Pages/ForgotPass.js';
 import LogOut from './Pages/LogOut.js';
+import NotVerified from './Pages/NotVerified.js';
 
 // import AddAnnouncement from './Pages/Addannouncement.js';
 // import Footer from './Pages/JobProfile/Footer';
@@ -182,6 +183,7 @@ function App() {
           <Route exact path="/aboutus" element={<AboutUs />} />
           <Route exact path="/contactus" element={<ContactUs />} />
           <Route exact path="/forgotpass" element={<ForgotPass />} />
+          <Route exact path="/nv" element={<NotVerified />} />
           {/* <Route exact path="/seepost" element = {<SeePost posts={searchResults} isLoading={isLoading} />} /> */}
           <Route exact path="/newpost"
             element={<NewPost
