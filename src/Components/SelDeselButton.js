@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '@mui/material';
 
 const SelDeselButton = ({ stuId, jobId, shortlisted }) => {
-    
+
     const [selected, setSelected] = useState(shortlisted);
 
     // console.log(shortlisted);
@@ -56,10 +56,10 @@ const SelDeselButton = ({ stuId, jobId, shortlisted }) => {
             <Button
                 sx={{
                     width: '150px',
-                    backgroundColor: "#2B2442",
+                    backgroundColor: selected ? "#493D72" : "#2B2442",
                     color: "white",
                     "&:hover": {
-                        backgroundColor: "#493D72",
+                        backgroundColor: selected ? "#2B2442" : "#493D72",
                         color: "white",
                     },
                 }}
