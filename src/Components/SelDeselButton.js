@@ -5,7 +5,7 @@ const SelDeselButton = ({ stuId, jobId, shortlisted }) => {
     
     const [selected, setSelected] = useState(shortlisted);
 
-    console.log(shortlisted);
+    // console.log(shortlisted);
 
     const handleSelect = async () => {
         try {
