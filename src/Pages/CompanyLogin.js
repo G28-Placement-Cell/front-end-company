@@ -50,7 +50,7 @@ export const CompanyLogin = () => {
             navigate('/profile');
         } catch (error) {
             toast.error(error.data.message);
-            console.log(error);
+            // (error);console.log
         }
     }
 

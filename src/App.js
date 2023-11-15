@@ -1,14 +1,12 @@
 import './CSS_files/App.css';
-// import Navbar from './Pages/Navbar';
 import {
   Route,
   Routes,
   BrowserRouter as Router,
 } from "react-router-dom";
 import { Tablet } from "./Pages/JobProfile/Reg_Students.js"
-import { useState, useEffect } from "react";
+import { useState,} from "react";
 import api from "./api/posts.js";
-import Announcement from "./Pages/Announcement.js";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword.js";
 import ResetPassword from './Pages/ResetPassword/ResetPassword';
 import ContactUs from "./Pages/ContactUs.js";
@@ -19,9 +17,6 @@ import SeePost from "./Pages/JobProfile/Seepost.js";
 import NewPost from "./Pages/JobProfile/Newpost.js";
 import EditPost from "./Pages/JobProfile/Editpost.js";
 import Details from "./Pages/JobProfile/Details.js";
-import AnnouncementSectionStudent from './Pages/AnnouncementSectionStudent';
-import AddAnnouncementStudent from './Pages/AddAnnouncementStudent';
-// import FooterJ from './Pages/JobProfile/Footer';
 import { Errored } from "./Pages/Errored.js";
 import { CompanyLogin } from "./Pages/CompanyLogin.js";
 import { CompanyRegister } from "./Pages/CompanyRegister.js";
@@ -34,14 +29,8 @@ import ForgotPass from './Pages/ForgotPass.js';
 import LogOut from './Pages/LogOut.js';
 import NotVerified from './Pages/NotVerified.js';
 
-// import AddAnnouncement from './Pages/Addannouncement.js';
-// import Footer from './Pages/JobProfile/Footer';
-
-
-
 function App() {
   const [posts, setPosts] = useState([]);
-  const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [editName, seteditName] = useState("");
@@ -56,8 +45,6 @@ function App() {
   const [companytype, setCompanytype] = useState("");
   const [CTC, setCTC] = useState("");
   const [stipend, setStipend] = useState("");
-
-  // const navigate = useNavigate();
 
   const handleEdit = async (id) => {
     const updatedPost = {
@@ -90,9 +77,8 @@ function App() {
       setStipend("");
       setCompanytype("");
       setLocation("");
-      // navigate('/');
     } catch (err) {
-      console.log(`Error : ${err.message}`);
+      // console.log(`Error : ${err.message}`);
     }
   };
   const handleSubmit = async (e) => {
@@ -130,41 +116,7 @@ function App() {
     // navigate('/');
   };
 
-  // useEffect(() => {
-  //   const filteredResults = posts.filter(
-  //     (post) =>
-  //       post.name.toLowerCase().includes(search.toLowerCase()) ||
-  //       post.name.toLowerCase().includes(search.toLowerCase())
-  //   );
-  //   setSearchResults(filteredResults);
-  // }, [posts, search]);
-
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   async function fetchPosts() {
-  //     try {
-  //       console.log("hii");
-  //       const response = await api.get("/posts");
-  //       setPosts(response.data);
-  //     } catch (err) {
-  //       if (err.response) {
-  //         console.log(err.response.data);
-  //         console.log(err.response.status);
-  //         console.log(err.response.headers);
-  //       } else {
-  //         console.log(`Error : ${err.message}`);
-  //       }
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   }
-  //   setTimeout(() => {
-  //     fetchPosts();
-  //   }, 2000);
-  // }, []);
-
   return (
-    // <div >
     <Router>
       <Header />
       <div style={{ minHeight: "84vh", backgroundColor: "#E4EAF5" }}>
@@ -184,7 +136,6 @@ function App() {
           <Route exact path="/contactus" element={<ContactUs />} />
           <Route exact path="/forgotpass" element={<ForgotPass />} />
           <Route exact path="/nv" element={<NotVerified />} />
-          {/* <Route exact path="/seepost" element = {<SeePost posts={searchResults} isLoading={isLoading} />} /> */}
           <Route exact path="/newpost"
             element={<NewPost
               handleSubmit={handleSubmit}
@@ -219,7 +170,6 @@ function App() {
           <Route path="/seereg/:id" element={<Tablet />}></Route>
           <Route path='/logout' element={<LogOut />}></Route>
           <Route path="*" element={<Errored />} />
-          {/* </Switch> */}
         </Routes>
       </div>
       <Footer />

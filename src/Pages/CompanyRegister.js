@@ -42,7 +42,7 @@ export const CompanyRegister = () => {
             dispatch(logout());
             navigate("/");
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     };
 
@@ -81,7 +81,7 @@ export const CompanyRegister = () => {
                 logoutHandler();
                 navigate('/');
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
         else {
@@ -92,7 +92,7 @@ export const CompanyRegister = () => {
         // <>
         // <CssBaseline />
         <div style={{ backgroundColor: '#e4eaf5' }}>
-            {console.log("CompanyRegister.js")}
+            {/* {console.log("CompanyRegister.js")} */}
             <Typography variant="h4" sx={{ pt: 3, fontWeight: "bold", textAlign: "center" }}>
                 Company Registration
             </Typography>

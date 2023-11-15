@@ -62,7 +62,7 @@ export const Tablet = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setLoading(false);
       });
   }, [jobId]);

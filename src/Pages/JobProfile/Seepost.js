@@ -8,7 +8,7 @@ export default function See(props) {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
-    console.log(localStorage.getItem('token'));
+    // console.log(localStorage.getItem('token'));
     fetch('https://back-end-production-ee2f.up.railway.app/api/company/profile', {
       method: 'GET',
       headers: {
@@ -16,15 +16,15 @@ export default function See(props) {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     }).then((res) => res.json()).then((data) => {
-      console.log(data);
-      console.log(data.comp.isVerified)
+      // console.log(data);
+      // console.log(data.comp.isVerified)
       if (data.comp.isVerified == false) {
         // alert("Your profile is not verified yet");
         navigate('/nv');
       }
       setLoading(false);
     }).catch((err) => {
-      console.log(err);
+      // console.log(err);
       setLoading(false);
     });
   }, [])

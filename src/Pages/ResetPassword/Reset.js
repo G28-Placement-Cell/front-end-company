@@ -24,14 +24,14 @@ function ResetPassword() {
     try {
       // console.log('ok');
       const resetId = localStorage.getItem('resetId');
-      console.log(resetId);
+      // console.log(resetId);
       const res = await reset_apply({ otp, password, resetId }).unwrap();
       dispatch(removeReset());
       toast.success(res.message);
       navigate('/');
     } catch (err) {
       toast.error(err?.data?.message || err.error);
-      console.log(err);
+      // console.log(err);
     }
   };
 

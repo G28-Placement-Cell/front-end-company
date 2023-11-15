@@ -40,7 +40,7 @@ const AnnouncementSection = ({ title }) => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setLoading(false);
       });
   }, []);
@@ -71,15 +71,6 @@ const AnnouncementSection = ({ title }) => {
       setAnnouncementText('');
     }
   };
-
-  // Simulate loading for 2 seconds (you should replace this with your actual data fetching code)
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 2000);
-  // }, []);
-
-
   const navigate = useNavigate();
 
   return (

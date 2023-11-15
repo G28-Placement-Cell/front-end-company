@@ -9,7 +9,7 @@ export default function Newpost() {
 
   if (companyId) {
     // You have the company ID now. You can use it in your code.
-    console.log('Company ID:', companyId);
+    // console.log('Company ID:', companyId);
   } else {
     console.error('Company ID not found in local storage.');
   }
@@ -58,11 +58,11 @@ export default function Newpost() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('POST request successful', data);
+        // console.log('POST request successful', data);
         navigate('/jobprofile');
       })
       .catch((error) => {
-        console.log('POST request failed', error);
+        // console.log('POST request failed', error);
         console.error('Error sending POST request', error);
       });
   };

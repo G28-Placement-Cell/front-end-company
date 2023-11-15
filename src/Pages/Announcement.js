@@ -22,14 +22,14 @@ const Announcements = ({ title }) => {
   // const {id} = useParams();
   const company_id = localStorage.getItem('companyInfo');
   const id = company_id ? JSON.parse(company_id)._id : null;
-  console.log(id);
+  // console.log(id);
   const [announcements, setAnnouncements] = useState([]);
   const [announcementText, setAnnouncementText] = useState('');
   const [loading, setLoading] = useState(true); // Add loading state
   const [searchInput, setSearchInput] = useState(""); // Add searchInput state
   const [filteredAnnouncements, setFilteredAnnouncements] = useState([]); // Add filteredAnnouncements state
   useEffect(() => {
-    console.log(localStorage.getItem('token'));
+    // console.log(localStorage.getItem('token'));
     fetch('https://back-end-production-ee2f.up.railway.app/api/company/profile', {
       method: 'GET',
       headers: {
@@ -37,15 +37,15 @@ const Announcements = ({ title }) => {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     }).then((res) => res.json()).then((data) => {
-      console.log(data);
-      console.log(data.comp.isVerified)
+      // console.log(data);
+      // console.log(data.comp.isVerified)
       if (data.comp.isVerified == false) {
         // alert("Your profile is not verified yet");
         navigate('/nv');
       }
       setLoading(false);
     }).catch((err) => {
-      console.log(err);
+      // console.log(err);
       setLoading(false);
     });
   }, [])
@@ -62,7 +62,7 @@ const Announcements = ({ title }) => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setLoading(false);
       });
   }, []);
