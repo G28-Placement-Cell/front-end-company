@@ -24,7 +24,7 @@ const AnnouncementSection = ({ title }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/announcements/admin/company', {
+    fetch('https://back-end-production-ee2f.up.railway.app/api/announcements/admin/company', {
       method: 'GET',
       headers: {
         'content-type': 'application/json',

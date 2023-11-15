@@ -9,7 +9,7 @@ const SelDeselButton = ({ stuId, jobId, shortlisted }) => {
 
     const handleSelect = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/api/jobprofile/shortlist/${jobId}/${stuId}`, {
+            const response = await fetch(`https://back-end-production-ee2f.up.railway.app/api/jobprofile/shortlist/${jobId}/${stuId}`, {
                 method: "PUT",
                 headers: {
                     "content-type": "application/json",
@@ -31,7 +31,7 @@ const SelDeselButton = ({ stuId, jobId, shortlisted }) => {
 
     const handleDeselect = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/api/jobprofile/shortlist/${jobId}/${stuId}`, {
+            const response = await fetch(`https://back-end-production-ee2f.up.railway.app/api/jobprofile/shortlist/${jobId}/${stuId}`, {
                 method: "DELETE",
                 headers: {
                     "content-type": "application/json",

@@ -8,7 +8,7 @@ function ComanyProfile() {
 
     useEffect(() => {
         console.log(localStorage.getItem('token'));
-        fetch('http://localhost:8000/api/company/profile', {
+        fetch('https://back-end-production-ee2f.up.railway.app/api/company/profile', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

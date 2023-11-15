@@ -39,7 +39,7 @@ const Feeds = ({ title }) => {
   const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/jobprofile/company/${_id}`, {
+    fetch(`https://back-end-production-ee2f.up.railway.app/api/jobprofile/company/${_id}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
