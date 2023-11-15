@@ -10,7 +10,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { Link, useParams } from 'react-router-dom';
+import SelDeselButton from '../../Components/SelDeselButton';
 // import 'react-data-grid/lib/styles.css';
+
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -35,16 +37,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name, Student_Id, CPI, Resume) {
-  return { name, Student_Id, CPI, Resume };
-}
-
 export const Tablet = () => {
   const jobId = useParams()?.id;
+  // console.log(jobId);
 
   const [regStudents, setRegStudents] = useState([]);
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selected, setSelected] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:8000/api/jobprofile/${jobId}`, {
@@ -56,7 +56,9 @@ export const Tablet = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        // console.log(data,'lol');
         setRegStudents(data.applicants);
+        setSelected(data.selected);
         setLoading(false);
       })
       .catch((err) => {
@@ -80,7 +82,7 @@ export const Tablet = () => {
 
             if (response.ok) {
               const data = await response.json();
-              console.log(data.studentExist);
+              // console.log(data.studentExist);
               return data.studentExist; // Assuming that the student details are available in data.student
             } else {
               console.error(`Failed to fetch details for student with _id: ${student._id}`);
@@ -101,10 +103,6 @@ export const Tablet = () => {
     }
   }, [regStudents]);
 
-  const openPDF = (filename) => {
-    window.open(filename, '_blank');
-  };
-
   const handleClickResume = async (resumeUrl) => {
     if (!resumeUrl) {
       return;
@@ -112,10 +110,7 @@ export const Tablet = () => {
     window.open(`http://localhost:8000/api/student/files/resume/${resumeUrl}`);
   };
 
-  const handleButtonClick = (filename) => (event) => {
-    event.preventDefault();
-    openPDF(filename);
-  };
+  const studentsExist = Array.isArray(students) && students.length > 0;
 
   return (
     <>
@@ -131,7 +126,7 @@ export const Tablet = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {students && students.length > 0 && students.map((row, index) => (
+            {studentsExist && students.map((row, index) => (
               <StyledTableRow className="mt-10 py-10" key={index}>
                 <StyledTableCell align="left">{row?.student_id}</StyledTableCell>
                 <StyledTableCell align="left">{row?.name} {row?.surname}</StyledTableCell>
@@ -147,26 +142,19 @@ export const Tablet = () => {
                         color: "white",
                       },
                     }}
+                    variant='contained'
+                    disabled={!row?.resume}
                     onClick={() => handleClickResume(row?.resume)}
                   >
                     SEE RESUME
                   </Button>
                 </StyledTableCell>
                 <StyledTableCell align="right">
-                  <Button
-                    sx={{
-                      width: '150px',
-                      backgroundColor: "#2B2442",
-                      color: "white",
-                      "&:hover": {
-                        backgroundColor: "#493D72",
-                        color: "white",
-                      },
-                    }}
-                    onClick={handleButtonClick(row?.Resume)}
-                  >
-                    SELECT
-                  </Button>
+                  <SelDeselButton
+                    stuId={row._id}
+                    jobId={jobId}
+                    shortlisted={selected.some(student => student === row?._id)}
+                  />
                 </StyledTableCell>
               </StyledTableRow>
             ))}
