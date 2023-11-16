@@ -45,7 +45,7 @@ function ComanyProfile() {
                             <div className="mt-3">
                                 <h4>{company?.companyname}</h4>
                                 {
-                                    company?.verified ? <p id="verify" className="text-muted font-size-sm">Company profile is APPROVED </p> : <p id="verify" className="text-muted font-size-sm">Company profile is NOT APPROVED </p>
+                                    company?.is_verified ? <p id="verify" className="text-muted font-size-sm">Company profile is APPROVED </p> : <p id="verify" className="text-muted font-size-sm">Company profile is NOT APPROVED </p>
                                 }
                             </div>
                         </div>
