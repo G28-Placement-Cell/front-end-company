@@ -25,6 +25,7 @@ import AboutUs from './Pages/AboutUs.js';
 import AnnouncementSection from "./Pages/Adminannoun.js"
 import Announcements from "./Pages/Announcement.js"
 import AddAnnouncement from './Pages/Addannouncement.js';
+import PendingStudent from './Pages/JobProfile/StudentProfile.js';
 import ForgotPass from './Pages/ForgotPass.js';
 import LogOut from './Pages/LogOut.js';
 import NotVerified from './Pages/NotVerified.js';
@@ -164,6 +165,7 @@ function App() {
               stipend={stipend}
               setStipend={setStipend}
             />} />
+          <Route path='/profile/:id' element={<PendingStudent />} />
           <Route exact path="/moredetails/:id" element={<Details posts={posts} />} />
           <Route path='/aboutus' element={<AboutUs />} />
           <Route exact path="/editpost/:id" element={<EditPost />} />

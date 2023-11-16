@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../slices/company/authslice";
 import { useLogoutMutation } from "../slices/company/companyApislice";
 import { logout } from "../slices/company/authslice";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -36,6 +38,8 @@ export const CompanyRegister = () => {
     const [logoutapicall] = useLogoutMutation();
     const navigate = useNavigate();
 
+    
+
     const logoutHandler = async () => {
         try {
             await logoutapicall().unwrap();
@@ -63,7 +67,13 @@ export const CompanyRegister = () => {
     }
 
     const [register] = useRegisterMutation();
+    
     // const navigate = useNavigate();
+    // const isValidNumber = /^[0-9]{10}$/.test(contact) && parseInt(contact, 10) >= 0;
+    //     if (!isValidNumber) {
+    //         toast.error("Please enter valid mobile number");
+    //         return;
+    //     }
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -88,6 +98,9 @@ export const CompanyRegister = () => {
             alert("Registration failed. Please try again.");
         }
     }
+
+    
+
     return (
         // <>
         // <CssBaseline />

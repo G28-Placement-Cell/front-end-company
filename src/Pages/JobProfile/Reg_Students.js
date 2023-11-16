@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import SelDeselButton from '../../Components/SelDeselButton';
 // import 'react-data-grid/lib/styles.css';
 
@@ -45,6 +45,27 @@ export const Tablet = () => {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState([]);
+  const [regStudentData, setRegStudentData] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    fetch("https://back-end-production-ee2f.up.railway.app/api/student/getregstudent", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setRegStudentData(data.regstudent);
+        setLoading(false); // Set loading to false when data is loaded
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false); // Set loading to false in case of an error
+      });
+  }, []);
 
   useEffect(() => {
     fetch(`https://back-end-production-ee2f.up.railway.app/api/jobprofile/${jobId}`, {
@@ -129,7 +150,7 @@ export const Tablet = () => {
             {studentsExist && students.map((row, index) => (
               <StyledTableRow className="mt-10 py-10" key={index}>
                 <StyledTableCell align="left">{row?.student_id}</StyledTableCell>
-                <StyledTableCell align="left">{row?.name} {row?.surname}</StyledTableCell>
+                <StyledTableCell align="left" onClick={() => navigate(`/profile/${row._id}`)} style={{ cursor: 'pointer' }}>{row?.name} {row?.surname}</StyledTableCell>
                 <StyledTableCell align="left">{row?.cpi}</StyledTableCell>
                 <StyledTableCell align="right">
                   <Button
