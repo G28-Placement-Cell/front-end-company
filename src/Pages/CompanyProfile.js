@@ -24,6 +24,7 @@ function ComanyProfile() {
         });
     }, [])
 
+    console.log(company);
     if (loading) return (<div>Loading...</div>);
 
     return (
@@ -43,9 +44,10 @@ function ComanyProfile() {
                         <div className="d-flex flex-column align-items-center text-center" style={{ justifyContent: 'center', alignItems: 'center' }}>
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width={150} />
                             <div className="mt-3">
+
                                 <h4>{company?.companyname}</h4>
                                 {
-                                    company?.verified ? <p id="verify" className="text-muted font-size-sm">Company profile is APPROVED </p> : <p id="verify" className="text-muted font-size-sm">Company profile is NOT APPROVED </p>
+                                    company?.isVerified ? <p id="verify" className="text-muted font-size-sm">Company profile is APPROVED </p> : <p id="verify" className="text-muted font-size-sm">Company profile is NOT APPROVED </p>
                                 }
                             </div>
                         </div>
@@ -59,7 +61,7 @@ function ComanyProfile() {
                             {company?.companyname}
                         </div>
                     </div> */}
-                    <hr />
+                    {/* <hr /> */}
                     <div className="row">
                         <div className="col-sm-3">
                             <h6 className="mb-0">Location</h6>
