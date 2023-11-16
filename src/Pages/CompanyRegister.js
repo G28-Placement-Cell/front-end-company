@@ -104,7 +104,7 @@ export const CompanyRegister = () => {
                         <Grid item container md={8} sx={{ justifyContent: "center", mb: 0 }}>
                             {/* <Grid item sx={{ borderRight: 0, borderColor: "divider", mr: 5 }}> */}
                             <div style={{ padding: "2rem 0 5rem" }}>
-                                <Grid container spacing={2}>
+                                <Grid container spacing={2} className="grid1">
                                     <TextField
                                         sx={{ mt: 2 }}
                                         label="Company Name"
