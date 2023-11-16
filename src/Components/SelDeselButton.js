@@ -56,7 +56,7 @@ const SelDeselButton = ({ stuId, jobId, shortlisted }) => {
             <Button
                 sx={{
                     width: '150px',
-                    backgroundColor: selected ? "#2B2442" : "#493D72",
+                    backgroundColor: selected ? "#493D72" : "#2B2442",
                     color: "white",
                     "&:hover": {
                         backgroundColor: selected ? "#493D72" : "#2B2442",
