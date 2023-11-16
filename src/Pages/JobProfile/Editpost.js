@@ -36,7 +36,7 @@ export default function Editpost() {
 
   useEffect(() => {
     // Fetch existing data for the job profile using jobId
-    fetch(`https://back-end-production-ee2f.up.railway.app/api/jobprofile/${jobId}`)
+    fetch(`https://back-end-production-3140.up.railway.app/api/jobprofile/${jobId}`)
       .then(response => response.json())
       .then(data => {
         // Set initial state with existing data
@@ -62,7 +62,7 @@ export default function Editpost() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    fetch(`https://back-end-production-ee2f.up.railway.app/api/jobprofile/${jobId}`, {
+    fetch(`https://back-end-production-3140.up.railway.app/api/jobprofile/${jobId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

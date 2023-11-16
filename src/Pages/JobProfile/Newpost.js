@@ -48,7 +48,7 @@ export default function Newpost() {
     };
 
     // Send a POST request to your backend using the fetch function
-    fetch('https://back-end-production-ee2f.up.railway.app/api/jobprofile', {
+    fetch('https://back-end-production-3140.up.railway.app/api/jobprofile', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
