@@ -28,8 +28,9 @@ export default function Newpost() {
   const [stipend, setStipend] = React.useState('');
   const [editBody, setEditBody] = React.useState('');
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
     // Parse and convert ctc to a number if it's a string
+    e.preventDefault();
     const ctcValue = isNaN(CTC) ? CTC : parseFloat(CTC);
 
     const newPost = {
@@ -68,6 +69,7 @@ export default function Newpost() {
   };
 
   return (
+    <form onSubmit={onSubmit}>
     <div style={{
       position: "relative",
       display: "flex",
@@ -76,7 +78,6 @@ export default function Newpost() {
     }}>
       <Paper sx={{ py: 1, px: 3 }} className="container">
         <Typography variant="h4" sx={{ textAlign: 'left', mt: 2, mb: 3 }}>Add a new Post</Typography>
-        <form onSubmit={onSubmit}>
           <Stack direction="column" spacing={2} sx={{ pb: 2 }}>
             <Typography variant="body1" sx={{ textAlign: 'left' }}>Name</Typography>
             <InputBase
@@ -193,13 +194,12 @@ export default function Newpost() {
               inputProps={{ 'aria-label': 'Description' }}
               required
             />
-
             <Button variant="contained" type="submit">
               Add the new Post
             </Button>
           </Stack>
-        </form>
       </Paper>
     </div>
+        </form>
   );
 }

@@ -67,7 +67,7 @@ const Feeds = ({ title }) => {
 
   const navigate = useNavigate();
 
-  const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+  const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true, timeZone: 'UTC'  };
 
 
   return (
@@ -100,7 +100,6 @@ const Feeds = ({ title }) => {
                           justifyContent: "space-between",
                         }}
                       >
-                        {/* <Typography>Name : {jobProfile.name}</Typography> */}
                       </div>
                     }
                     secondary={
@@ -165,7 +164,7 @@ const Feeds = ({ title }) => {
                               <h6 className="mb-0">Registration Starts from</h6>
                             </div>
                             <div className="col-sm-9 text-secondary">
-                              {new Date(jobProfile.registration_start_date).toLocaleDateString('en-GB', options)}
+                              {new Date(jobProfile.registration_start_date).toLocaleString('en-GB', options)}
                             </div>
                           </div>
                           <hr />
@@ -174,7 +173,7 @@ const Feeds = ({ title }) => {
                               <h6 className="mb-0">Registration Closes at</h6>
                             </div>
                             <div className="col-sm-9 text-secondary">
-                              {new Date(jobProfile.registration_end_date).toLocaleDateString('en-GB', options)}
+                              {new Date(jobProfile.registration_end_date).toLocaleString('en-GB', options)}
                             </div>
                           </div>
 
@@ -215,7 +214,7 @@ const Feeds = ({ title }) => {
                           }}
                           color="text.secondary"
                         >
-                          {new Date(jobProfile.registration_start_date).toLocaleString()}
+                          {new Date(jobProfile.registration_start_date).toLocaleString('en-GB', options)}
                         </Typography>
                         <Typography
                           sx={{
