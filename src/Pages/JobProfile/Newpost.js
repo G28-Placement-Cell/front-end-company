@@ -1,8 +1,12 @@
 import React from 'react';
 import { Button, Paper, Typography, Stack, InputBase, Select, MenuItem } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useJobProfileMutation } from '../../slices/company/companyApislice';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Newpost() {
+
 
   const companyInfo = JSON.parse(localStorage.getItem('companyInfo'));
   const companyId = companyInfo && companyInfo._id;
@@ -28,7 +32,9 @@ export default function Newpost() {
   const [stipend, setStipend] = React.useState('');
   const [editBody, setEditBody] = React.useState('');
 
-  const onSubmit = (e) => {
+
+  const [jobProfile] = useJobProfileMutation();
+  const submitHandler = async (e) => {
     // Parse and convert ctc to a number if it's a string
     e.preventDefault();
     const ctcValue = isNaN(CTC) ? CTC : parseFloat(CTC);
@@ -48,36 +54,45 @@ export default function Newpost() {
       job_description: editBody,
     };
 
+    try {
+      const response = await jobProfile(newPost).unwrap();
+      navigate('/jobprofile');
+      toast.success(response.message);
+    }
+    catch (error) {
+      toast.error(error.data.message);
+    }
+
     // Send a POST request to your backend using the fetch function
-    fetch('https://back-end-production-3140.up.railway.app/api/jobprofile', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-      },
-      body: JSON.stringify(newPost),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log('POST request successful', data);
-        navigate('/jobprofile');
-      })
-      .catch((error) => {
-        // console.log('POST request failed', error);
-        console.error('Error sending POST request', error);
-      });
+    // fetch('https://back-end-production-3140.up.railway.app/api/jobprofile', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': 'Bearer ' + localStorage.getItem('token')
+    //   },
+    //   body: JSON.stringify(newPost),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     // console.log('POST request successful', data);
+    //     navigate('/jobprofile');
+    //   })
+    //   .catch((error) => {
+    //     // console.log('POST request failed', error);
+    //     console.error('Error sending POST request', error);
+    //   });
   };
 
   return (
-    <form onSubmit={onSubmit}>
-    <div style={{
-      position: "relative",
-      display: "flex",
-      justifyContent: "center",
-      padding: "5vh 5vw",
-    }}>
-      <Paper sx={{ py: 1, px: 3 }} className="container">
-        <Typography variant="h4" sx={{ textAlign: 'left', mt: 2, mb: 3 }}>Add a new Post</Typography>
+    <form onSubmit={submitHandler}>
+      <div style={{
+        position: "relative",
+        display: "flex",
+        justifyContent: "center",
+        padding: "5vh 5vw",
+      }}>
+        <Paper sx={{ py: 1, px: 3 }} className="container">
+          <Typography variant="h4" sx={{ textAlign: 'left', mt: 2, mb: 3 }}>Add a new Post</Typography>
           <Stack direction="column" spacing={2} sx={{ pb: 2 }}>
             <Typography variant="body1" sx={{ textAlign: 'left' }}>Name</Typography>
             <InputBase
@@ -198,8 +213,8 @@ export default function Newpost() {
               Add the new Post
             </Button>
           </Stack>
-      </Paper>
-    </div>
-        </form>
+        </Paper>
+      </div>
+    </form>
   );
 }
