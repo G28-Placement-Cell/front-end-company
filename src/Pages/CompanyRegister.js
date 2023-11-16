@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../slices/company/authslice";
 import { useLogoutMutation } from "../slices/company/companyApislice";
 import { logout } from "../slices/company/authslice";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -36,13 +38,15 @@ export const CompanyRegister = () => {
     const [logoutapicall] = useLogoutMutation();
     const navigate = useNavigate();
 
+    
+
     const logoutHandler = async () => {
         try {
             await logoutapicall().unwrap();
             dispatch(logout());
             navigate("/");
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     };
 
@@ -63,7 +67,13 @@ export const CompanyRegister = () => {
     }
 
     const [register] = useRegisterMutation();
+    
     // const navigate = useNavigate();
+    // const isValidNumber = /^[0-9]{10}$/.test(contact) && parseInt(contact, 10) >= 0;
+    //     if (!isValidNumber) {
+    //         toast.error("Please enter valid mobile number");
+    //         return;
+    //     }
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -81,18 +91,21 @@ export const CompanyRegister = () => {
                 logoutHandler();
                 navigate('/');
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
         else {
             alert("Registration failed. Please try again.");
         }
     }
+
+    
+
     return (
         // <>
         // <CssBaseline />
         <div style={{ backgroundColor: '#e4eaf5' }}>
-            {console.log("CompanyRegister.js")}
+            {/* {console.log("CompanyRegister.js")} */}
             <Typography variant="h4" sx={{ pt: 3, fontWeight: "bold", textAlign: "center" }}>
                 Company Registration
             </Typography>
@@ -104,7 +117,7 @@ export const CompanyRegister = () => {
                         <Grid item container md={8} sx={{ justifyContent: "center", mb: 0 }}>
                             {/* <Grid item sx={{ borderRight: 0, borderColor: "divider", mr: 5 }}> */}
                             <div style={{ padding: "2rem 0 5rem" }}>
-                                <Grid container spacing={2}>
+                                <Grid container spacing={2} className="grid1">
                                     <TextField
                                         sx={{ mt: 2 }}
                                         label="Company Name"

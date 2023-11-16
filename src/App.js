@@ -1,18 +1,14 @@
 import './CSS_files/App.css';
-// import Navbar from './Pages/Navbar';
 import {
   Route,
   Routes,
   BrowserRouter as Router,
-  useNavigate,
 } from "react-router-dom";
 import { Tablet } from "./Pages/JobProfile/Reg_Students.js"
-import { useState, useEffect } from "react";
+import { useState,} from "react";
 import api from "./api/posts.js";
-import JobProfile from "./Pages/JobProfile/JobProfile.js";
-import Announcement from "./Pages/Announcement.js";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword.js";
-import Missing from "./Pages/Missing.js";
+import ResetPassword from './Pages/ResetPassword/ResetPassword';
 import ContactUs from "./Pages/ContactUs.js";
 import CompanyProfile from "./Pages/CompanyProfile.js";
 import Header from "./Components/Header";
@@ -21,20 +17,21 @@ import SeePost from "./Pages/JobProfile/Seepost.js";
 import NewPost from "./Pages/JobProfile/Newpost.js";
 import EditPost from "./Pages/JobProfile/Editpost.js";
 import Details from "./Pages/JobProfile/Details.js";
-// import FooterJ from './Pages/JobProfile/Footer';
 import { Errored } from "./Pages/Errored.js";
 import { CompanyLogin } from "./Pages/CompanyLogin.js";
 import { CompanyRegister } from "./Pages/CompanyRegister.js";
 import { ToastContainer } from "react-toastify";
 import AboutUs from './Pages/AboutUs.js';
-import AnnouncementSection from "./Pages/Adminannoun.js" 
-// import Footer from './Pages/JobProfile/Footer';
-
-
+import AnnouncementSection from "./Pages/Adminannoun.js"
+import Announcements from "./Pages/Announcement.js"
+import AddAnnouncement from './Pages/Addannouncement.js';
+import PendingStudent from './Pages/JobProfile/StudentProfile.js';
+import ForgotPass from './Pages/ForgotPass.js';
+import LogOut from './Pages/LogOut.js';
+import NotVerified from './Pages/NotVerified.js';
 
 function App() {
   const [posts, setPosts] = useState([]);
-  const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [editName, seteditName] = useState("");
@@ -49,8 +46,6 @@ function App() {
   const [companytype, setCompanytype] = useState("");
   const [CTC, setCTC] = useState("");
   const [stipend, setStipend] = useState("");
-
-  // const navigate = useNavigate();
 
   const handleEdit = async (id) => {
     const updatedPost = {
@@ -83,9 +78,8 @@ function App() {
       setStipend("");
       setCompanytype("");
       setLocation("");
-      // navigate('/');
     } catch (err) {
-      console.log(`Error : ${err.message}`);
+      // console.log(`Error : ${err.message}`);
     }
   };
   const handleSubmit = async (e) => {
@@ -123,123 +117,66 @@ function App() {
     // navigate('/');
   };
 
-  // useEffect(() => {
-  //   const filteredResults = posts.filter(
-  //     (post) =>
-  //       post.name.toLowerCase().includes(search.toLowerCase()) ||
-  //       post.name.toLowerCase().includes(search.toLowerCase())
-  //   );
-  //   setSearchResults(filteredResults);
-  // }, [posts, search]);
-
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   async function fetchPosts() {
-  //     try {
-  //       console.log("hii");
-  //       const response = await api.get("/posts");
-  //       setPosts(response.data);
-  //     } catch (err) {
-  //       if (err.response) {
-  //         console.log(err.response.data);
-  //         console.log(err.response.status);
-  //         console.log(err.response.headers);
-  //       } else {
-  //         console.log(`Error : ${err.message}`);
-  //       }
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   }
-  //   setTimeout(() => {
-  //     fetchPosts();
-  //   }, 2000);
-  // }, []);
-
   return (
-    // <div >
-      <Router>
-        <Header />
-        <div style={{ minHeight: "84vh", backgroundColor: "#E4EAF5" }}>
-          <ToastContainer />
-          <Routes>
-            <Route exact path="/" element={<CompanyLogin />} />
-            <Route exact path="/profile" element={<CompanyProfile />} />
-            <Route exact path="/register" element={<CompanyRegister />} />
-            <Route exact path="/companyprofile" element={<CompanyProfile />} />
-            <Route exact path="/jobprofile" element={<SeePost posts={searchResults} isLoading={isLoading} />} />
-            <Route exact path="/announcement" element={<Announcement />} />
-            <Route exact path='/adminannouncements' element={<AnnouncementSection />} />
-            <Route exact path="/changepassword" element={<ChangePassword />} />
-            <Route exact path="/aboutus" element={<AboutUs />} />
-            <Route exact path="/logout"></Route>
-            <Route exact path="/contactus" element={<ContactUs />} />
-            {/* <Route exact path="/seepost" element = {<SeePost posts={searchResults} isLoading={isLoading} />} /> */}
-            <Route exact path="/newpost"
-              element={<NewPost
-                handleSubmit={handleSubmit}
-                editName={editName}
-                seteditName={seteditName}
-                editBody={editBody}
-                setEditBody={setEditBody}
-                editType={editType}
-                seteditType={seteditType}
-                editCPI={editCPI}
-                seteditCPI={seteditCPI}
-                editLink={editLink}
-                seteditLink={seteditLink}
-                editOpenfor={editOpenfor}
-                seteditOpenfor={seteditOpenfor}
-                editRegopen={editRegopen}
-                seteditRegopen={seteditRegopen}
-                editRegclose={editRegclose}
-                seteditRegclose={seteditRegclose}
-                location={location}
-                setLocation={setLocation}
-                companytype={companytype}
-                setCompanytype={setCompanytype}
-                CTC={CTC}
-                setCTC={setCTC}
-                stipend={stipend}
-                setStipend={setStipend}
-              />} />
-            <Route exact path="/moredetails/:id" element={<Details posts={posts} />} />
-            <Route path='/aboutus' element={<AboutUs />}/>
-            <Route exact path="/editpost/:id"
-              element={<EditPost
-                posts={posts}
-                handleEdit={handleEdit}
-                editName={editName}
-                seteditName={seteditName}
-                editBody={editBody}
-                setEditBody={setEditBody}
-                editType={editType}
-                seteditType={seteditType}
-                editCPI={editCPI}
-                seteditCPI={seteditCPI}
-                editOpenfor={editOpenfor}
-                seteditOpenfor={seteditOpenfor}
-                editRegopen={editRegopen}
-                seteditRegopen={seteditRegopen}
-                editRegclose={editRegclose}
-                seteditRegclose={seteditRegclose}
-                location={location}
-                setLocation={setLocation}
-                companytype={companytype}
-                setCompanytype={setCompanytype}
-                CTC={CTC}
-                setCTC={setCTC}
-                stipend={stipend}
-                setStipend={setStipend}
-              />} />
-              <Route path="/seereg" element={<Tablet/>}></Route>
-            <Route path="*" element={<Errored />} />
-            {/* </Switch> */}
-          </Routes>
-        </div>
-        <Footer />
-      </Router>
-    
+    <Router>
+      <Header />
+      <div style={{ minHeight: "84vh", backgroundColor: "#E4EAF5" }}>
+        <ToastContainer />
+        <Routes>
+          <Route exact path="/" element={<CompanyLogin />} />
+          <Route exact path="/profile" element={<CompanyProfile />} />
+          <Route exact path="/register" element={<CompanyRegister />} />
+          <Route exact path="/companyprofile" element={<CompanyProfile />} />
+          <Route exact path="/jobprofile" element={<SeePost posts={searchResults} isLoading={isLoading} />} />
+          <Route exact path='/adminannouncements' element={<AnnouncementSection />} />
+          <Route exact path='/announcements/company' element={<Announcements />} />
+          <Route exact path='/addAnnouncementStudent' element={<AddAnnouncement />} />
+          <Route exact path="/changepassword" element={<ChangePassword />} />
+          <Route exact path="/resetpassword" element={<ResetPassword />} />
+          <Route exact path="/aboutus" element={<AboutUs />} />
+          <Route exact path="/contactus" element={<ContactUs />} />
+          <Route exact path="/forgotpass" element={<ForgotPass />} />
+          <Route exact path="/nv" element={<NotVerified />} />
+          <Route exact path="/newpost"
+            element={<NewPost
+              handleSubmit={handleSubmit}
+              editName={editName}
+              seteditName={seteditName}
+              editBody={editBody}
+              setEditBody={setEditBody}
+              editType={editType}
+              seteditType={seteditType}
+              editCPI={editCPI}
+              seteditCPI={seteditCPI}
+              editLink={editLink}
+              seteditLink={seteditLink}
+              editOpenfor={editOpenfor}
+              seteditOpenfor={seteditOpenfor}
+              editRegopen={editRegopen}
+              seteditRegopen={seteditRegopen}
+              editRegclose={editRegclose}
+              seteditRegclose={seteditRegclose}
+              location={location}
+              setLocation={setLocation}
+              companytype={companytype}
+              setCompanytype={setCompanytype}
+              CTC={CTC}
+              setCTC={setCTC}
+              stipend={stipend}
+              setStipend={setStipend}
+            />} />
+          <Route path='/profile/:id' element={<PendingStudent />} />
+          <Route exact path="/moredetails/:id" element={<Details posts={posts} />} />
+          <Route path='/aboutus' element={<AboutUs />} />
+          <Route exact path="/editpost/:id" element={<EditPost />} />
+          <Route path="/seereg/:id" element={<Tablet />}></Route>
+          <Route path='/logout' element={<LogOut />}></Route>
+          <Route path="*" element={<Errored />} />
+        </Routes>
+      </div>
+      <Footer />
+    </Router>
+
   );
 }
 

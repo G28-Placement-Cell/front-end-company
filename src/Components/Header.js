@@ -1,17 +1,16 @@
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import React, { useState } from "react";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
-import { SidebarData } from "../Sidebared/Sidebar";
 import "../Sidebared/Navbar.css";
-import { IconContext } from "react-icons";
 import { useDispatch } from "react-redux";
 import { useLogoutMutation } from "../slices/company/companyApislice";
 import { logout } from "../slices/company/authslice";
 import TemporaryDrawer from "./Navbar.js";
 
 function Header() {
+  const companyInfoJSON = localStorage.getItem('companyInfo');
+  const companyInfo = JSON.parse(companyInfoJSON);
+
   const [sidebar, setSidebar] = useState(false);
   const dispatch = useDispatch();
   const [logoutapicall] = useLogoutMutation();
@@ -23,26 +22,36 @@ function Header() {
       dispatch(logout());
       navigate("/");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
-  const showSidebar = () => setSidebar(!sidebar);
   return (
     <AppBar position="sticky" style={{ backgroundColor: "#2B2442" }}>
       <Toolbar>
-        <TemporaryDrawer />
+        {companyInfo && (
+          <TemporaryDrawer logoutHandler={logoutHandler} />
+        )}
         <Typography
           variant="h6"
           component="div"
           sx={{ flexGrow: 1, marginLeft: 2 }}
         >
-          Placement Cell
+          {
+            companyInfo ?
+
+              < span onClick={() => navigate('/profile')} style={{ cursor: 'pointer' }}>
+                Placement Cell
+              </span>
+              :
+              <span onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+                Placement Cell
+              </span>
+          }
         </Typography>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Button color="inherit" style={{ minWidth: '16vh' }}>Contact us</Button>
+          <Button color='inherit' style={{ minWidth: '16vh' }} onClick={() => navigate('/ContactUs')}>Contact Us</Button>
           <Button color='inherit' style={{ minWidth: '16vh' }} onClick={() => navigate('/aboutus')}>About Us</Button>
-          <Button color="inherit" onClick={logoutHandler}>Logout</Button>
         </div>
       </Toolbar>
     </AppBar>

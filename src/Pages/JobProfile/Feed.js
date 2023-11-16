@@ -32,14 +32,14 @@ const Feeds = ({ title }) => {
   const _id = companyInfo?._id;
 
   // Now, you can use '_id' in your code
-  console.log(_id);
+  // console.log(_id);
 
 
   const [jobProfiles, setJobProfiles] = useState([]);
   const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/jobprofile/company/${_id}`, {
+    fetch(`https://back-end-production-ee2f.up.railway.app/api/jobprofile/company/${_id}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -49,11 +49,11 @@ const Feeds = ({ title }) => {
       .then((res) => res.json())
       .then((data) => {
         setJobProfiles(data.jobProfiles);
-        console.log(jobProfiles)
+        // console.log(jobProfiles)
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setLoading(false);
       });
   }, []);
@@ -67,6 +67,9 @@ const Feeds = ({ title }) => {
 
   const navigate = useNavigate();
 
+  const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+
+
   return (
     <div
       style={{
@@ -74,10 +77,9 @@ const Feeds = ({ title }) => {
         display: "flex",
         justifyContent: "center",
         padding: "5vh 5vw",
-
       }}
     >
-      <Paper sx={{ py: 1, px: 3, width: '90vw' }} className="container1">
+      <Paper sx={{ py: 1, px: 3 }} className="container">
         <Typography variant="h5" sx={{ pt: 1, pb: 1 }}>
           Current Job Profiles {title}:
         </Typography>
@@ -118,7 +120,7 @@ const Feeds = ({ title }) => {
                               <h6 className="mb-0">Type (Job/SI)</h6>
                             </div>
                             <div className="col-sm-9 text-secondary">
-                              {jobProfile.company_type}
+                              {jobProfile.offer_type}
                             </div>
                           </div>
                           <hr />
@@ -163,7 +165,7 @@ const Feeds = ({ title }) => {
                               <h6 className="mb-0">Registration Starts from</h6>
                             </div>
                             <div className="col-sm-9 text-secondary">
-                              {jobProfile.registration_start_date}
+                              {new Date(jobProfile.registration_start_date).toLocaleDateString('en-GB', options)}
                             </div>
                           </div>
                           <hr />
@@ -172,9 +174,10 @@ const Feeds = ({ title }) => {
                               <h6 className="mb-0">Registration Closes at</h6>
                             </div>
                             <div className="col-sm-9 text-secondary">
-                              {jobProfile.registration_start_date}
+                              {new Date(jobProfile.registration_end_date).toLocaleDateString('en-GB', options)}
                             </div>
                           </div>
+
                           <hr />
                           <div className="row">
                             <div className="col-sm-3">
@@ -231,15 +234,19 @@ const Feeds = ({ title }) => {
                               // gap:'10px'
                             }}
                           >
-                            <Link to={`/seereg`}>
-                            <button style={{ backgroundColor: '#2B2442', width: '200px', borderRadius: '5px' }}>
+                            {/* <Link to={`/seereg`}> */}
+                            <button onClick={() => navigate(`/seereg/${jobProfile._id}`)} style={{ backgroundColor: '#2B2442', width: '200px', borderRadius: '5px' }}>
                               See registered students
                             </button>
 
-                            </Link>
-                            
+                            {/* </Link> */}
 
-                            <Link to={`/editpost/${jobProfile.id}`}><button style={{ backgroundColor: '#2B2442', width: '200px', marginLeft: '15px', borderRadius: '5px' }}>Edit the profile</button></Link>
+
+                            {/* <Link to={`/editpost/${jobProfile.id}`}> */}
+                            <button onClick={() => navigate(`/editpost/${jobProfile._id}`)} style={{ backgroundColor: '#2B2442', width: '200px', marginLeft: '15px', borderRadius: '5px' }}>
+                              Edit the profile
+                            </button>
+                            {/* </Link> */}
                           </div>
                         </Typography>
                       </div>

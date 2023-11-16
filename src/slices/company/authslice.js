@@ -1,26 +1,3 @@
-// import { createSlice } from "@reduxjs/toolkit";
-
-// const initialState = {
-//     companyInfo: localStorage.getItem('companyInfo') ? JSON.parse(localStorage.getItem('companyInfo')) : null,
-// }
-
-// const authSlice = createSlice({
-//     name: 'auth',
-//     initialState,
-//     reducers: {
-//         setcred(state, action) {
-//             state.companyInfo = action.payload;
-//             localStorage.setItem('companyInfo', JSON.stringify(action.payload));
-//         },
-//         logout(state) {
-//             state.companyInfo = null;
-//             localStorage.removeItem('companyInfo');
-//         }
-//     }
-// })
-
-// export const { setcred, logout } = authSlice.actions;
-// export default authSlice.reducer;
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -51,10 +28,18 @@ const authSlice = createSlice({
         },
         getData: (state, action) => {
             localStorage.getItem('companyInfo.student_id');
-        }
+        },
+        setReset: (state, action) => {
+            state.resetInfo = action.payload.payload;
+            localStorage.setItem('resetId', (action.payload.payload.reset._id));
+        },
+        removeReset: (state, action) => {
+            state.resetInfo = null;
+            localStorage.removeItem('resetId');
+        },
     },
 });
 
-export const { setCredentials, logout } = authSlice.actions;
+export const { setCredentials, logout, setReset, removeReset } = authSlice.actions;
 
 export default authSlice.reducer;
