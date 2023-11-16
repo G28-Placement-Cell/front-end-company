@@ -24,7 +24,7 @@ function ChangePassword() {
       dispatch(logout());
       navigate("/");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   const [change_password] = useChange_passwordMutation();
@@ -40,7 +40,7 @@ function ChangePassword() {
       navigate('/');
     } catch (err) {
       toast.error(err?.data?.message || err.error);
-      console.log(err);
+      // console.log(err);
     }
   };
 

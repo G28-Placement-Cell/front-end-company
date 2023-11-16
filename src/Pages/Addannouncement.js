@@ -40,7 +40,7 @@ const AddAnnouncement = () => {
             date: date.toISOString(),
         };
 
-        console.log(newAnnouncement);
+        // console.log(newAnnouncement);
 
         try {
             const res = await fetch(`https://back-end-production-ee2f.up.railway.app/api/announcements/company/${id}`, {
@@ -53,7 +53,7 @@ const AddAnnouncement = () => {
             });
 
             const data = await res.json();
-            console.log(data);
+            // console.log(data);
 
             if (!res.ok) {
                 throw new Error(data.message);

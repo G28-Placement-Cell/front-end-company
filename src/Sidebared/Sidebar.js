@@ -1,12 +1,8 @@
 import React from 'react';
-import * as IoIcons from 'react-icons/io';
-import * as BiIcons from 'react-icons/bi';
 import * as TfiIcons from "react-icons/tfi";
 import * as HiIcons from "react-icons/hi"
-import * as RxIcons from "react-icons/rx"
 import * as TbIcons from 'react-icons/tb'
 import * as ImIcons from 'react-icons/im';
-import * as AiIcons from 'react-icons/ai';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 
 export const SidebarData = [
@@ -42,7 +38,7 @@ export const SidebarData = [
   },
   {
     title: 'Logout',
-    path: '/logout', // or whatever path you prefer
+    path: '/logout', 
     icon: <LogoutRoundedIcon />,
     cName: 'nav-text',
   },

@@ -19,7 +19,7 @@ const SelDeselButton = ({ stuId, jobId, shortlisted }) => {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log(data);
+                // console.log(data);
                 setSelected(true);
             } else {
                 console.error(`Failed to select student with _id: ${stuId}`);
@@ -41,7 +41,7 @@ const SelDeselButton = ({ stuId, jobId, shortlisted }) => {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log(data);
+                // console.log(data);
                 setSelected(false);
             } else {
                 console.error(`Failed to deselect student with _id: ${stuId}`);

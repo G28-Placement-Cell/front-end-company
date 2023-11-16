@@ -32,7 +32,7 @@ const Feeds = ({ title }) => {
   const _id = companyInfo?._id;
 
   // Now, you can use '_id' in your code
-  console.log(_id);
+  // console.log(_id);
 
 
   const [jobProfiles, setJobProfiles] = useState([]);
@@ -49,11 +49,11 @@ const Feeds = ({ title }) => {
       .then((res) => res.json())
       .then((data) => {
         setJobProfiles(data.jobProfiles);
-        console.log(jobProfiles)
+        // console.log(jobProfiles)
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setLoading(false);
       });
   }, []);

@@ -9,13 +9,13 @@ export default function Editpost() {
 
   const { id } = useParams();
   const jobId = id;
-  console.log(jobId, 'job')
+  // console.log(jobId, 'job')
   const companyInfo = JSON.parse(localStorage.getItem('companyInfo'));
   const companyId = companyInfo && companyInfo._id;
 
   if (companyId) {
     // You have the company ID now. You can use it in your code.
-    console.log('Company ID:', companyId);
+    // console.log('Company ID:', companyId);
   } else {
     console.error('Company ID not found in local storage.');
   }
@@ -40,7 +40,7 @@ export default function Editpost() {
       .then(response => response.json())
       .then(data => {
         // Set initial state with existing data
-        console.log(data);
+        // console.log(data);
         seteditName(data.company_name);
         setLocation(data.location);
         setEditCPI(data.cpi_criteria);

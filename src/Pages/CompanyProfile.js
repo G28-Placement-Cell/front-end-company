@@ -7,7 +7,7 @@ function ComanyProfile() {
     const [loading, setLoading] = React.useState(false);
 
     useEffect(() => {
-        console.log(localStorage.getItem('token'));
+        // console.log(localStorage.getItem('token'));
         fetch('https://back-end-production-ee2f.up.railway.app/api/company/profile', {
             method: 'GET',
             headers: {
@@ -15,11 +15,11 @@ function ComanyProfile() {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         }).then((res) => res.json()).then((data) => {
-            console.log(data);
+            // console.log(data);
             setCompany(data.comp);
             setLoading(false);
         }).catch((err) => {
-            console.log(err);
+            // console.log(err);
             setLoading(false);
         });
     }, [])
@@ -61,7 +61,7 @@ function ComanyProfile() {
                             {company?.companyname}
                         </div>
                     </div> */}
-                    {/* <hr /> */}
+                    <hr />
                     <div className="row">
                         <div className="col-sm-3">
                             <h6 className="mb-0">Location</h6>
