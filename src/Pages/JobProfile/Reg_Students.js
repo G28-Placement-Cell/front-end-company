@@ -48,7 +48,7 @@ export const Tablet = () => {
   const [regStudentData, setRegStudentData] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("https://back-end-production-ee2f.up.railway.app/api/student/getregstudent", {
+    fetch("https://back-end-production-3140.up.railway.app/api/student/getregstudent", {
       method: "GET",
       headers: {
         "content-type": "application/json",
