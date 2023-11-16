@@ -193,8 +193,7 @@ export default function Newpost() {
               inputProps={{ 'aria-label': 'Description' }}
               required
             />
-
-            <Button variant="contained" type="submit">
+            <Button variant="contained" type="submit" onClick={() => navigate(`/jobprofile`)}>
               Add the new Post
             </Button>
           </Stack>
