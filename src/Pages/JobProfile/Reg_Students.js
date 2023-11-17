@@ -48,7 +48,7 @@ export const Tablet = () => {
   const [regStudentData, setRegStudentData] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("https://back-end-production-ee2f.up.railway.app/api/student/getregstudent", {
+    fetch("https://back-end-production-3140.up.railway.app/api/student/getregstudent", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -68,7 +68,7 @@ export const Tablet = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`https://back-end-production-ee2f.up.railway.app/api/jobprofile/${jobId}`, {
+    fetch(`https://back-end-production-3140.up.railway.app/api/jobprofile/${jobId}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -93,7 +93,7 @@ export const Tablet = () => {
       const studentDetails = await Promise.all(
         regStudents.map(async (student) => {
           try {
-            const response = await fetch(`https://back-end-production-ee2f.up.railway.app/api/student/${student}`, {
+            const response = await fetch(`https://back-end-production-3140.up.railway.app/api/student/${student}`, {
               method: "GET",
               headers: {
                 "content-type": "application/json",
@@ -128,7 +128,7 @@ export const Tablet = () => {
     if (!resumeUrl) {
       return;
     }
-    window.open(`https://back-end-production-ee2f.up.railway.app/api/student/files/resume/${resumeUrl}`);
+    window.open(`https://back-end-production-3140.up.railway.app/api/student/files/resume/${resumeUrl}`);
   };
 
   const studentsExist = Array.isArray(students) && students.length > 0;

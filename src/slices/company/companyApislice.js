@@ -69,9 +69,20 @@ export const companyApislice = apislice.injectEndpoints({
                 message: "ok"
             })
         }),
+        jobProfile: builder.mutation({
+            query: (data) => ({
+                url: `api/jobprofile`,
+                method: 'POST',
+                body: data,
+                headers: {
+                    authorization: 'Bearer ' + localStorage.getItem('token')
+                },
+                message: "ok"
+            })
+        })
     })
 })
 
 
 
-export const { useLoginMutation, useLogoutMutation, useRegisterMutation, useGetdataMutation, useChange_passwordMutation, useReset_passMutation, useReset_applyMutation } = companyApislice;
+export const { useLoginMutation, useLogoutMutation, useRegisterMutation, useGetdataMutation, useChange_passwordMutation, useReset_passMutation, useReset_applyMutation, useJobProfileMutation } = companyApislice;

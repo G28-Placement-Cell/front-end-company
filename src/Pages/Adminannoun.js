@@ -25,7 +25,7 @@ const AnnouncementSection = ({ title }) => {
 
   useEffect(() => {
     // console.log(localStorage.getItem('token'));
-    fetch('https://back-end-production-ee2f.up.railway.app/api/company/profile', {
+    fetch('https://back-end-production-3140.up.railway.app/api/company/profile', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -46,7 +46,29 @@ const AnnouncementSection = ({ title }) => {
   }, [])
 
   useEffect(() => {
-    fetch('https://back-end-production-ee2f.up.railway.app/api/announcements/admin/company', {
+    // console.log(localStorage.getItem('token'));
+    fetch('https://back-end-production-3140.up.railway.app/api/company/profile', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    }).then((res) => res.json()).then((data) => {
+      // console.log(data);
+      // console.log(data.comp.isVerified)
+      if (data.comp.isVerified == false) {
+        // alert("Your profile is not verified yet");
+        navigate('/nv');
+      }
+      setLoading(false);
+    }).catch((err) => {
+      // console.log(err);
+      setLoading(false);
+    });
+  }, [])
+
+  useEffect(() => {
+    fetch('https://back-end-production-3140.up.railway.app/api/announcements/admin/company', {
       method: 'GET',
       headers: {
         'content-type': 'application/json',

@@ -30,7 +30,7 @@ const Announcements = ({ title }) => {
   const [filteredAnnouncements, setFilteredAnnouncements] = useState([]); // Add filteredAnnouncements state
   useEffect(() => {
     // console.log(localStorage.getItem('token'));
-    fetch('https://back-end-production-ee2f.up.railway.app/api/company/profile', {
+    fetch('https://back-end-production-3140.up.railway.app/api/company/profile', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const Announcements = ({ title }) => {
     });
   }, [])
   useEffect(() => {
-    fetch(`https://back-end-production-ee2f.up.railway.app/api/announcements/company/${id}`, {
+    fetch(`https://back-end-production-3140.up.railway.app/api/announcements/company/${id}`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
