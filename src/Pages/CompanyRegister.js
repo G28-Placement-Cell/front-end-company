@@ -39,7 +39,10 @@ export const CompanyRegister = () => {
     const navigate = useNavigate();
 
     
-
+    function validatePassword(password) {
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return passwordPattern.test(password);
+    };
     const logoutHandler = async () => {
         try {
             await logoutapicall().unwrap();
@@ -52,7 +55,7 @@ export const CompanyRegister = () => {
 
     const verify = (e) => {
         e.preventDefault();
-        if (password !== altpassword) {
+        if (password !== altpassword || password === '') {
 
             alert("Passwords do not match");
             setError(true);
@@ -64,6 +67,7 @@ export const CompanyRegister = () => {
             document.getElementById("com_reg").reset();
             alert("Submitted for verification");
         }
+        
     }
 
     const [register] = useRegisterMutation();
@@ -77,6 +81,11 @@ export const CompanyRegister = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
+        const isValidNumber = /^[0-9]{10}$/.test(contact) && parseInt(contact, 10) >= 0;
+        if (!isValidNumber) {
+            toast.error("Please enter valid mobile number");
+            return;
+        }
         if (password !== altpassword) {
             alert("Passwords do not match");
             setError(true);
@@ -96,6 +105,13 @@ export const CompanyRegister = () => {
         }
         else {
             alert("Registration failed. Please try again.");
+        }
+        if (!validatePassword(password)) {
+            setError(true);
+            toast.error('Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character');
+            return;
+        } else {
+            setError(false);
         }
     }
 
