@@ -1,13 +1,42 @@
-import * as React from 'react';
+import {React, useState, useEffect, Fragment} from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import { SidebarData } from '../Sidebared/Sidebar';
+import { SidebarDatanot } from '../Sidebared/SideBarnot';
+
 import { Link } from 'react-router-dom'
 import * as FaIcons from 'react-icons/fa';
 
 export default function TemporaryDrawer({ logoutHandler }) {
-  const [state, setState] = React.useState({
+  
+  const [company, setCompany] = useState({});
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        // console.log(localStorage.getItem('token'));
+        fetch('https://back-end-production-3140.up.railway.app/api/company/profile', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        }).then((res) => res.json()).then((data) => {
+            // console.log(data);
+            setCompany(data.comp);
+            setLoading(false);
+        }).catch((err) => {
+            // console.log(err);
+            setLoading(false);
+        });
+    }, [])
+
+    const isCompanyVerified = company?.isVerified;
+    // console.log(student);
+    // console.log(isStudentVerified);
+    const selectedSidebarData = isCompanyVerified ? SidebarData : SidebarDatanot;
+
+  const [state, setState] = useState({
     top: false,
     left: false,
     bottom: false,
@@ -30,7 +59,7 @@ export default function TemporaryDrawer({ logoutHandler }) {
       onKeyDown={toggleDrawer(anchor, false)}
       style={{ backgroundColor: '#2B2442' }}
     >
-      {SidebarData.map((item, index) => (
+      {selectedSidebarData.map((item, index) => (
         <li key={index} className={item.cName}>
           <Link to={item.path} onClick={item.title === 'Logout' ? logoutHandler : undefined}>
             {item.icon}
@@ -44,7 +73,7 @@ export default function TemporaryDrawer({ logoutHandler }) {
   return (
     <div>
       {['left'].map((anchor) => (
-        <React.Fragment key={anchor}>
+        <Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
             {<FaIcons.FaBars style={{ color: 'white', alignSelf: 'center', fontSize: 25, justifySelf: 'center', marginBottom: 4 }} />}
           </Button>
@@ -55,7 +84,7 @@ export default function TemporaryDrawer({ logoutHandler }) {
           >
             {list(anchor, logoutHandler)}
           </Drawer>
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   );
