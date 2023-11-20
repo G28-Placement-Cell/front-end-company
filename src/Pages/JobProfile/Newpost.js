@@ -37,6 +37,8 @@ export default function Newpost() {
   const submitHandler = async (e) => {
     // Parse and convert ctc to a number if it's a string
     e.preventDefault();
+
+    
     const ctcValue = isNaN(CTC) ? CTC : parseFloat(CTC);
 
     const newPost = {
@@ -53,6 +55,44 @@ export default function Newpost() {
       stipend: stipend,
       job_description: editBody,
     };
+
+    if (/^\d+(\.\d{0,2})?$/.test(newPost.cpi_criteria)) {
+      // Input is a valid number with up to 2 decimal places
+      if (parseFloat(newPost.cpi_criteria) >= 0 && parseFloat(newPost.cpi_criteria) <= 10) {
+
+      } else {
+          toast.error('CPI must be between 0 and 10');
+          return;
+      }
+    } else {
+        toast.error('Invalid CPI format');
+        return;
+    }
+    if(newPost.registration_start_date>=newPost.registration_end_date)
+    {
+      toast.error('start date should be before end date');
+      return;
+    }
+    if(newPost.ctc*100000<newPost.stipend)
+    {
+      toast.error('CTC should be greater than stipend');
+      return;
+    }
+
+    if(newPost.ctc<=0)
+    {
+      toast.error('CTC should be greater than zero');
+      return;
+    }
+
+    if(newPost.stipend<=0)
+    {
+      toast.error('stipend should be greater than zero');
+      return;
+    }
+
+   
+
 
     try {
       const response = await jobProfile(newPost).unwrap();

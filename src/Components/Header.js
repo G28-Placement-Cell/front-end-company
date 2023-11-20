@@ -49,10 +49,10 @@ function Header() {
               </span>
           }
         </Typography>
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        {/* <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <Button color='inherit' style={{ minWidth: '16vh' }} onClick={() => navigate('/ContactUs')}>Contact Us</Button>
           <Button color='inherit' style={{ minWidth: '16vh' }} onClick={() => navigate('/aboutus')}>About Us</Button>
-        </div>
+        </div> */}
       </Toolbar>
     </AppBar>
   );
