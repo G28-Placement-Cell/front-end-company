@@ -40,11 +40,11 @@ function Header() {
           {
             companyInfo ?
 
-              < span onClick={() => navigate('/profile')} style={{ cursor: 'pointer' }}>
+              < span onClick={() => navigate('/profile')} style={{ cursor: 'pointer', margin:0 }}>
                 Placement Cell
               </span>
               :
-              <span onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+              <span onClick={() => navigate('/')} style={{ cursor: 'pointer', margin:0 }}>
                 Placement Cell
               </span>
           }

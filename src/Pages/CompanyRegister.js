@@ -38,7 +38,7 @@ export const CompanyRegister = () => {
     const [logoutapicall] = useLogoutMutation();
     const navigate = useNavigate();
 
-    
+
     function validatePassword(password) {
         const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
         return passwordPattern.test(password);
@@ -53,25 +53,25 @@ export const CompanyRegister = () => {
         }
     };
 
-    const verify = (e) => {
-        e.preventDefault();
-        if (password !== altpassword || password === '') {
+    // const verify = (e) => {
+    //     e.preventDefault();
+    //     if (password !== altpassword || password === '') {
 
-            alert("Passwords do not match");
-            setError(true);
-        } else {
-            setSubmitted(true);
-            setError(false);
-        }
-        if (!error && submitted) {
-            document.getElementById("com_reg").reset();
-            alert("Submitted for verification");
-        }
-        
-    }
+    //         alert("Passwords do not match");
+    //         setError(true);
+    //     } else {
+    //         setSubmitted(true);
+    //         setError(false);
+    //     }
+    //     if (!error && submitted) {
+    //         document.getElementById("com_reg").reset();
+    //         alert("Submitted for verification");
+    //     }
+
+    // }
 
     const [register] = useRegisterMutation();
-    
+
     // const navigate = useNavigate();
     // const isValidNumber = /^[0-9]{10}$/.test(contact) && parseInt(contact, 10) >= 0;
     //     if (!isValidNumber) {
@@ -93,19 +93,17 @@ export const CompanyRegister = () => {
             setError(false);
             setSubmitted(true);
         }
-        if (!error && submitted) {
-            try {
-                const res = await register({ companyname, hrname, contact, address, email, website, password, altpassword }).unwrap();
-                dispatch(setCredentials({ ...res }));
-                logoutHandler();
-                navigate('/');
-            } catch (error) {
-                // console.log(error);
-            }
+
+        try {
+            const res = await register({ companyname, hrname, contact, address, email, website, password, altpassword }).unwrap();
+            dispatch(setCredentials({ ...res }));
+            logoutHandler();
+            navigate('/');
+        } catch (error) {
+            // console.log(error);
+            toast.error(error);
         }
-        else {
-            alert("Registration failed. Please try again.");
-        }
+
         if (!validatePassword(password)) {
             setError(true);
             toast.error('Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character');
@@ -115,7 +113,7 @@ export const CompanyRegister = () => {
         }
     }
 
-    
+
 
     return (
         // <>
