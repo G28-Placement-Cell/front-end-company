@@ -59,7 +59,7 @@ export const CompanyLogin = () => {
         <Grid container>
             {/* Left 60% - Image */}
             <Grid item xs={12} md={6} lg={7} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <img src={company} alt="Student Image" style={{ width: '95%', height: '95%' }} />
+                <img src={company} alt="Student Image" style={{ width: '85%', height: '85%' }} />
             </Grid>
 
             {/* Right 40% - Student Input Area */}
