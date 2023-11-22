@@ -13,6 +13,7 @@ import {
   Box,
   Fab,
 } from '@mui/material';
+import { Autocomplete } from "@mui/material";
 import { PostAdd as PostAddIcon, Add as AddIcon } from '@mui/icons-material';
 // import '../CSS_files/AnnouncementSection.css'
 import { Link, Navigate, useNavigate } from 'react-router-dom';
@@ -21,6 +22,9 @@ const AnnouncementSection = ({ title }) => {
   const [announcements, setAnnouncements] = useState([]);
   const [announcementText, setAnnouncementText] = useState('');
   const [loading, setLoading] = useState(true); // Add loading state
+  const [searchInput, setSearchInput] = useState(""); // Add searchInput state
+  const [filteredAnnouncements, setFilteredAnnouncements] = useState([]); // Add filteredAnnouncements state
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -85,6 +89,21 @@ const AnnouncementSection = ({ title }) => {
       });
   }, []);
 
+  const handleSearch = (value) => {
+    if (!value) {
+      setSearchInput(value);
+      setFilteredAnnouncements(announcements);
+      return;
+    }
+
+    setSearchInput(value);
+    const filtered = announcements.filter(
+      (announcement) =>
+        announcement?.title?.toLowerCase().includes(value.toLowerCase()) ||
+        announcement?.description?.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredAnnouncements(filtered);
+  };
 
   return (
     <div style={{
@@ -97,12 +116,29 @@ const AnnouncementSection = ({ title }) => {
         <Typography variant="h5" sx={{ pt: 1, pb: 1 }}>
           Admin Announcements {title}:
         </Typography>
+        <Autocomplete
+              disablePortal
+              id="search-announcement"
+              options={announcements.map((announcement) => announcement.title)}
+              value={searchInput}
+              onChange={(_, newValue) => handleSearch(newValue)}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Search title"
+                  sx={{
+                    width: '100%',
+                    margin: "10px auto",
+                  }}
+                />
+              )}
+            />
         {loading ? (
           <p>Loading...</p>
         ) : (
           announcements && announcements.length > 0 ? (
             <List className="list">
-              {announcements
+              {(searchInput ? filteredAnnouncements : announcements)
                 .slice() // Create a shallow copy of the array
                 .reverse() // Reverse the order of announcements
                 .map((announcement, index) => (
@@ -131,7 +167,11 @@ const AnnouncementSection = ({ title }) => {
             </List>
           ) : (
             <div style={{ minHeight: '40vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <Typography sx={{ textAlign: 'center' }} variant="body1">No data to display</Typography>
+            <Typography sx={{ textAlign: "center" }} variant="body1">
+              {searchInput
+                ? "No matching announcements found"
+                : "No data to display"}
+            </Typography>
             </div>
           )
         )}
