@@ -88,7 +88,7 @@ text-align: center;
 .f {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   padding: 20px;
 }
 
@@ -102,6 +102,7 @@ text-align: center;
   border: 0;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
+  transition: box-shadow 0.3s, transform 0.3s;
 }
 
 .card1:hover{
@@ -113,10 +114,23 @@ transform: scale(1.05, 1.05);
   width: 100px;
   /* Adjust the image size as needed */
   height: auto;
-
+  max-width: 100px;
 }
+
+@media (max-width: 768px) {
+  .card1 {
+    min-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 576px) {
+  .card1 {
+    min-width: calc(100% - 20px);
+  }
+}
+
 .img2 {
-width: 200px;
+width: 150px;
 /* Adjust the image size as needed */
 height: auto;
 
