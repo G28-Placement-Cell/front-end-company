@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useReset_passMutation } from '../slices/company/companyApislice';
 import { setReset } from '../slices/company/authslice';
+import Button from '@mui/material/Button';
 
 function ForgotPass() {
     const [email, setEmail] = useState('');
@@ -45,7 +46,7 @@ function ForgotPass() {
                             // value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        <button type="submit">Send Email</button>
+                        <Button type="submit" variant="contained" color="primary" sx={{ marginTop: "15px" }}>Send Email</Button>
                     </div>
                 </form>
             </div>
