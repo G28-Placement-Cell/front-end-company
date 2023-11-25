@@ -9,6 +9,10 @@ import { useLogoutMutation } from "../../slices/company/companyApislice.js";
 import { logout } from "../../slices/company/authslice";
 import { useDispatch } from "react-redux";
 
+function validatePassword(password) {
+  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  return passwordPattern.test(password);
+};
 function ChangePassword() {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -31,7 +35,10 @@ function ChangePassword() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
+    if (!validatePassword(newPassword)) {
+      toast.error('Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character');
+      return;
+    }
     try {
       // console.log('ok');
       const res = await change_password({ currentPassword, newPassword, confirmPassword }).unwrap();
