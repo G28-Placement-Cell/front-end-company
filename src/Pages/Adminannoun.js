@@ -72,10 +72,11 @@ const AnnouncementSection = ({ title }) => {
   }, [])
 
   useEffect(() => {
-    fetch('https://back-end-production-3140.up.railway.app/api/announcements/admin/company', {
+    fetch('https://back-end-production-3140.up.railway.app/api/announcements/admin/company/company', {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('token')}`,
       },
     })
       .then((res) => res.json())

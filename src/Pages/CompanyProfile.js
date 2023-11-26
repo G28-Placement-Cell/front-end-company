@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { Paper } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 function ComanyProfile() {
 
     const [company, setCompany] = React.useState({});
-    const [loading, setLoading] = React.useState(false);
+    const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
         // console.log(localStorage.getItem('token'));
@@ -25,7 +27,18 @@ function ComanyProfile() {
     }, [])
 
     console.log(company);
-    if (loading) return (<div>Loading...</div>);
+    if (loading) return (<div style={{
+        position: "relative",
+        display: "flex",
+        justifyContent: "center",
+        padding: "5vh 5vw",
+      }}>
+        <Paper sx={{ py: 1, px: 3, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '73vh' }} className="container">
+          <Box sx={{ display: 'flex' }}>
+            <CircularProgress />
+          </Box>
+        </Paper>
+    </div>);
 
     return (
         <div
