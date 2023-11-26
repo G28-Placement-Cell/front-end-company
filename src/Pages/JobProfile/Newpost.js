@@ -38,7 +38,7 @@ export default function Newpost() {
     // Parse and convert ctc to a number if it's a string
     e.preventDefault();
 
-    
+
     const ctcValue = isNaN(CTC) ? CTC : parseFloat(CTC);
 
     const newPost = {
@@ -61,37 +61,33 @@ export default function Newpost() {
       if (parseFloat(newPost.cpi_criteria) >= 0 && parseFloat(newPost.cpi_criteria) <= 10) {
 
       } else {
-          toast.error('CPI must be between 0 and 10');
-          return;
+        toast.error('CPI must be between 0 and 10');
+        return;
       }
     } else {
-        toast.error('Invalid CPI format');
-        return;
+      toast.error('Invalid CPI format');
+      return;
     }
-    if(newPost.registration_start_date>=newPost.registration_end_date)
-    {
+    if (newPost.registration_start_date >= newPost.registration_end_date) {
       toast.error('start date should be before end date');
       return;
     }
-    if(newPost.ctc*100000<newPost.stipend)
-    {
+    if (newPost.ctc * 100000 < newPost.stipend) {
       toast.error('CTC should be greater than stipend');
       return;
     }
 
-    if(newPost.ctc<=0)
-    {
+    if (newPost.ctc <= 0) {
       toast.error('CTC should be greater than zero');
       return;
     }
 
-    if(newPost.stipend<=0)
-    {
+    if (newPost.stipend <= 0) {
       toast.error('stipend should be greater than zero');
       return;
     }
 
-   
+
 
 
     try {
@@ -163,14 +159,22 @@ export default function Newpost() {
             />
 
             <Typography variant="body1" sx={{ textAlign: 'left' }}>Open for</Typography>
-            <InputBase
+            {/* <InputBase
               placeholder="Open for"
               value={editOpenfor}
               onChange={(e) => setEditOpenfor(e.target.value)}
               inputProps={{ 'aria-label': 'Open for' }}
               required
-            />
-
+            /> */}
+            <Select
+              value={editOpenfor}
+              onChange={(e) => setEditOpenfor(e.target.value)}
+              required
+            >
+              <MenuItem value="btech">BTech</MenuItem>
+              <MenuItem value="mtech">MTech</MenuItem>
+              <MenuItem value="msc">MSc</MenuItem>
+            </Select>
             <Typography variant="body1" sx={{ textAlign: 'left' }}>CPI Criteria</Typography>
             <InputBase
               placeholder="CPI Criteria"
@@ -181,13 +185,23 @@ export default function Newpost() {
             />
 
             <Typography variant="body1" sx={{ textAlign: 'left' }}>Company Type</Typography>
-            <InputBase
+            {/* <InputBase
               placeholder="Company Type"
               value={companyType}
               onChange={(e) => setCompanyType(e.target.value)}
               inputProps={{ 'aria-label': 'Company Type' }}
               required
-            />
+            /> */}
+            <Select
+              value={companyType}
+              onChange={(e) => setCompanyType(e.target.value)}
+              required
+            >
+              <MenuItem value="it">IT</MenuItem>
+              <MenuItem value="ec">EC</MenuItem>
+              <MenuItem value="ct">CT</MenuItem>
+              <MenuItem value="others">Others</MenuItem>
+            </Select>
 
             <Typography variant="body1" sx={{ textAlign: 'left' }}>Registration Starts from</Typography>
             <InputBase
@@ -197,6 +211,8 @@ export default function Newpost() {
               onChange={(e) => setEditRegopen(e.target.value)}
               inputProps={{ 'aria-label': 'Registration Starts from' }}
               required
+              
+              
             />
 
             <Typography variant="body1" sx={{ textAlign: 'left' }}>Registration Closes at</Typography>
