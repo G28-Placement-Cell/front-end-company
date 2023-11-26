@@ -8,9 +8,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button } from '@mui/material';
+import { Button, Fab } from '@mui/material';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import SelDeselButton from '../../Components/SelDeselButton';
+import { Add as AddIcon } from "@mui/icons-material";
 // import 'react-data-grid/lib/styles.css';
 
 
@@ -39,6 +40,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export const Tablet = () => {
   const jobId = useParams()?.id;
+  const handleExcel = async () => {
+    window.open(`https://back-end-production-3140.up.railway.app/api/jobprofile/regstudent/${jobId}`);
+    // window.open(`http://localhost:8000/api/jobprofile/regstudent/${jobId}`);
+  }
   // console.log(jobId);
 
   const [regStudents, setRegStudents] = useState([]);
@@ -182,6 +187,14 @@ export const Tablet = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      <Button
+        color="primary"
+        aria-label="add"
+        sx={{ position: "fixed", bottom: 60, right: 20, width: '150px', backgroundColor: "#2B2442", color: "white", "&:hover": { backgroundColor: "#493D72", color: "white",  } }}
+        onClick={handleExcel}
+      >
+        Download Excel
+      </Button>
     </>
   );
 };

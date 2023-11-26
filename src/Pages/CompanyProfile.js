@@ -60,7 +60,7 @@ function ComanyProfile() {
 
                                 <h4>{company?.companyname}</h4>
                                 {
-                                    company?.isVerified ? <p id="verify" className="text-muted font-size-sm">Company profile is APPROVED </p> : <p id="verify" className="text-muted font-size-sm">Company profile is NOT APPROVED </p>
+                                    company?.isVerified ? <p id="verify" className="text-success font-size-sm">Company profile is APPROVED </p> : <p id="verify" className="text-danger font-size-sm">Company profile is NOT APPROVED </p>
                                 }
                             </div>
                         </div>

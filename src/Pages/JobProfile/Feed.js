@@ -37,7 +37,7 @@ const Feeds = ({ title }) => {
 
   const [jobProfiles, setJobProfiles] = useState([]);
   const [loading, setLoading] = useState(true); // Add loading state
-
+  
   useEffect(() => {
     fetch(`https://back-end-production-3140.up.railway.app/api/jobprofile/company/${_id}`, {
       method: "GET",
@@ -67,7 +67,7 @@ const Feeds = ({ title }) => {
 
   const navigate = useNavigate();
 
-  const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true, timeZone: 'UTC'  };
+  const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true, timeZone: 'UTC' };
 
 
   return (
@@ -107,7 +107,7 @@ const Feeds = ({ title }) => {
                         <div className="card-body">
                           <div className="row">
                             <div className="col-sm-3">
-                              <h6 className="mb-0">Company Name</h6>
+                              <h6 className="mb-0">Profile name</h6>
                             </div>
                             <div className="col-sm-9 text-secondary">
                               {jobProfile.company_name}

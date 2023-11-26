@@ -19,6 +19,8 @@ import img15 from '../images/vedant.png'
 import img16 from '../images/aarsh.png'
 import img17 from '../images/maulik.jpg'
 import ProfileCard from '../Components/ProfileCard';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const slides = [
   
 ];
