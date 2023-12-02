@@ -65,7 +65,7 @@ function ComanyProfile() {
                             </div>
                         </div>
                     </div>
-                    <hr />
+                    
                     {/* <div className="row">
                         <div className="col-sm-3">
                             <h6 className="mb-0">Company Name</h6>

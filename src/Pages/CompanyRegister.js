@@ -89,6 +89,7 @@ export const CompanyRegister = () => {
         if (password !== altpassword) {
             alert("Passwords do not match");
             setError(true);
+            return;
         } else {
             setError(false);
             setSubmitted(true);
