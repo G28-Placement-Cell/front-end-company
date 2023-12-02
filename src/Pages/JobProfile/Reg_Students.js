@@ -124,7 +124,7 @@ export const Tablet = () => {
       setStudents(studentDetails.filter((detail) => detail !== null));
     };
 
-    if (regStudents.length > 0) {
+    if (regStudents?.length > 0) {
       fetchStudentDetails();
     }
   }, [regStudents]);
@@ -136,7 +136,7 @@ export const Tablet = () => {
     window.open(`https://back-end-production-3140.up.railway.app/api/student/files/resume/${resumeUrl}`);
   };
 
-  const studentsExist = Array.isArray(students) && students.length > 0;
+  const studentsExist = Array.isArray(students) && students?.length > 0;
 
   return (
     <>
