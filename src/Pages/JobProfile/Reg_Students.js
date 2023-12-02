@@ -155,7 +155,19 @@ export const Tablet = () => {
             {studentsExist && students.map((row, index) => (
               <StyledTableRow className="mt-10 py-10" key={index}>
                 <StyledTableCell align="left">{row?.student_id}</StyledTableCell>
-                <StyledTableCell align="left" onClick={() => navigate(`/profile/${row._id}`)} style={{ cursor: 'pointer' }}>{row?.name} {row?.surname}</StyledTableCell>
+                <StyledTableCell align="left"
+                  onClick={() => navigate(`/profile/${row._id}`)}
+                  style={{ cursor: 'pointer', transition: 'all 0.3s ease-in-out' }}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = 'purple';
+                    e.target.style.textDecoration = 'underline'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = 'black';
+                    e.target.style.textDecoration = 'none'
+                  }}>
+                  {row?.name} {row?.surname}
+                </StyledTableCell>
                 <StyledTableCell align="left">{row?.cpi}</StyledTableCell>
                 <StyledTableCell align="right">
                   <Button
@@ -190,7 +202,7 @@ export const Tablet = () => {
       <Button
         color="primary"
         aria-label="add"
-        sx={{ position: "fixed", bottom: 60, right: 20, width: '150px', backgroundColor: "#2B2442", color: "white", "&:hover": { backgroundColor: "#493D72", color: "white",  } }}
+        sx={{ position: "fixed", bottom: 60, right: 20, width: '150px', backgroundColor: "#2B2442", color: "white", "&:hover": { backgroundColor: "#493D72", color: "white", } }}
         onClick={handleExcel}
       >
         Download Excel
