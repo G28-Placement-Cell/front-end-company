@@ -78,7 +78,7 @@ const Announcements = ({ title }) => {
     }, 2000);
   }, []);
 
- const handleSearch = (value) => {
+  const handleSearch = (value) => {
     if (!value) {
       setSearchInput(value);
       setFilteredAnnouncements(announcements);
@@ -96,20 +96,23 @@ const Announcements = ({ title }) => {
   const navigate = useNavigate();
 
   return (
-    <div style={{
-      position: "relative",
-      display: "flex",
-      justifyContent: "center",
-      padding: "5vh 5vw",
-    }}>
+    <div style={{ position: 'relative' }}>
       <Paper sx={{ py: 1, px: 3 }} className="container">
-        <Typography variant="h5" sx={{ pt: 1, pb: 1 }}>
-          Announcements for Students {title}:
-        </Typography>
-        <Autocomplete
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+            <Typography variant="h5" sx={{ pt: 1, pb: 1 }}>
+              Announcements for Students {title}:
+            </Typography>
+            <Autocomplete
               disablePortal
               id="search-announcement"
-              options={announcements.map((announcement) => announcement.title)}
+              options={filteredAnnouncements.map((announcement) => announcement.title)}
               value={searchInput}
               onChange={(_, newValue) => handleSearch(newValue)}
               renderInput={(params) => (
@@ -123,47 +126,64 @@ const Announcements = ({ title }) => {
                 />
               )}
             />
+          </div>
+        </div>
+
         {loading ? (
           <p>Loading...</p>
+        ) : announcements && announcements.length > 0 ? (
+          <List className="list">
+            {(searchInput ? filteredAnnouncements : announcements)
+              .slice()
+              .reverse()
+              .map((announcement, index) => (
+                <ListItem key={index} className="item">
+                  <ListItemText
+                    primary={
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <Typography>{announcement.title}</Typography>
+                      </div>
+                    }
+                    secondary={
+                      <div>
+                        <Typography>{announcement.description}</Typography>
+                        <Typography
+                          sx={{
+                            fontSize: 12,
+                            fontStyle: "italic",
+                            textAlign: "right",
+                          }}
+                          color="text.secondary"
+                        >
+                          {new Date(announcement.date).toLocaleString()}
+                        </Typography>
+                      </div>
+                    }
+                    secondaryTypographyProps={{ variant: "body2" }}
+                  />
+                </ListItem>
+              ))}
+          </List>
         ) : (
-          announcements && announcements.length > 0 ? (
-            <List className="list">
-              {(searchInput ? filteredAnnouncements : announcements)
-                .slice() // Create a shallow copy of the array
-                .reverse() // Reverse the order of announcements
-                .map((announcement, index) => (
-                  <ListItem key={index} className="item">
-                    <ListItemText
-                      primary={
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-                          <Typography>{announcement.title}</Typography>
-                        </div>
-                      }
-                      secondary={
-                        <div>
-                          <Typography>{announcement.description}</Typography>
-                          <Typography
-                            sx={{ fontSize: 12, fontStyle: "italic", textAlign: "right" }}
-                            color="text.secondary"
-                          >
-                            {new Date(announcement.date).toLocaleString()}
-                          </Typography>
-                        </div>
-                      }
-                      secondaryTypographyProps={{ variant: "body2" }} // Customize secondary text style
-                    />
-                  </ListItem>
-                ))}
-            </List>
-          ) : (
-            <div style={{ minHeight: '40vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div
+            style={{
+              minHeight: "40vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <Typography sx={{ textAlign: "center" }} variant="body1">
               {searchInput
                 ? "No matching announcements found"
                 : "No data to display"}
             </Typography>
-            </div>
-          )
+          </div>
         )}
       </Paper>
 
