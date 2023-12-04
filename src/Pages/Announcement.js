@@ -55,6 +55,7 @@ const Announcements = ({ title }) => {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('token')}`
       },
     })
       .then((res) => res.json())
